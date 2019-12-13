@@ -1,0 +1,17 @@
+{
+    "title": "Dashboard 1",
+    "widgets": [
+        {
+            "id": 1,
+            "name": "Widget 1"
+        },
+        {
+            "id": 2,
+            "name": "Widget 2"
+        },
+        {
+            "id": 3,
+            "name": "Widget 3"
+        }
+    ]
+}

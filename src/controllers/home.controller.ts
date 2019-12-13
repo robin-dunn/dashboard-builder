@@ -1,38 +1,29 @@
-import * as express from 'express'
-import { Request, Response } from 'express'
-import IControllerBase from 'interfaces/IControllerBase.interface'
+import * as express from "express"
+import { Request, Response } from "express"
+import * as fs from "fs";
+import * as path from "path";
+import IControllerBase from "interfaces/IControllerBase.interface"
 
 class HomeController implements IControllerBase {
-    public path = '/'
-    public router = express.Router()
+    public path = "/";
+    public router = express.Router();
 
     constructor() {
-        this.initRoutes()
+        this.initRoutes();
     }
 
     public initRoutes() {
-        this.router.get('/', this.index)
+        this.router.get('/', this.index);
     }
 
     index = (req: Request, res: Response) => {
 
-        const widgets = [
-            {
-                id: 1,
-                name: 'Widget1'
-            },
-            {
-                id: 2,
-                name: 'Widget2'
-            },
-            {
-                id: 3,
-                name: 'Widget3'
-            }
-        ]
+        let json = fs.readFileSync(path.join(__dirname, "..\\..\\data\\dashboard1.json"));
 
-        res.render('home/index', { widgets })
+        const dashboard = JSON.parse(json as any);
+console.log(dashboard);
+        res.render('home/index', { dashboard });
     }
-}
+};
 
 export default HomeController

@@ -1,11 +1,9 @@
 import * as express from "express"
 import { Request, Response } from "express"
-import * as fs from "fs";
-import * as path from "path";
-import IControllerBase from "interfaces/IControllerBase.interface"
+import IControllerBase from "../interfaces/IControllerBase.interface"
 
 class HomeController implements IControllerBase {
-    public path = "/";
+    public routeBase = "/";
     public router = express.Router();
 
     constructor() {
@@ -17,12 +15,7 @@ class HomeController implements IControllerBase {
     }
 
     index = (req: Request, res: Response) => {
-
-        let json = fs.readFileSync(path.join(__dirname, "..\\..\\data\\dashboard1.json"));
-
-        const dashboard = JSON.parse(json as any);
-console.log(dashboard);
-        res.render('home/index', { dashboard });
+        res.render('home/index');
     }
 };
 

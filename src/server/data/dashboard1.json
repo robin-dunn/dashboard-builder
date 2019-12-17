@@ -13,8 +13,13 @@
         },
         {
             "id": 2,
-            "widgetType": "",
-            "title": "Widget 2"
+            "widgetType": "projectManager",
+            "title": "Project Manager",
+            "styles": {
+                "width": "25%",
+                "min-height": "300px",
+                "border": "1px solid red"
+            }
         },
         {
             "id": 3,

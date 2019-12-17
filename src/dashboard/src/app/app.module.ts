@@ -5,12 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MapWidgetComponent } from './map-widget/map-widget.component';
+import { ProjectManagerWidgetComponent } from './project-manager-widget/project-manager-widget.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    MapWidgetComponent
+    MapWidgetComponent,
+    ProjectManagerWidgetComponent
   ],
   imports: [
     BrowserModule,

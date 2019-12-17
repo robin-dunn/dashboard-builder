@@ -4,7 +4,12 @@
         {
             "id": 1,
             "widgetType": "map",
-            "title": "Map Widget"
+            "title": "Map Widget",
+            "styles": {
+                "width": "50%",
+                "min-height": "300px",
+                "border": "1px solid blue"
+            }
         },
         {
             "id": 2,

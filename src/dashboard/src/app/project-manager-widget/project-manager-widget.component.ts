@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IWidgetConfig } from '../../../../models/widgetConfig';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { DialogAddLayerComponent } from '../dialog-add-layer/dialog-add-layer.component';
 
 @Component({
   selector: 'app-project-manager-widget',
@@ -11,15 +13,17 @@ export class ProjectManagerWidgetComponent implements OnInit {
   @Input()
   widgetConfig:IWidgetConfig;
 
+  layerDialogRef: MatDialogRef<DialogAddLayerComponent>;
+
   public layers: string[] = [];
 
-  constructor() { }
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit() {
   }
 
-  public btnAddLayerClick(){
-    let layerName = prompt("Enter layer name");
-    this.layers.push(layerName);
+  public openAddLayerDialog(){
+    this.layerDialogRef = this.dialog.open(DialogAddLayerComponent);
+    //this.layers.push(layerName);
   }
 }

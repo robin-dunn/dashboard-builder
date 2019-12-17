@@ -1,0 +1,12 @@
+<div class="dialog-content">
+  <div class="dialog-header">
+    <h4>Add Layer</h4>
+  </div>
+  <div class="file-upload-container">
+    <button class="file-upload-button" mat-raised-button (click)="onClick($event)">Choose File</button>
+    <input #fileUpload type="file" class="input_fileupload">
+  </div>
+  <div class="dialog-footer">
+    <button mat-raised-button (click)="uploadOnClick($event)">Submit</button>
+  </div>
+</div>

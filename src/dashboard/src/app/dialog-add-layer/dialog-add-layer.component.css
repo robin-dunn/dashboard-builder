@@ -1,0 +1,28 @@
+.dialog-header {
+    margin: 0 0 20px 0;
+}
+
+.dialog-content {
+    min-width: 300px;
+}
+
+.file-upload-container {
+    position: relative;
+    height: 40px;
+}
+
+.file-upload-button {
+    position: absolute;
+    z-index: 10;
+}
+
+.input_fileupload {
+    position: absolute;
+    left: 18px;
+    top: 8px;
+    z-index: 0;
+}
+
+.dialog-footer {
+    margin: 10px 0 0 0;
+}

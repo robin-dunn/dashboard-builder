@@ -3,10 +3,13 @@
     <h4>Add Layer</h4>
   </div>
   <div class="file-upload-container">
-    <button class="file-upload-button" mat-raised-button (click)="onClick($event)">Choose File</button>
-    <input #fileUpload type="file" class="input_fileupload">
+    <form method="post" action="/api/layer" enctype="multipart/form-data" #fileUploadForm>
+      <button class="file-upload-button" mat-raised-button (click)="chooseFileOnClick($event)">Choose File</button>
+      <input type="file" name="file" id="file" class="input_fileupload" #fileUpload>
+    </form>
   </div>
-  <div class="dialog-footer">
-    <button mat-raised-button (click)="uploadOnClick($event)">Submit</button>
+  <div class="dialog-actions">
+    <button mat-raised-button color="primary" (click)="uploadOnClick($event)">Submit</button>
+    <button mat-raised-button mat-dialog-close (click)="cancelOnClick($event)">Cancel</button>
   </div>
 </div>

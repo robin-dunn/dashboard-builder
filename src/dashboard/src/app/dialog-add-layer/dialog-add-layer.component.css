@@ -23,6 +23,12 @@
     z-index: 0;
 }
 
-.dialog-footer {
+.dialog-actions {
+    display: flex;
     margin: 10px 0 0 0;
+    justify-content: flex-end;
+}
+
+.dialog-actions > button {
+    margin-left: 5px;
 }

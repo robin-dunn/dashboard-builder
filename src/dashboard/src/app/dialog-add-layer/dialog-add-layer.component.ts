@@ -7,6 +7,9 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 })
 export class DialogAddLayerComponent implements OnInit {
 
+  @ViewChild('fileUploadForm')
+  fileUploadForm: ElementRef
+
   @ViewChild('fileUpload')
   fileUpload: ElementRef
 
@@ -15,10 +18,17 @@ export class DialogAddLayerComponent implements OnInit {
   ngOnInit() {
   }
 
-  public onClick(event) {
+  public chooseFileOnClick(event) {
+    event.preventDefault();
     if (this.fileUpload)
       this.fileUpload.nativeElement.click();
   }
 
-  // TODO: handle file upload submit e.g. to new endpoint /api/layer
+  public cancelOnClick(event) {
+
+  }
+
+  public uploadOnClick(event) {
+    this.fileUploadForm.nativeElement.submit();
+  }
 }

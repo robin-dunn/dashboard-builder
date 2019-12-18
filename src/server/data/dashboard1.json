@@ -3,28 +3,29 @@
     "widgets": [
         {
             "id": 1,
-            "widgetType": "map",
-            "title": "Map Widget",
-            "styles": {
-                "width": "50%",
-                "min-height": "300px",
-                "border": "1px solid blue"
-            }
-        },
-        {
-            "id": 2,
             "widgetType": "projectManager",
             "title": "Project Manager",
             "styles": {
-                "width": "25%",
-                "min-height": "300px",
+                "grid-row-start": "1",
+                "grid-row-end": "3",
                 "border": "1px solid red"
             }
         },
         {
+            "id": 2,
+            "widgetType": "map",
+            "title": "Map Widget",
+            "styles": {
+                "border": "1px solid blue"
+            }
+        },
+        {
             "id": 3,
-            "widgetType": "",
-            "title": "Widget 3"
+            "widgetType": "dataGrid",
+            "title": "Data Grid Widget",
+            "styles": {
+                "grid-column-start": 2
+            }
         }
     ]
 }

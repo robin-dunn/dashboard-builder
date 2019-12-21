@@ -2,7 +2,7 @@ import * as express from "express"
 import { Request, Response } from "express"
 import IControllerBase from "../interfaces/IControllerBase.interface"
 import { IncomingForm } from "formidable";
-const fs = require('fs');
+import FileImporter from "../framework/fileImporter";
 
 class LayerController implements IControllerBase {
     public routeBase = "/api/layer";
@@ -22,10 +22,13 @@ class LayerController implements IControllerBase {
     }
 
     postUpload = (req: Request, res: Response) => {
-        var form = new IncomingForm()
+        var form = new IncomingForm();
+        form.keepExtensions = true;
 
         form.on('file', (field, file) => {
-    console.log('file', file.name);
+    console.log('file', file.name, file.path);
+
+            FileImporter.importFile(file.path);
         });
 
         form.on('end', () => {

@@ -1,6 +1,7 @@
-import * as path from 'path';
-import * as fs from 'fs';
-import * as csv from 'fast-csv';
+import * as path from "path";
+import * as fs from "fs";
+import * as csv from "fast-csv";
+import { Layer } from "../dal/models/layer";
 
 class FileImporter {
 
@@ -16,12 +17,17 @@ class FileImporter {
         };
     }
 
-    public static importCsvFile(filePath:string) {
+    public static async importCsvFile(filePath:string) {
+
+        let newLayer = await Layer.create({ name: "NEW LAYER" });
+
+        console.log("Created new layer", newLayer.id, newLayer.name);
+
         fs.createReadStream(filePath)
             .pipe(csv.parse({ headers: true }))
             .on('data', row => {
                 console.log(row);
-                // TODO: save data to database table.
+                // TODO: Use sequalize.query() to insert rows into the specific layer table.
             })
             .on("end", function () {
                 console.log("File import complete!")

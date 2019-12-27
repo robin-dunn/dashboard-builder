@@ -5,26 +5,34 @@ import { QueryTypes } from 'sequelize';
 
 export class CsvFileImporter {
 
-    public static async importFile(filePath:string) {
+    public static async importFile(filePath:string, newLayerName:string) {
 
         // TODO: handle CSV files with no column headers
         let columnNames = await this.getColumnNamesAsync(filePath);
-        let latitudeColumnName = columnNames.find(propName => /latitude/gi.test(propName));
-        let longitudeColumnName = columnNames.find(propName => /longitude/gi.test(propName));
+        let latitudeColumnName = columnNames.find(colName => /latitude/gi.test(colName));
+        let longitudeColumnName = columnNames.find(colName => /longitude/gi.test(colName));
         let sqlColumnNames = columnNames.filter(propName => propName !== latitudeColumnName && propName !== longitudeColumnName);
-        let batch = [];
 
-        let newLayer = await DAL.createLayer("NEW LAYER", sqlColumnNames);
+        let rowsBatch = [];
+        const rowsBatchSize = 100;
+
+        let newLayer = await DAL.createLayer(newLayerName, sqlColumnNames);
+        let layerId = newLayer.id.toString();
 
         fs.createReadStream(filePath)
             .pipe(csv.parse({ headers: true, trim: true }))
             .on('data', function(row) {
                 row[latitudeColumnName] = parseFloat(row[latitudeColumnName]),
                 row[longitudeColumnName] = parseFloat(row[longitudeColumnName]),
-                batch.push(row);
+
+                rowsBatch.push(row);
+                if (rowsBatch.length === rowsBatchSize) {
+                    CsvFileImporter.InsertRows(layerId, rowsBatch, latitudeColumnName, longitudeColumnName);
+                    rowsBatch = [];
+                }
             })
             .on("end", function () {
-                CsvFileImporter.InsertRow(newLayer.id.toString(), batch[0], latitudeColumnName, longitudeColumnName);
+                CsvFileImporter.InsertRows(layerId, rowsBatch, latitudeColumnName, longitudeColumnName);
                 console.log("File import complete!")
             })
             .on("error", function (error) {
@@ -42,9 +50,11 @@ export class CsvFileImporter {
 
             readStream.on("data", function (dataChunk) {
                 fileContent += dataChunk;
+
+                // Unix line endings use '\n' whereas Windows use '\n\r'.
                 lines = fileContent.split("\n").map(line => line.replace(/[\r]/g, ""));
 
-                if (lines.length > 1) {
+                if (lines.length > 0) {
                     readStream.destroy();
                     let columnNames = lines.slice(0, 1)[0].split(",").map(colName => colName.trim());
                     resolve(columnNames);
@@ -53,25 +63,27 @@ export class CsvFileImporter {
         });
     }
 
-    public static InsertRow(layerId:string, rowData, latitudeColumnName, longitudeColumnName) {
+    public static InsertRows(layerId:string, rows, latitudeColumnName, longitudeColumnName) {
         /* NOTE: Creating the SQL string using concatenation is not ideal
         but Sequelize doesn't support dynamic table names yet. */
 
-        let columnNames = Object.getOwnPropertyNames(rowData)
-                            .map(colName => colName.trim())
-                            .filter(propName => propName !== latitudeColumnName && propName !== longitudeColumnName);
+        rows.forEach(row => {
+            let columnNames = Object.getOwnPropertyNames(row)
+                                .map(colName => colName.trim())
+                                .filter(propName => propName !== latitudeColumnName && propName !== longitudeColumnName);
 
-        // The location column is a point created from latitude and longitude.
-        let sqlInsert = `INSERT INTO Layer_${layerId} (${columnNames.concat(["location"]).map(colName => `"${colName}"`).join(",")}) `
-                         + ` VALUES (${columnNames.map(colName => "?").join(",")},`
-                            + ` ST_SetSRID(ST_MakePoint(?, ?), 4326))`;
+            // The location column is a point created from latitude and longitude.
+            let sqlInsert = `INSERT INTO Layer_${layerId} (${columnNames.concat(["location"]).map(colName => `"${colName}"`).join(",")}) `
+                            + ` VALUES (${columnNames.map(colName => "?").join(",")},`
+                                + ` ST_SetSRID(ST_MakePoint(?, ?), 4326))`;
 
-        let replacements = columnNames.map(colName => rowData[colName])
-                                    .concat([ rowData[latitudeColumnName], rowData[longitudeColumnName] ]);
+            let replacements = columnNames.map(colName => row[colName])
+                                        .concat([ row[latitudeColumnName], row[longitudeColumnName] ]);
 
-        DAL.sequelize.query(sqlInsert, {
-            replacements: replacements,
-            type: QueryTypes.INSERT
+            DAL.sequelize.query(sqlInsert, {
+                replacements: replacements,
+                type: QueryTypes.INSERT
+            });
         });
     }
 }

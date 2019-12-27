@@ -27,8 +27,7 @@ class LayerController implements IControllerBase {
 
         form.on('file', (field, file) => {
     console.log('file', file.name, file.path);
-
-            FileImporter.importFile(file.path);
+            FileImporter.importFile(file.path, "New Layer");
         });
 
         form.on('end', () => {

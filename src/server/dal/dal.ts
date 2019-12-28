@@ -61,8 +61,6 @@ export class DAL {
 
     let sqlCreateTable = `CREATE TABLE ${tableName} (${columns.join(",")})`;
 
-    console.log(sqlCreateTable);
-
     await this.sequelize.query(sqlCreateTable);
 
     return newLayer;

@@ -3,6 +3,7 @@ import { Request, Response } from "express"
 import IControllerBase from "../interfaces/IControllerBase.interface"
 import { IncomingForm } from "formidable";
 import FileImporter from "../framework/fileImporter";
+import { Layer } from "../dal/models/layer";
 
 class LayerController implements IControllerBase {
     public routeBase = "/api/layer";
@@ -17,8 +18,10 @@ class LayerController implements IControllerBase {
         this.router.post("/", this.postUpload);
     }
 
-    getLayers = (req: Request, res: Response) => {
-        res.json([]);
+    getLayers = async (req: Request, res: Response) => {
+        let layers = await Layer.findAll();
+        console.log("GET LAYERS", layers);
+        res.json(layers);
     }
 
     postUpload = (req: Request, res: Response) => {

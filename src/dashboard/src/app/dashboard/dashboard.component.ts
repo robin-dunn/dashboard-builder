@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
+import { DashboardService } from '../services/dashboard.service';
 import { IDashboardConfig } from '../../../../models/dashboardConfig';
 
 @Component({
@@ -9,14 +9,15 @@ import { IDashboardConfig } from '../../../../models/dashboardConfig';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private apiService:ApiService) { }
+  constructor(private dashboardService: DashboardService) { }
 
-  public dashboardConfig:IDashboardConfig;
+  public dashboardConfig: IDashboardConfig;
 
   ngOnInit() {
-    this.apiService.getDashboard().subscribe((dashboard:IDashboardConfig) => {
+    this.dashboardService.dashboardConfig$.subscribe((dashboard: IDashboardConfig) => {
       this.dashboardConfig = dashboard;
       console.log("DASH", dashboard);
     });
+    this.dashboardService.getDashboard();
   }
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input } from '@angular/core';
 import * as L from 'leaflet';
 import { IWidgetConfig } from '../../../../models/widgetConfig';
+import { DashboardService } from '../services/dashboard.service';
+import { LayerService } from '../services/layer.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-map-widget',
@@ -16,9 +19,17 @@ export class MapWidgetComponent implements OnInit, AfterViewInit {
 
   private map: any;
 
-  constructor() { }
+  constructor(private dashboardService: DashboardService,
+    private layerService: LayerService) { }
 
   ngOnInit() {
+    for (const widgetId of this.widgetConfig.subjectWidgets) {
+      this.layerService.getStore$(widgetId).subscribe(layerMetadata => {
+          console.log("MAP WIDGET: LAYER DATA", layerMetadata);
+        });
+    }
+
+    // Draw the layers on the map
   }
 
   ngAfterViewInit() {

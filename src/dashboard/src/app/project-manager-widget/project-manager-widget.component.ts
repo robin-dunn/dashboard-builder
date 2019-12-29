@@ -3,6 +3,7 @@ import { IWidgetConfig } from '../../../../models/widgetConfig';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { DialogAddLayerComponent } from '../dialog-add-layer/dialog-add-layer.component';
 import { LayerService } from '../services/layer.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-project-manager-widget',
@@ -16,32 +17,32 @@ export class ProjectManagerWidgetComponent implements OnInit {
 
   layerDialogRef: MatDialogRef<DialogAddLayerComponent>;
 
+  layerStore: Subject<any>;
   public layers: string[] = [];
 
   constructor(private dialog: MatDialog,
     private layerService: LayerService) {}
 
   ngOnInit() {
+    this.layerService.createStore(this.widgetConfig.id);
     this.getLayers();
   }
 
   public openAddLayerDialog(){
-    const me = this;
-    this.layerDialogRef = this.dialog.open(DialogAddLayerComponent);
+
+    this.layerDialogRef = this.dialog.open(
+      DialogAddLayerComponent,
+      { data: { storeId: this.widgetConfig.id }
+    });
 
     this.layerDialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        me.getLayers();
+        this.getLayers();
       }
     });
   }
 
   private getLayers() {
-    const me = this;
-    this.layerService.getLayers().subscribe(result => {
-      me.layers = Array.isArray(result)
-        ? result.map(layer => layer.name)
-        : [];
-    });
+    this.layerService.getLayers(this.widgetConfig.id);
   }
 }

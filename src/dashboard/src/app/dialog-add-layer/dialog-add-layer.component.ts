@@ -1,6 +1,6 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { MatDialogRef} from "@angular/material";
+import { Component, OnInit, ElementRef, ViewChild, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
+import { LayerService } from '../services/layer.service';
 
 @Component({
   selector: 'app-dialog-add-layer',
@@ -20,8 +20,10 @@ export class DialogAddLayerComponent implements OnInit {
   public uploadComplete: boolean = false;
 
   constructor(
+    private layerService: LayerService,
     private dialogRef: MatDialogRef<DialogAddLayerComponent>,
-    private http: HttpClient) { }
+    @Inject(MAT_DIALOG_DATA) public data: any
+) { }
 
   ngOnInit() {
   }
@@ -37,28 +39,18 @@ export class DialogAddLayerComponent implements OnInit {
   }
 
   public cancelOnClick(event) {
-
   }
 
   public uploadOnClick(event) {
-
-    const me = this;
-
-    let formData = new FormData();
-
     for (var i = 0; i < this.uploadedFiles.length; i++) {
-        formData.append("uploads[]", this.uploadedFiles[i], this.uploadedFiles[i].name);
+        this.layerService.uploadLayer$(this.uploadedFiles[i], this.data.storeId as string)
+          .subscribe((response) => {
+            if (response.status === 200) {
+              this.uploadComplete = true;
+            }
+            this.closeDialog(this.uploadComplete);
+          });
     }
-
-    this.http.post('/api/layer', formData,  {observe: 'response'})
-      .subscribe((response) => {
-        if (response.status === 200)
-        {
-          me.uploadComplete = true;
-        }
-        console.log('response received is ', response);
-        this.closeDialog(me.uploadComplete);
-      });
   }
 
   private closeDialog(result: boolean) {

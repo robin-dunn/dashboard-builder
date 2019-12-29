@@ -2,10 +2,11 @@ import * as fs from "fs";
 import * as csv from "fast-csv";
 import { DAL } from "../dal/dal";
 import { QueryTypes } from 'sequelize';
+import { Layer } from "../dal/models/layer";
 
 export class CsvFileImporter {
 
-    public static async importFile(filePath:string, newLayerName:string) {
+    public static async importFile(filePath:string, newLayerName:string): Promise<Layer> {
 
         // TODO: handle CSV files with no column headers
         let columnNames = await this.getColumnNamesAsync(filePath);
@@ -19,25 +20,29 @@ export class CsvFileImporter {
         let newLayer = await DAL.createLayer(newLayerName, sqlColumnNames);
         let layerId = newLayer.id.toString();
 
-        fs.createReadStream(filePath)
-            .pipe(csv.parse({ headers: true, trim: true }))
-            .on('data', function(row) {
-                row[latitudeColumnName] = parseFloat(row[latitudeColumnName]),
-                row[longitudeColumnName] = parseFloat(row[longitudeColumnName]),
+        return new Promise<Layer>(function (resolve, reject) {
+            fs.createReadStream(filePath)
+                .pipe(csv.parse({ headers: true, trim: true }))
+                .on('data', function(row) {
+                    row[latitudeColumnName] = parseFloat(row[latitudeColumnName]),
+                    row[longitudeColumnName] = parseFloat(row[longitudeColumnName]),
 
-                rowsBatch.push(row);
-                if (rowsBatch.length === rowsBatchSize) {
+                    rowsBatch.push(row);
+                    if (rowsBatch.length === rowsBatchSize) {
+                        CsvFileImporter.InsertRows(layerId, rowsBatch, latitudeColumnName, longitudeColumnName);
+                        rowsBatch = [];
+                    }
+                })
+                .on("end", function () {
                     CsvFileImporter.InsertRows(layerId, rowsBatch, latitudeColumnName, longitudeColumnName);
-                    rowsBatch = [];
-                }
-            })
-            .on("end", function () {
-                CsvFileImporter.InsertRows(layerId, rowsBatch, latitudeColumnName, longitudeColumnName);
-                console.log("File import complete!")
-            })
-            .on("error", function (error) {
-                console.log(error)
-            });
+                    console.log("File import complete!")
+                    resolve(newLayer);
+                })
+                .on("error", function (error) {
+                    console.log(error)
+                    reject();
+                });
+        });
     }
 
     static getColumnNamesAsync(filePath:string): Promise<string[]> {

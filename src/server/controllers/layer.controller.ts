@@ -24,17 +24,22 @@ class LayerController implements IControllerBase {
         res.json(layers);
     }
 
-    postUpload = (req: Request, res: Response) => {
+    postUpload = async (req: Request, res: Response) => {
         var form = new IncomingForm();
         form.keepExtensions = true;
 
-        form.on('file', (field, file) => {
-    console.log('file', file.name, file.path);
-            FileImporter.importFile(file.path, "New Layer");
+        let newLayer: Layer;
+
+        form.on('file', async (field, file) => {
+            newLayer = await FileImporter.importFile(file.path, "New Layer");
+            if (newLayer) {
+                res.status(201).json(newLayer);
+            } else {
+                res.status(400).json({ message: "bad request" })
+            }
         });
 
         form.on('end', () => {
-            res.json({ end: "end"});
         });
 
         form.parse(req);

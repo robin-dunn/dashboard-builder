@@ -41,8 +41,14 @@ export class DAL {
       tableName: "layers",
     });
 
+    this.syncDbModel();
+  }
+
+  private static async syncDbModel() {
     // Drop old layer tables named as Layer_1, Layer_2, etc.
-    Layer.findAll().then(layers => layers.map(layer => this.sequelize.query(`DROP TABLE Layer_${layer.id};`)));
+    let layers = await Layer.findAll();
+
+    layers.map(layer => this.sequelize.query(`DROP TABLE Layer_${layer.id};`));
 
     this.sequelize.sync({ force: true });
   }
@@ -69,28 +75,41 @@ export class DAL {
   }
 
   public static async getLayerGeoJson(layerId: string) {
+
     let sqlSelectGeoJson = `SELECT json_build_object(
       'type', 'FeatureCollection',
+      'metadata',  json_build_object(
+        'minX', MIN(ST_X(location::geometry)),
+        'minY', MIN(ST_Y(location::geometry)),
+        'maxX', MAX(ST_X(location::geometry)),
+        'maxY', MAX(ST_Y(location::geometry))
+      ),
       'crs',  json_build_object(
-          'type',      'name',
-          'properties', json_build_object(
-              'name', 'EPSG:4326'
-          )
+        'type',      'name',
+        'properties', json_build_object(
+            'name', 'EPSG:4326'
+        )
       ),
       'features', json_agg(
           json_build_object(
-              'type',       'Feature',
-              'id',         id,
-              'geometry',   ST_AsGeoJSON(location)::json
+            'type',       'Feature',
+            'id',         id,
+            'geometry',   ST_AsGeoJSON(location)::json
           )
       )
     ) as geojson
     FROM Layer_${layerId};`
 
-    let queryResult = await this.sequelize.query(sqlSelectGeoJson);
+    let queryGeoJson = await this.sequelize.query(sqlSelectGeoJson);
+    console.log(queryGeoJson);
 
-    return new Promise<any[]>(async function (resolve, reject) {
-      resolve((queryResult[0] as any[]).map(qr => qr.geojson));
+    return new Promise<any[]>(function (resolve, reject) {
+      if (queryGeoJson) {
+        let geoJson = (queryGeoJson[0] as any[]).map(qr => qr.geojson)[0];
+        resolve(geoJson);
+      } else {
+        reject();
+      }
     });
   }
 }

@@ -3,7 +3,6 @@ import * as L from 'leaflet';
 import { IWidgetConfig } from '../../../../models/widgetConfig';
 import { DashboardService } from '../services/dashboard.service';
 import { LayerService } from '../services/layer.service';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-map-widget',
@@ -30,7 +29,17 @@ export class MapWidgetComponent implements OnInit, AfterViewInit {
             this.layerService.getLayerGeoJson$(widgetId, layersMetadata.layers[0].id as string)
               .subscribe(response => {
                 // TODO: render GeoJson on the map
-                console.log("LAYER GEOJSON", response.body);
+                if (response.ok) {
+                  let geoJson = response.body as any;
+                  console.log("LAYER GEOJSON", geoJson);
+                  if (geoJson.metadata) {
+                    let metadata = geoJson.metadata;
+                    let centreX = (metadata.minX + metadata.maxX) / 2;
+                    let centreY = (metadata.minY + metadata.maxY) / 2;
+                    let centreLatLng = new L.LatLng(centreY, centreX);
+                    this.map.panTo(centreLatLng);
+                  }
+                }
               });
           }
         });

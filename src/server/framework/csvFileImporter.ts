@@ -83,7 +83,7 @@ export class CsvFileImporter {
                                 + ` ST_SetSRID(ST_MakePoint(?, ?), 4326))`;
 
             let replacements = columnNames.map(colName => row[colName])
-                                        .concat([ row[latitudeColumnName], row[longitudeColumnName] ]);
+                                        .concat([ row[longitudeColumnName], row[latitudeColumnName] ]);
 
             DAL.sequelize.query(sqlInsert, {
                 replacements: replacements,

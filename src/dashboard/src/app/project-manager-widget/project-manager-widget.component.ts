@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { DialogAddLayerComponent } from '../dialog-add-layer/dialog-add-layer.component';
 import { LayerService } from '../services/layer.service';
 import { Subject } from 'rxjs';
+import { LayerStore } from '../services/layerStore';
 
 @Component({
   selector: 'app-project-manager-widget',
@@ -17,14 +18,18 @@ export class ProjectManagerWidgetComponent implements OnInit {
 
   layerDialogRef: MatDialogRef<DialogAddLayerComponent>;
 
-  layerStore: Subject<any>;
+  layerStore: Subject<LayerStore>;
   public layers: string[] = [];
 
   constructor(private dialog: MatDialog,
     private layerService: LayerService) {}
 
   ngOnInit() {
-    this.layerService.createStore(this.widgetConfig.id);
+    this.layerStore = this.layerService.createStore(this.widgetConfig.id);
+    this.layerStore.subscribe(layerStore => {
+      this.layers = layerStore.layers.map(layer => layer.name)
+      console.log("PM LAYERS", this.layers);
+    });
     this.getLayers();
   }
 

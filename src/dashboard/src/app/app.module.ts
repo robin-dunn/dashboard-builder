@@ -9,7 +9,7 @@ import { ProjectManagerWidgetComponent } from './project-manager-widget/project-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogAddLayerComponent } from './dialog-add-layer/dialog-add-layer.component';
 import { MatDialogModule, MatButtonModule } from '@angular/material';
-import { LayerStore } from './services/layerStore';
+import { CentralStoreService } from './services/central-store.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { LayerStore } from './services/layerStore';
     MatButtonModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [CentralStoreService],
   bootstrap: [AppComponent],
   entryComponents: [DialogAddLayerComponent]
 })

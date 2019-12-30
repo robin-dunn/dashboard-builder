@@ -41,12 +41,14 @@ export class DAL {
       tableName: "layers",
     });
 
-    this._sequelize.sync({ force: true });
+    // Drop old layer tables named as Layer_1, Layer_2, etc.
+    Layer.findAll().then(layers => layers.map(layer => this.sequelize.query(`DROP TABLE Layer_${layer.id};`)));
+
+    this.sequelize.sync({ force: true });
   }
 
   public static async createLayer(name:string, columnNames: string[]) : Promise<Layer> {
-    console.log("Creating layer");
-    
+
     let newLayer = await Layer.create({ name: name });
 
     let tableName = `Layer_${newLayer.id.toString()}`;
@@ -64,5 +66,31 @@ export class DAL {
     await this.sequelize.query(sqlCreateTable);
 
     return newLayer;
+  }
+
+  public static async getLayerGeoJson(layerId: string) {
+    let sqlSelectGeoJson = `SELECT json_build_object(
+      'type', 'FeatureCollection',
+      'crs',  json_build_object(
+          'type',      'name',
+          'properties', json_build_object(
+              'name', 'EPSG:4326'
+          )
+      ),
+      'features', json_agg(
+          json_build_object(
+              'type',       'Feature',
+              'id',         id,
+              'geometry',   ST_AsGeoJSON(location)::json
+          )
+      )
+    ) as geojson
+    FROM Layer_${layerId};`
+
+    let queryResult = await this.sequelize.query(sqlSelectGeoJson);
+
+    return new Promise<any[]>(async function (resolve, reject) {
+      resolve((queryResult[0] as any[]).map(qr => qr.geojson));
+    });
   }
 }

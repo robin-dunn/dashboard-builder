@@ -4,6 +4,7 @@ import IControllerBase from "../interfaces/IControllerBase.interface"
 import { IncomingForm } from "formidable";
 import FileImporter from "../framework/fileImporter";
 import { Layer } from "../dal/models/layer";
+import { DAL } from "../dal/dal";
 
 class LayerController implements IControllerBase {
     public routeBase = "/api/layer";
@@ -15,13 +16,19 @@ class LayerController implements IControllerBase {
 
     public initRoutes() {
         this.router.get("/", this.getLayers);
+        this.router.get("/geojson/:layerId", this.getLayerGeoJson);
         this.router.post("/", this.postUpload);
     }
 
     getLayers = async (req: Request, res: Response) => {
         let layers = await Layer.findAll();
-        console.log("GET LAYERS", layers);
         res.json(layers);
+    }
+
+    getLayerGeoJson = async (req: Request, res: Response) => {
+        let layerId = req.params.layerId;
+        let layerGeoJson = await DAL.getLayerGeoJson(layerId);
+        res.json(layerGeoJson);
     }
 
     postUpload = async (req: Request, res: Response) => {

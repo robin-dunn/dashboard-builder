@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
-import { LayerService } from '../services/layer.service';
+import { LayerService } from '../../services/layer.service';
 
 @Component({
   selector: 'app-dialog-add-layer',
@@ -23,7 +23,7 @@ export class DialogAddLayerComponent implements OnInit {
     private layerService: LayerService,
     private dialogRef: MatDialogRef<DialogAddLayerComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-) { }
+  ) { }
 
   ngOnInit() {
   }

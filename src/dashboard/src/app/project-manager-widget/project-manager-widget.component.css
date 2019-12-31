@@ -1,0 +1,11 @@
+.projectManagerHeader {
+    text-align: center;
+    font-size: 1.1em;
+    font-family: "Source Sans Pro", Effra, Arial, Helvetica, FreeSans, sans-serif;
+    font-weight: 600;
+    line-height: 29px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    border-bottom: 1px solid #aaaaaa;
+}

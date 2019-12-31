@@ -1,0 +1,10 @@
+.slidingMenu {
+    display: block;
+    overflow: hidden;
+}
+
+.reel {
+    position: relative;
+    left: 0px;
+    width: 1000px;
+}

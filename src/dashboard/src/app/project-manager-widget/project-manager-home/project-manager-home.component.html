@@ -1,24 +1,21 @@
 <app-slider #slider>
-  <app-slide id="slide_projectManagerHome">
-    <a href="#" id="btnNewProject" class="homeButton" title="Create a new project"
-     tabindex="10" accesskey="c" attr.data-nextSlide="slide_projectEditor" #sliderButton>
-      <span class="icon-home-newproject"></span>
-      Create a new project
-    </a>
-    <a href="#" id="btnNewProject" class="homeButton" title="Create a new project" tabindex="10" accesskey="c" #sliderButton>
-      <span class="icon-home-newproject"></span>
-      Open an existing project
-    </a>
-    <a href="#" id="btnNewProject" class="homeButton" title="Create a new project" tabindex="10" accesskey="c" #sliderButton>
-      <span class="icon-home-newproject"></span>
-      Manage your data
-    </a>
+  <app-slide data-slider="{ slideId: 'projectManagerHome' }">
+
+    <app-home-menu-button class="sliderButton" [buttonText]="'Create a new project'" title="Create a new project"
+      [iconClass]="'icon-home-newproject'" data-slider="{ nextSlide: 'projectEditor' }" #sliderButton></app-home-menu-button>
+
+    <app-home-menu-button class="sliderButton" [buttonText]="'Open an existing project'" title="Open an existing project"
+      [iconClass]="'icon-home-newproject'" data-slider="{ nextSlide: 'projectEditor' }" #sliderButton></app-home-menu-button>
+
+    <app-home-menu-button class="sliderButton" [buttonText]="'Manage your data'" title="Manage your data"
+      [iconClass]="'icon-home-newproject'" data-slider="{ nextSlide: 'projectEditor' }" #sliderButton></app-home-menu-button>
+
     <button (click)="openAddLayerDialog()">Add Layer</button>
     <ul>
       <li *ngFor="let layer of layers">{{ layer }}</li>
     </ul>
   </app-slide>
-  <app-slide id="slide_projectEditor" attr.data-previousslide="slide_projectManagerHome">
+  <app-slide data-slider="{ slideId: 'projectEditor' }">
     <app-create-project></app-create-project>
   </app-slide>
 </app-slider>

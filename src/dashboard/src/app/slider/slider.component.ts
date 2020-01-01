@@ -1,6 +1,6 @@
 import { Component, OnInit, ContentChildren, AfterViewInit, QueryList, ViewChild, ElementRef } from '@angular/core';
 import { SlideComponent } from './slide/slide.component';
-import { Subject } from 'rxjs';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-slider',
@@ -20,11 +20,34 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     let containerElem = this.slider.nativeElement as HTMLElement;
-    this.slides.forEach(s => {
+
+    this.slides.forEach((slide: SlideComponent) => {
       setTimeout(() => {
-        s.widthInPixels = containerElem.offsetWidth;
+        slide.widthInPixels = containerElem.offsetWidth;
       }, 0);
+
+      this.setupButtonClickHandlers(slide);
     });
+  }
+
+  private setupButtonClickHandlers(slide: SlideComponent) {
+      slide.sliderButtonsEvent.subscribe((buttons: HTMLElement[]) => {
+        buttons.forEach(btn => {
+        console.log("ELEM", btn);
+          fromEvent(btn, "click").subscribe(clickEvent => {
+            console.log("CLICK", clickEvent);
+            console.log(btn.getAttribute("data-slider"));
+            // TODO: determine if we need to move the slider reel left or right.
+          });
+        });
+      });
+  }
+
+  public slideLeft() {
+
+  }
+
+  public slideRight() {
 
   }
 }

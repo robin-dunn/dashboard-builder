@@ -14,6 +14,7 @@ import { CreateProjectComponent } from './project-manager-widget/create-project/
 import { SliderComponent } from './slider/slider.component';
 import { ProjectManagerHomeComponent } from './project-manager-widget/project-manager-home/project-manager-home.component';
 import { SlideComponent } from './slider/slide/slide.component';
+import { HomeMenuButtonComponent } from './project-manager-widget/home-menu-button/home-menu-button.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SlideComponent } from './slider/slide/slide.component';
     CreateProjectComponent,
     SliderComponent,
     SlideComponent,
-    ProjectManagerHomeComponent
+    ProjectManagerHomeComponent,
+    HomeMenuButtonComponent
   ],
   imports: [
     BrowserModule,

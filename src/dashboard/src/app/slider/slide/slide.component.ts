@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, AfterViewInit, QueryList, ContentChildren, ElementRef } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { Component, OnInit, Input, AfterViewInit, QueryList, ContentChildren, ElementRef, Output } from '@angular/core';
+import { fromEvent, Subject, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-slide',
@@ -8,7 +8,9 @@ import { fromEvent } from 'rxjs';
 })
 export class SlideComponent implements OnInit, AfterViewInit {
 
-  @ContentChildren('sliderButton') sliderButtons: QueryList<ElementRef>;
+  @Output() sliderButtonsEvent = new Observable<HTMLElement[]>();
+
+  @ContentChildren('sliderButton', { read: ElementRef }) sliderButtons: QueryList<ElementRef>;
 
   _widthInPixels: number;
 
@@ -21,7 +23,7 @@ export class SlideComponent implements OnInit, AfterViewInit {
     this._widthInPixels = value;
   }
 
-  constructor() {
+  constructor(private elementRef: ElementRef) {
   }
 
   ngOnInit() {
@@ -29,11 +31,9 @@ export class SlideComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     if(this.sliderButtons) {
-      this.sliderButtons.forEach(button => {
-        fromEvent(button.nativeElement, "click")
-          .subscribe((event) => console.log("clicked", event));
-          // TODO: trigger the slide animation from the parent SliderComponent
-      });
+      let buttonElements = this.sliderButtons.toArray().map(button => button.nativeElement as HTMLElement);
+      console.log("BE", buttonElements);
+      this.sliderButtonsEvent = of(buttonElements);
     }
   }
 }

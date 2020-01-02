@@ -12,9 +12,9 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
 import { CentralStoreService } from './services/central-store.service';
 import { CreateProjectComponent } from './project-manager-widget/create-project/create-project.component';
 import { SliderComponent } from './slider/slider.component';
-import { ProjectManagerHomeComponent } from './project-manager-widget/project-manager-home/project-manager-home.component';
 import { SlideComponent } from './slider/slide/slide.component';
 import { HomeMenuButtonComponent } from './project-manager-widget/home-menu-button/home-menu-button.component';
+import { SlideNavButtonComponent } from './slider/slide/slide-nav-button/slide-nav-button.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +26,8 @@ import { HomeMenuButtonComponent } from './project-manager-widget/home-menu-butt
     CreateProjectComponent,
     SliderComponent,
     SlideComponent,
-    ProjectManagerHomeComponent,
-    HomeMenuButtonComponent
+    HomeMenuButtonComponent,
+    SlideNavButtonComponent
   ],
   imports: [
     BrowserModule,

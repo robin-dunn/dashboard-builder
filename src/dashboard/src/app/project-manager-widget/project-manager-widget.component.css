@@ -1,11 +1,25 @@
 .projectManagerHeader {
+    border-bottom: 1px solid #aaaaaa;
+}
+
+.navBackArrow {
+    cursor: pointer;
+    font-size: 11px;
+    position: absolute;
+    font-weight: normal;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    line-height: 29px;
+}
+
+.currentMenuTitle {
+    font-size: 11px;
     text-align: center;
-    font-size: 1.1em;
     font-family: "Source Sans Pro", Effra, Arial, Helvetica, FreeSans, sans-serif;
     font-weight: 600;
     line-height: 29px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    border-bottom: 1px solid #aaaaaa;
 }

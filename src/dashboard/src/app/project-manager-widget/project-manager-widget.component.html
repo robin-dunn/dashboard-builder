@@ -1,4 +1,38 @@
 <div #container>
-  <h2 class="projectManagerHeader">Home</h2>
-  <app-project-manager-home></app-project-manager-home>
+
+  <div class="projectManagerHeader">
+    <div *ngIf="navigationDepth > 0" class="navBackArrow" (click)="navigateBack($event)">BACK</div>
+    <h2 class="currentMenuTitle">{{ menuTitle }}</h2>
+  </div>
+
+  <app-slider #slider (slideChange)=slideChange($event)>
+
+    <app-slide [slideId]="'projectManagerHome'" [title]="'Home'" [visible]="true">
+
+      <app-slide-nav-button [targetSlideId]="'projectEditor'" [direction]="'forward'">
+        <app-home-menu-button class="sliderButton" [buttonText]="'Create a new project'" title="Create a new project"
+          [iconClass]="'icon-home-newproject'"></app-home-menu-button>
+      </app-slide-nav-button>
+
+      <app-slide-nav-button [targetSlideId]="'projectList'" [direction]="'forward'">
+        <app-home-menu-button class="sliderButton" [buttonText]="'Open an existing project'" title="Open an existing project"
+          [iconClass]="'icon-home-existinproject'"></app-home-menu-button>
+      </app-slide-nav-button>
+
+      <app-slide-nav-button [targetSlideId]="'dataManager'" [direction]="'forward'">
+        <app-home-menu-button class="sliderButton" [buttonText]="'Manage your data'" title="Manage your data"
+          [iconClass]="'icon-home-datamanager'"></app-home-menu-button>
+      </app-slide-nav-button>
+
+      <button (click)="openAddLayerDialog()">Add Layer</button>
+      <ul>
+        <li *ngFor="let layer of layers">{{ layer }}</li>
+      </ul>
+    </app-slide>
+
+    <app-slide [slideId]="'projectEditor'" [title]="'Project Editor'" [visible]="true">
+      <app-create-project></app-create-project>
+    </app-slide>
+
+  </app-slider>
 </div>

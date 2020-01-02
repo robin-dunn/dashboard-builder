@@ -13,11 +13,11 @@ import { LayerStore } from '../services/layerStore';
 })
 export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
 
-  @Input()
-  widgetConfig: IWidgetConfig;
+  @Input() widgetConfig: IWidgetConfig;
+  @ViewChild("container") container: ElementRef;
+  @ViewChild("slider") slider: ElementRef;
 
-  @ViewChild("container")
-  container: ElementRef;
+  public menuTitle = "Home";
 
   layerDialogRef: MatDialogRef<DialogAddLayerComponent>;
 
@@ -29,9 +29,19 @@ export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
     private layerService: LayerService) {}
 
   public widthSubject = new Subject<number>();
+  public navigationDepth = 0;
 
   emitWidthToChild() {
     this.widthSubject.next((this.container.nativeElement as HTMLElement).offsetWidth);
+  }
+
+  navigateBack(event) {
+    console.log("NAV BACK");
+  }
+
+  slideChange(eventData: ISliderNavigationEvent) {
+    this.menuTitle = eventData.targetSlideTitle;
+    this.navigationDepth += eventData.direction == "forward" ? 1 : -1;
   }
 
   ngOnInit() {

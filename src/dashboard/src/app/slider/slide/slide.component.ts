@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit, QueryList, ContentChildren, ElementRef, Output } from '@angular/core';
 import { fromEvent, Subject, Observable, of } from 'rxjs';
+import { SlideNavButtonComponent } from './slide-nav-button/slide-nav-button.component';
 
 @Component({
   selector: 'app-slide',
@@ -8,9 +9,11 @@ import { fromEvent, Subject, Observable, of } from 'rxjs';
 })
 export class SlideComponent implements OnInit, AfterViewInit {
 
-  @Output() sliderButtonsEvent = new Observable<HTMLElement[]>();
-
-  @ContentChildren('sliderButton', { read: ElementRef }) sliderButtons: QueryList<ElementRef>;
+  @Output() sliderButtonsInitialized = new Observable<SlideNavButtonComponent[]>();
+  @Input() slideId: string;
+  @Input() visible: boolean;
+  @Input() title: string;
+  @ContentChildren(SlideNavButtonComponent) sliderButtons: QueryList<SlideNavButtonComponent>;
 
   _widthInPixels: number;
 
@@ -31,9 +34,7 @@ export class SlideComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     if(this.sliderButtons) {
-      let buttonElements = this.sliderButtons.toArray().map(button => button.nativeElement as HTMLElement);
-      console.log("BE", buttonElements);
-      this.sliderButtonsEvent = of(buttonElements);
+      this.sliderButtonsInitialized = of(this.sliderButtons.toArray());
     }
   }
 }

@@ -1,17 +1,30 @@
-import { Component, OnInit, ContentChildren, AfterViewInit, QueryList, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ContentChildren, AfterViewInit, QueryList, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { SlideComponent } from './slide/slide.component';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Observable, Subject } from 'rxjs';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { SlideNavButtonComponent } from './slide/slide-nav-button/slide-nav-button.component';
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.css']
+  styleUrls: ['./slider.component.css'],
+  animations: [
+    trigger('animateSlider', [
+      state('centre', style({ left: "0px"})),
+      state('left', style({ left: "-100%"})),
+      state('right', style({ left: "100%"})),
+      transition('centre=>left', animate('500ms')),
+      transition('centre=>right', animate('500ms')),
+    ])
+  ]
 })
 export class SliderComponent implements OnInit, AfterViewInit {
 
+  @Output() slideChange = new EventEmitter<ISliderNavigationEvent>();
   @ViewChild("slider") slider: ElementRef;
-
   @ContentChildren(SlideComponent) slides: QueryList<SlideComponent>;
+
+  public currentAnimationState = "centre";
 
   constructor() { }
 
@@ -26,28 +39,52 @@ export class SliderComponent implements OnInit, AfterViewInit {
         slide.widthInPixels = containerElem.offsetWidth;
       }, 0);
 
-      this.setupButtonClickHandlers(slide);
+      this.setupNavButtonClickHandlers(slide);
     });
   }
 
-  private setupButtonClickHandlers(slide: SlideComponent) {
-      slide.sliderButtonsEvent.subscribe((buttons: HTMLElement[]) => {
-        buttons.forEach(btn => {
-        console.log("ELEM", btn);
-          fromEvent(btn, "click").subscribe(clickEvent => {
-            console.log("CLICK", clickEvent);
-            console.log(btn.getAttribute("data-slider"));
-            // TODO: determine if we need to move the slider reel left or right.
-          });
+  private getSlide(slideId: string) {
+    return this.slides.find(slide => slide.slideId === slideId);
+  }
+
+  private setupNavButtonClickHandlers(slide: SlideComponent) {
+      slide.sliderButtonsInitialized.subscribe((buttons: SlideNavButtonComponent[]) => {
+
+        buttons.forEach(slideNavButton => {
+
+          slideNavButton.clickHandler = (clickEvent) => {
+
+            let targetSlide = this.getSlide(slideNavButton.targetSlideId);
+            this.setVisibleSlides(slide.slideId, targetSlide.slideId);
+            this.transition(slideNavButton.direction);
+
+            this.slideChange.emit({
+              currentSlideId: slide.slideId,
+              currentSlideTitle: slide.title,
+              targetSlideId: targetSlide.slideId,
+              targetSlideTitle: targetSlide.title,
+              direction: slideNavButton.direction
+            });
+          };
         });
       });
   }
 
-  public slideLeft() {
-
+  public transition(direction: string) {
+    if (direction === "forward") {
+      this.currentAnimationState = "left";
+    } else if (direction === "backward") {
+      this.currentAnimationState = "right";
+    }
   }
 
-  public slideRight() {
-
+  private setVisibleSlides(currentSlideId: string, targetSlideId: string) {
+    this.slides.forEach(s => {
+      if (s.slideId === currentSlideId || s.slideId === targetSlideId) {
+        s.visible = true;
+      } else {
+        s.visible = false;
+      }
+    });
   }
 }

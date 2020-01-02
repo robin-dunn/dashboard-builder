@@ -3,3 +3,8 @@ h2 {
     padding: 0;
     color: #6c6c6c !important;
 }
+
+.togglelink.open {
+    text-decoration: none;
+    color: #fff;
+}

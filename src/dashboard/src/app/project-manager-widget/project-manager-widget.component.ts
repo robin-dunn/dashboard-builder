@@ -5,6 +5,7 @@ import { DialogAddLayerComponent } from './dialog-add-layer/dialog-add-layer.com
 import { LayerService } from '../services/layer.service';
 import { Subject } from 'rxjs';
 import { LayerStore } from '../services/layerStore';
+import { SliderComponent } from '../slider/slider.component';
 
 @Component({
   selector: 'app-project-manager-widget',
@@ -15,7 +16,7 @@ export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
 
   @Input() widgetConfig: IWidgetConfig;
   @ViewChild("container") container: ElementRef;
-  @ViewChild("slider") slider: ElementRef;
+  @ViewChild("slider") slider: SliderComponent;
 
   public menuTitle = "Home";
 
@@ -36,7 +37,7 @@ export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
   }
 
   navigateBack(event) {
-    console.log("NAV BACK");
+    this.slider.navigate("backward");
   }
 
   slideChange(eventData: ISliderNavigationEvent) {

@@ -11,19 +11,29 @@ export class SlideComponent implements OnInit, AfterViewInit {
 
   @Output() sliderButtonsInitialized = new Observable<SlideNavButtonComponent[]>();
   @Input() slideId: string;
-  @Input() visible: boolean;
   @Input() title: string;
   @ContentChildren(SlideNavButtonComponent) sliderButtons: QueryList<SlideNavButtonComponent>;
 
   _widthInPixels: number;
+  _visible: boolean;
+
+  @Input('widthInPixels')
+  set widthInPixels(value: number) {
+    this._widthInPixels = value;
+  }
 
   get widthInPixels(): number {
     return this._widthInPixels;
   }
 
-  @Input('widthInPixels')
-  set widthInPixels(value: number) {
-    this._widthInPixels = value;
+  @Input('visible')
+  set visible(value: boolean) {
+    console.log("VIS", value);
+    this._visible = value;
+  }
+
+  get visible(): boolean {
+    return this._visible;
   }
 
   constructor(private elementRef: ElementRef) {

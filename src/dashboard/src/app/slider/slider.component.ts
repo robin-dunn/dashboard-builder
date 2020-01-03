@@ -64,19 +64,40 @@ export class SliderComponent implements OnInit, AfterViewInit {
     this.breadcrumbIndex--;
   }
 
-  private moveToNextSlide(targetSlideId: string) {
+  private moveForward(targetSlideId: string) {
+    let currentSlide = this.getCurrentSlide();
+    let targetSlide = this.getSlide(targetSlideId);
     this.makeSlideVisible(targetSlideId);
     this.breadcrumbIndex++;
     this.currentAnimationState = "left";
+
+    this.emitSlideChange("forward", currentSlide, targetSlide);
   }
 
-  private moveToPreviousSlide() {
-    let currentSlideId = this.breadcrumbSlideIds[this.breadcrumbIndex];
-    this.breadcrumbIndex--;
-    let previousSlideId = this.breadcrumbSlideIds[this.breadcrumbIndex];
-    this.makeSlideVisible(previousSlideId);
+  private moveBackward() {
+    let currentSlide = this.getCurrentSlide();
+    let targetSlideId = this.breadcrumbSlideIds[--this.breadcrumbIndex];
+    let targetSlide = this.getSlide(targetSlideId);
+    this.makeSlideVisible(targetSlide.slideId);
     this.currentAnimationState = "right";
-    this.removeSlideFromBreadcrumb(currentSlideId);
+    this.removeSlideFromBreadcrumb(currentSlide.slideId);
+
+    this.emitSlideChange("backward", currentSlide, targetSlide);
+  }
+
+  private emitSlideChange(direction: string, previousSlide: SlideComponent, newSlide: SlideComponent) {
+    this.slideChange.emit({
+      direction: direction,
+      currentSlideId: previousSlide.slideId,
+      currentSlideTitle: previousSlide.title,
+      targetSlideId: newSlide.slideId,
+      targetSlideTitle: newSlide.title
+    });
+  }
+
+  private getCurrentSlide() {
+    let currentSlideId = this.breadcrumbSlideIds[this.breadcrumbIndex];
+    return this.getSlide(currentSlideId);
   }
 
   private getSlide(slideId: string) {
@@ -85,33 +106,23 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   private setupNavButtonClickHandlers(slide: SlideComponent) {
       slide.sliderButtonsInitialized.subscribe((buttons: SlideNavButtonComponent[]) => {
-
         buttons.forEach(slideNavButton => {
-
           slideNavButton.clickHandler = (clickEvent) => {
-
-            let targetSlide = this.getSlide(slideNavButton.targetSlideId);
-            this.navigate(slideNavButton.direction, slide.slideId, targetSlide.slideId);
-
-            this.slideChange.emit({
-              currentSlideId: slide.slideId,
-              currentSlideTitle: slide.title,
-              targetSlideId: targetSlide.slideId,
-              targetSlideTitle: targetSlide.title,
-              direction: slideNavButton.direction
-            });
+            this.navigate(slideNavButton.direction, slideNavButton.targetSlideId);
           };
         });
       });
   }
 
-  public navigate(direction: string, currentSlideId: string, targetSlideId: string) {
+  public navigate(direction: string, targetSlideId?: string) {
     if (direction === "forward") {
-      // Make the next slide visible on the reel so its ready to animate in.
+      if (!targetSlideId) {
+        throw new Error("targetSlideId invalid");
+      }
       this.addSlideToBreadcrumb(targetSlideId)
-      this.moveToNextSlide(targetSlideId);
+      this.moveForward(targetSlideId);
     } else if (direction === "backward") {
-      this.moveToPreviousSlide();
+      this.moveBackward();
     }
   }
 

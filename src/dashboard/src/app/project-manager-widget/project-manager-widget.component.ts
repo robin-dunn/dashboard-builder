@@ -43,6 +43,8 @@ export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
   slideChange(eventData: ISliderNavigationEvent) {
     this.menuTitle = eventData.targetSlideTitle;
     this.navigationDepth += eventData.direction == "forward" ? 1 : -1;
+    console.log("SLIDE CHANGE", this.navigationDepth);
+    
   }
 
   ngOnInit() {
@@ -59,7 +61,6 @@ export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
 
   public openAddLayerDialog(){
 
-    console.log((this.container.nativeElement as HTMLElement).offsetWidth);
     this.layerDialogRef = this.dialog.open(
       DialogAddLayerComponent,
       { data: { storeId: this.widgetConfig.id }

@@ -1,7 +1,9 @@
 <div #container>
 
   <div class="projectManagerHeader">
-    <div *ngIf="navigationDepth > 0" class="navBackArrow" (click)="navigateBack($event)">BACK</div>
+    <div class="navArrowContainer">
+      <div *ngIf="navigationDepth > 0" class="navBackArrow" (click)="navigateBack($event)">Back</div>
+    </div>
     <h2 class="currentMenuTitle">{{ menuTitle }}</h2>
   </div>
 

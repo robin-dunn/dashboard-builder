@@ -1,5 +1,19 @@
 .projectManagerHeader {
+    display: flex;
+    position: relative;
+    height: 30px;
+    padding: 3px 0;
     border-bottom: 1px solid #aaaaaa;
+}
+
+.navArrowContainer {
+    cursor: pointer;
+    display: flex;
+    z-index: 10;
+    float: left;
+    height: auto;
+    align-items: center;
+    justify-content: center;
 }
 
 .navBackArrow {
@@ -7,7 +21,7 @@
     font-size: 11px;
     position: relative;
     float: left;
-    margin-left:20px;
+    margin-left:16px;
     padding: 0 7px 0 2px;
     font-weight: normal;
     cursor: pointer;
@@ -16,23 +30,25 @@
     background:grey;
     color:#fff;
     text-align:left;
-    line-height:28px;
+    line-height:22px;
 }
 
 div:before{
     content: "";
     position: absolute;
-    left: -28px;
-    border: 14px solid transparent;
-    border-right: 14px solid grey;
+    left: -22px;
+    border: 11px solid transparent;
+    border-right: 11px solid grey;
 }
 
 .currentMenuTitle {
+    position: absolute;
+    width: 100%;
     font-size: 11px;
     text-align: center;
     font-family: "Source Sans Pro", Effra, Arial, Helvetica, FreeSans, sans-serif;
     font-weight: 600;
-    line-height: 29px;
+    line-height: 30px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

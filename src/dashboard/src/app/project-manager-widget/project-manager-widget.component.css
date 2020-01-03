@@ -5,12 +5,26 @@
 .navBackArrow {
     cursor: pointer;
     font-size: 11px;
-    position: absolute;
+    position: relative;
+    float: left;
+    margin-left:20px;
+    padding: 0 7px 0 2px;
     font-weight: normal;
     cursor: pointer;
     top: 0;
     left: 0;
-    line-height: 29px;
+    background:grey;
+    color:#fff;
+    text-align:left;
+    line-height:28px;
+}
+
+div:before{
+    content: "";
+    position: absolute;
+    left: -28px;
+    border: 14px solid transparent;
+    border-right: 14px solid grey;
 }
 
 .currentMenuTitle {

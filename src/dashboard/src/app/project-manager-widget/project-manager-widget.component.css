@@ -33,7 +33,7 @@
     line-height:22px;
 }
 
-div:before{
+.navBackArrow:before{
     content: "";
     position: absolute;
     left: -22px;
@@ -52,4 +52,8 @@ div:before{
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.projectManagerHomeContent {
+    padding: 15px 20px;
 }

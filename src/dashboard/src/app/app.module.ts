@@ -8,7 +8,7 @@ import { MapWidgetComponent } from './map-widget/map-widget.component';
 import { ProjectManagerWidgetComponent } from './project-manager-widget/project-manager-widget.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogAddLayerComponent } from './project-manager-widget/dialog-add-layer/dialog-add-layer.component';
-import { MatDialogModule, MatButtonModule } from '@angular/material';
+import { MatDialogModule, MatButtonModule, MatExpansionModule } from '@angular/material';
 import { CentralStoreService } from './services/central-store.service';
 import { CreateProjectComponent } from './project-manager-widget/create-project/create-project.component';
 import { SliderComponent } from './slider/slider.component';
@@ -34,7 +34,8 @@ import { SlideNavButtonComponent } from './slider/slide/slide-nav-button/slide-n
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [CentralStoreService],
   bootstrap: [AppComponent],

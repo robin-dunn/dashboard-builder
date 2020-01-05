@@ -4,6 +4,7 @@
         "existinproject",
         "home",
         "icon",
-        "newproject"
+        "newproject",
+        "togglelink"
     ]
 }

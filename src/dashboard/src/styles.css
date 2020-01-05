@@ -47,3 +47,27 @@ h2, h3, h4 {
 .widget-container {
     background-color: yellow;
 }
+
+.mat-expansion-panel {
+    /*background-color: #fff;*/
+}
+
+.mat-expansion-panel-header {
+    background-color: rgb(85, 85, 85);
+}
+
+.mat-expansion-panel-header.mat-expanded.cdk-focused.cdk-mouse-focused {
+    background-color: rgb(85, 85, 85);
+}
+
+app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disabled=true]):hover  {
+    background-color: #aaa !important;
+}
+
+.mat-expansion-panel-header .mat-expansion-indicator::after {
+    color: #fff;
+}
+
+.mat-expansion-panel-body {
+    background-color: #fff;
+}

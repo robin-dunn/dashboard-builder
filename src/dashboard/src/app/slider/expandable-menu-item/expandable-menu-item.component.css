@@ -1,0 +1,7 @@
+.menuItemTitle {
+    color: #fff;
+}
+
+:host .mat-expansion-panel {
+    box-shadow: none;
+}

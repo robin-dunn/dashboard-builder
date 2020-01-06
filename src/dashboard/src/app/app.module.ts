@@ -15,6 +15,7 @@ import { SliderComponent } from './slider/slider.component';
 import { SlideComponent } from './slider/slide/slide.component';
 import { HomeMenuButtonComponent } from './project-manager-widget/home-menu-button/home-menu-button.component';
 import { SlideNavButtonComponent } from './slider/slide/slide-nav-button/slide-nav-button.component';
+import { ExpandableMenuItemComponent } from './slider/expandable-menu-item/expandable-menu-item.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SlideNavButtonComponent } from './slider/slide/slide-nav-button/slide-n
     SliderComponent,
     SlideComponent,
     HomeMenuButtonComponent,
-    SlideNavButtonComponent
+    SlideNavButtonComponent,
+    ExpandableMenuItemComponent
   ],
   imports: [
     BrowserModule,

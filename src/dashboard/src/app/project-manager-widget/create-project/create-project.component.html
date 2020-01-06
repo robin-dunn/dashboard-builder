@@ -1,51 +1,26 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header [collapsedHeight]="'40px'" [expandedHeight]="'40px'">
-    <mat-panel-title>
-      Project Name
-    </mat-panel-title>
-  </mat-expansion-panel-header>
+<app-expandable-menu-item [title]="'Project Name'">
   <p>
       <label>Name:</label>
       <input id="txtProjectName" tabindex="1" accesskey="n" type="text" class="field txt-EnterName" value="Enter Name" style="width: 15.5em;" title="Type the name that you want to use to identify this project">
   </p>
-</mat-expansion-panel>
+</app-expandable-menu-item>
 
-<mat-expansion-panel>
-  <mat-expansion-panel-header [expandedHeight]="'40px'">
-    <mat-panel-title>
-      Add Data
-    </mat-panel-title>
-  </mat-expansion-panel-header>
+<app-expandable-menu-item [title]="'Add Data'">
   <p>Create New Layer</p>
   <p>Use Existing Layer</p>
   <p>Update Existing Layer</p>
-</mat-expansion-panel>
+</app-expandable-menu-item>
 
-<mat-expansion-panel>
-  <mat-expansion-panel-header [expandedHeight]="'40px'">
-    <mat-panel-title>
-      My Data
-    </mat-panel-title>
-  </mat-expansion-panel-header>
+<app-expandable-menu-item [title]="'My Data'">
   <p>Point Layers</p>
   <p>Boundaries</p>
-</mat-expansion-panel>
+</app-expandable-menu-item>
 
-<mat-expansion-panel>
-  <mat-expansion-panel-header [expandedHeight]="'40px'">
-    <mat-panel-title>
-      System Data
-    </mat-panel-title>
-  </mat-expansion-panel-header>
+<app-expandable-menu-item [title]="'System Data'">
   <p>Point Layers</p>
   <p>Boundaries</p>
-</mat-expansion-panel>
+</app-expandable-menu-item>
 
-<mat-expansion-panel>
-  <mat-expansion-panel-header [expandedHeight]="'40px'">
-    <mat-panel-title>
-     Map Bases
-    </mat-panel-title>
-  </mat-expansion-panel-header>
+<app-expandable-menu-item [title]="'Map Bases'">
   <p>Google Roads</p>
-</mat-expansion-panel>
+</app-expandable-menu-item>

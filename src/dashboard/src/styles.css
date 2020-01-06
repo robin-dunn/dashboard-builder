@@ -44,16 +44,9 @@ h2, h3, h4 {
   flex: 1;
 }
 
-.widget-container {
-    background-color: yellow;
-}
-
-.mat-expansion-panel {
-    /*background-color: #fff;*/
-}
-
 .mat-expansion-panel-header {
     background-color: rgb(85, 85, 85);
+    border-bottom: 1px solid #aaa;
 }
 
 .mat-expansion-panel-header.mat-expanded.cdk-focused.cdk-mouse-focused {

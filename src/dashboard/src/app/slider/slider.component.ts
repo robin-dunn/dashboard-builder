@@ -70,18 +70,16 @@ export class SliderComponent implements OnInit, AfterViewInit {
     this.makeSlideVisible(targetSlideId);
     this.breadcrumbIndex++;
     this.currentAnimationState = "left";
-
     this.emitSlideChange("forward", currentSlide, targetSlide);
   }
 
   private moveBackward() {
     let currentSlide = this.getCurrentSlide();
-    let targetSlideId = this.breadcrumbSlideIds[--this.breadcrumbIndex];
+    let targetSlideId = this.breadcrumbSlideIds[this.breadcrumbIndex - 1];
     let targetSlide = this.getSlide(targetSlideId);
     this.makeSlideVisible(targetSlide.slideId);
     this.currentAnimationState = "right";
     this.removeSlideFromBreadcrumb(currentSlide.slideId);
-
     this.emitSlideChange("backward", currentSlide, targetSlide);
   }
 
@@ -96,6 +94,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
   }
 
   private getCurrentSlide() {
+    console.log("'Get current slide", this.breadcrumbIndex, this.breadcrumbSlideIds);
     let currentSlideId = this.breadcrumbSlideIds[this.breadcrumbIndex];
     return this.getSlide(currentSlideId);
   }

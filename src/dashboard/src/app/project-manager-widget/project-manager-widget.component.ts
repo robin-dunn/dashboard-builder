@@ -44,7 +44,6 @@ export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
     this.menuTitle = eventData.targetSlideTitle;
     this.navigationDepth += eventData.direction == "forward" ? 1 : -1;
     console.log("SLIDE CHANGE", this.navigationDepth);
-    
   }
 
   ngOnInit() {

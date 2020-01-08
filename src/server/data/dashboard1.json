@@ -18,7 +18,6 @@
             "title": "Map Widget",
             "subjectWidgets": [ 1 ],
             "styles": {
-                "border": "1px solid blue"
             }
         },
         {

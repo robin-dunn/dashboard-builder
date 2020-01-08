@@ -11,8 +11,8 @@ import { SlideNavButtonComponent } from './slide/slide-nav-button/slide-nav-butt
     trigger('animateSlider', [
       state('left', style({ left: "-100%"})),
       state('right', style({ left: "0%"})),
-      transition('left=>right', animate('500ms')),
-      transition('right=>left', animate('500ms')),
+      transition('left=>right', animate('500ms cubic-bezier(0.165, 0.84, 0.44, 1)')),
+      transition('right=>left', animate('500ms cubic-bezier(0.165, 0.84, 0.44, 1)')),
     ])
   ]
 })

@@ -16,6 +16,7 @@ import { SlideComponent } from './slider/slide/slide.component';
 import { HomeMenuButtonComponent } from './project-manager-widget/home-menu-button/home-menu-button.component';
 import { SlideNavButtonComponent } from './slider/slide/slide-nav-button/slide-nav-button.component';
 import { ExpandableMenuItemComponent } from './slider/expandable-menu-item/expandable-menu-item.component';
+import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ExpandableMenuItemComponent } from './slider/expandable-menu-item/expan
     SlideComponent,
     HomeMenuButtonComponent,
     SlideNavButtonComponent,
-    ExpandableMenuItemComponent
+    ExpandableMenuItemComponent,
+    MapToolbarComponent
   ],
   imports: [
     BrowserModule,

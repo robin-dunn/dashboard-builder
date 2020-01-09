@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogAddLayerComponent } from './project-manager-widget/dialog-add-layer/dialog-add-layer.component';
 import { MatDialogModule, MatButtonModule, MatExpansionModule } from '@angular/material';
 import { CentralStoreService } from './services/central-store.service';
-import { CreateProjectComponent } from './project-manager-widget/create-project/create-project.component';
+import { ProjectEditorComponent } from './project-manager-widget/project-editor/project-editor.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideComponent } from './slider/slide/slide.component';
 import { HomeMenuButtonComponent } from './project-manager-widget/home-menu-button/home-menu-button.component';
@@ -25,7 +25,7 @@ import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.compon
     MapWidgetComponent,
     ProjectManagerWidgetComponent,
     DialogAddLayerComponent,
-    CreateProjectComponent,
+    ProjectEditorComponent,
     SliderComponent,
     SlideComponent,
     HomeMenuButtonComponent,

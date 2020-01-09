@@ -56,8 +56,13 @@ input[type="text"] {
 }
 
 .mat-expansion-panel-header {
+    color: #fff;
     background-color: rgb(85, 85, 85);
     border-bottom: 1px solid #aaa;
+}
+
+.mat-expansion-panel-header:hover {
+    color: #000;
 }
 
 .mat-expansion-panel-header.mat-expanded.cdk-focused.cdk-mouse-focused {
@@ -69,7 +74,7 @@ app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:no
 }
 
 .mat-expansion-panel-header .mat-expansion-indicator::after {
-    color: #fff;
+    color: inherit;
 }
 
 .mat-expansion-panel-content .mat-expansion-panel-body {
@@ -93,6 +98,10 @@ app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:no
     text-decoration: none;
 }
 
+.mat-expansion-panel-body .sliderButton a:hover {
+    background-color: #ccc;
+}
+
 .mat-expansion-panel-body .sliderButton i {
     display: flex;
 }
@@ -101,6 +110,6 @@ app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:no
     margin-left: auto;
 }
 
-.slide .slideNavButton:hover, .sliderButton a:hover {
+.slide .slideNavButton:hover {
     background-color: #aaa;
 }

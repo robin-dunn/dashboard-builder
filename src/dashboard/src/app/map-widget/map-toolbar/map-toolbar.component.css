@@ -11,4 +11,9 @@
 
 .mapToolbarButton {
   cursor: pointer;
+  margin: 0 1px;
+  border: 1px solid #000;
+  width: 26px;
+  height: 26px;
+  text-align: center;
 }

@@ -7,7 +7,7 @@
 
 html, body { height: 100%; }
 
-body { 
+body {
     min-height: 100%;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -75,4 +75,32 @@ app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:no
 .mat-expansion-panel-content .mat-expansion-panel-body {
     background-color: #fff;
     padding: 0.2em 1.4em 0.2em 1.4em;
+}
+
+.mat-expansion-panel-body .sliderButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mat-expansion-panel-body .sliderButton a {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+    margin: 0 0 0 10px;
+    color: #000;
+    text-decoration: none;
+}
+
+.mat-expansion-panel-body .sliderButton i {
+    display: flex;
+}
+
+.mat-expansion-panel-body .menuItemRightArrow {
+    margin-left: auto;
+}
+
+.slide .slideNavButton:hover, .sliderButton a:hover {
+    background-color: #aaa;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, AfterViewInit, QueryList, ContentChildren, ElementRef, Output } from '@angular/core';
-import { fromEvent, Subject, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { SlideNavButtonComponent } from './slide-nav-button/slide-nav-button.component';
+import { SliderViewService } from '../slider-view.service';
 
 @Component({
   selector: 'app-slide',
@@ -28,7 +29,7 @@ export class SlideComponent implements OnInit, AfterViewInit {
 
   @Input('visible')
   set visible(value: boolean) {
-    console.log("VIS", value);
+    console.log("PROP VIS", value, this);
     this._visible = value;
   }
 
@@ -36,13 +37,14 @@ export class SlideComponent implements OnInit, AfterViewInit {
     return this._visible;
   }
 
-  constructor(private elementRef: ElementRef) {
+  constructor(private sliderViewService:SliderViewService) {
   }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
+    console.log("SLIDE", this, this.sliderButtons);
     if(this.sliderButtons) {
       this.sliderButtonsInitialized = of(this.sliderButtons.toArray());
     }

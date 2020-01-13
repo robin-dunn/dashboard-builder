@@ -1,51 +1,57 @@
 import { Component, OnInit, ContentChildren, AfterViewInit, QueryList, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { SlideComponent } from './slide/slide.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { SlideNavButtonComponent } from './slide/slide-nav-button/slide-nav-button.component';
+import { SliderViewService } from './slider-view.service';
 
 @Component({
-  selector: 'app-slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.css'],
+  selector: 'app-slider-view',
+  templateUrl: './slider-view.component.html',
+  styleUrls: ['./slider-view.component.css'],
   animations: [
     trigger('animateSlider', [
-      state('left', style({ left: "-100%"})),
-      state('right', style({ left: "0%"})),
-      transition('left=>right', animate('500ms cubic-bezier(0.165, 0.84, 0.44, 1)')),
-      transition('right=>left', animate('500ms cubic-bezier(0.165, 0.84, 0.44, 1)')),
+      state('right-view', style({ left: "-100%"})),
+      state('right-view-no-animation', style({ left: "-100%"})),
+      state('left-view', style({ left: "0%"})),
+      state('left-view-no-animation', style({ left: "0%"})),
+      transition('*=>right-view', animate('500ms cubic-bezier(0.165, 0.84, 0.44, 1)')),
+      transition('*=>left-view', animate('500ms cubic-bezier(0.165, 0.84, 0.44, 1)')),
     ])
-  ]
+  ],
+  providers: [SliderViewService]
 })
-export class SliderComponent implements OnInit, AfterViewInit {
+export class SliderViewComponent implements OnInit, AfterViewInit {
 
   @Output() slideChange = new EventEmitter<ISliderNavigationEvent>();
-  @ViewChild("slider") slider: ElementRef;
+  @ViewChild("slider") sliderStageView: ElementRef;
   @ContentChildren(SlideComponent) slides: QueryList<SlideComponent>;
 
-  public currentAnimationState = "right";
+  // Set the initial animation state, i.e. left position is zero.
+  public currentAnimationState = "left-view";
 
   currentSlideId: string;
   breadcrumbIndex: number = -1;
   breadcrumbSlideIds: string[] = [];
 
-  constructor() { }
+  constructor(private sliderViewService: SliderViewService) { }
 
   ngOnInit() {
+    this.sliderViewService.sliderView = this;
   }
 
   ngAfterViewInit() {
-    let containerElem = this.slider.nativeElement as HTMLElement;
-
     // Find the starting slide
     let startingSlide = this.slides.find(slide => slide.visible === true);
     this.addSlideToBreadcrumb(startingSlide.slideId);
 
+    this.setSlidesWidth();
+  }
+
+  private setSlidesWidth() {
+    let containerElem = this.sliderStageView.nativeElement as HTMLElement;
     this.slides.forEach((slide: SlideComponent) => {
       setTimeout(() => {
         slide.widthInPixels = containerElem.offsetWidth;
       }, 0);
-
-      this.setupNavButtonClickHandlers(slide);
     });
   }
 
@@ -67,9 +73,21 @@ export class SliderComponent implements OnInit, AfterViewInit {
   private moveForward(targetSlideId: string) {
     let currentSlide = this.getCurrentSlide();
     let targetSlide = this.getSlide(targetSlideId);
-    this.makeSlideVisible(targetSlideId);
+    this.setSlideVisibility(targetSlideId, true);
+
     this.breadcrumbIndex++;
-    this.currentAnimationState = "left";
+    this.currentAnimationState = "right-view";
+
+    // Wait for the slider to animate from the left view to the right view,
+    // then hide the previous slide and set the new view as the left view.
+    const animationDurationMs = 500;
+    setTimeout(() => {
+      if (this.breadcrumbIndex > 0) {
+        this.setSlideVisibility(targetSlideId, true, true);
+      }
+      this.currentAnimationState = 'left-view-no-animation';
+    }, animationDurationMs);
+
     this.emitSlideChange("forward", currentSlide, targetSlide);
   }
 
@@ -77,8 +95,15 @@ export class SliderComponent implements OnInit, AfterViewInit {
     let currentSlide = this.getCurrentSlide();
     let targetSlideId = this.breadcrumbSlideIds[this.breadcrumbIndex - 1];
     let targetSlide = this.getSlide(targetSlideId);
-    this.makeSlideVisible(targetSlide.slideId);
-    this.currentAnimationState = "right";
+    this.setSlideVisibility(targetSlide.slideId, true);
+    this.currentAnimationState = "right-view-no-animation";
+
+    // Wait a brief moment to allow the slider width and animation state to update,
+    // before animating back to the left view.
+    setTimeout(() => {
+      this.currentAnimationState = 'left-view';
+    }, 50);
+
     this.removeSlideFromBreadcrumb(currentSlide.slideId);
     this.emitSlideChange("backward", currentSlide, targetSlide);
   }
@@ -94,23 +119,12 @@ export class SliderComponent implements OnInit, AfterViewInit {
   }
 
   private getCurrentSlide() {
-    console.log("'Get current slide", this.breadcrumbIndex, this.breadcrumbSlideIds);
     let currentSlideId = this.breadcrumbSlideIds[this.breadcrumbIndex];
     return this.getSlide(currentSlideId);
   }
 
   private getSlide(slideId: string) {
     return this.slides.find(slide => slide.slideId === slideId);
-  }
-
-  private setupNavButtonClickHandlers(slide: SlideComponent) {
-      slide.sliderButtonsInitialized.subscribe((buttons: SlideNavButtonComponent[]) => {
-        buttons.forEach(slideNavButton => {
-          slideNavButton.clickHandler = (clickEvent) => {
-            this.navigate(slideNavButton.direction, slideNavButton.targetSlideId);
-          };
-        });
-      });
   }
 
   public navigate(direction: string, targetSlideId?: string) {
@@ -125,10 +139,14 @@ export class SliderComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private makeSlideVisible(slideId: string) {
+  private setSlideVisibility(slideId: string, isVisible: boolean, hideOthers?: boolean) {
     this.slides.forEach(s => {
       if (s.slideId === slideId) {
-        s.visible = true;
+        s.visible = isVisible;
+        return;
+      }
+      if (hideOthers) {
+        s.visible = false;
       }
     });
   }

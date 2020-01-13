@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SliderViewService } from '../../slider-view.service';
 
 @Component({
   selector: 'app-slide-nav-button',
@@ -11,16 +12,13 @@ export class SlideNavButtonComponent implements OnInit {
   @Input() direction: string;
   @Input() clickHandler: Function;
 
-  constructor() { }
+  constructor(private sliderViewService: SliderViewService) { }
 
   ngOnInit() {
   }
 
   public onClick(event) {
-    if (this.clickHandler) {
-    console.log("SB CLICKED 2", this.clickHandler);
-      this.clickHandler();
-    }
+    console.log("NAV button clicked", this);
+    this.sliderViewService.navigate(this.direction, this.targetSlideId);
   }
-
 }

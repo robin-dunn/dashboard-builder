@@ -7,7 +7,7 @@
     <h2 class="currentMenuTitle">{{ menuTitle }}</h2>
   </div>
 
-  <app-slider #slider (slideChange)=slideChange($event)>
+  <app-slider-view #slider (slideChange)=slideChange($event)>
 
     <app-slide [class]="'slide_projectManagerHome'" [slideId]="'projectManagerHome'" [title]="'Home'" [visible]="true">
 
@@ -30,7 +30,6 @@
 
         <button (click)="openAddLayerDialog()">Add Layer</button>
         <ul>
-
           <li *ngFor="let layer of layers">{{ layer }}</li>
         </ul>
       </div>
@@ -41,5 +40,10 @@
       <app-project-editor></app-project-editor>
     </app-slide>
 
-  </app-slider>
+    <app-slide [slideId]="'createLayer'" [title]="'Create Layer'" [visible]="false">
+      CREATE LAYER
+    </app-slide>
+
+
+  </app-slider-view>
 </div>

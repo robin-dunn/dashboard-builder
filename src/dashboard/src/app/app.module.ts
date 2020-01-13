@@ -11,11 +11,11 @@ import { DialogAddLayerComponent } from './project-manager-widget/dialog-add-lay
 import { MatDialogModule, MatButtonModule, MatExpansionModule } from '@angular/material';
 import { CentralStoreService } from './services/central-store.service';
 import { ProjectEditorComponent } from './project-manager-widget/project-editor/project-editor.component';
-import { SliderComponent } from './slider/slider.component';
-import { SlideComponent } from './slider/slide/slide.component';
+import { SliderViewComponent } from './slider-view/slider-view.component';
+import { SlideComponent } from './slider-view/slide/slide.component';
 import { HomeMenuButtonComponent } from './project-manager-widget/home-menu-button/home-menu-button.component';
-import { SlideNavButtonComponent } from './slider/slide/slide-nav-button/slide-nav-button.component';
-import { ExpandableMenuItemComponent } from './slider/expandable-menu-item/expandable-menu-item.component';
+import { SlideNavButtonComponent } from './slider-view/slide/slide-nav-button/slide-nav-button.component';
+import { ExpandableMenuItemComponent } from './slider-view/expandable-menu-item/expandable-menu-item.component';
 import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.component';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.compon
     ProjectManagerWidgetComponent,
     DialogAddLayerComponent,
     ProjectEditorComponent,
-    SliderComponent,
+    SliderViewComponent,
     SlideComponent,
     HomeMenuButtonComponent,
     SlideNavButtonComponent,

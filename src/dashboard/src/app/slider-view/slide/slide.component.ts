@@ -29,7 +29,6 @@ export class SlideComponent implements OnInit, AfterViewInit {
 
   @Input('visible')
   set visible(value: boolean) {
-    console.log("PROP VIS", value, this);
     this._visible = value;
   }
 
@@ -44,7 +43,6 @@ export class SlideComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log("SLIDE", this, this.sliderButtons);
     if(this.sliderButtons) {
       this.sliderButtonsInitialized = of(this.sliderButtons.toArray());
     }

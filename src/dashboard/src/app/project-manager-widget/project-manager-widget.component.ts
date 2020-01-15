@@ -2,15 +2,16 @@ import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit } from '
 import { IWidgetConfig } from '../../../../models/widgetConfig';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { DialogAddLayerComponent } from './dialog-add-layer/dialog-add-layer.component';
-import { LayerService } from '../services/layer.service';
 import { Subject } from 'rxjs';
-import { LayerStore } from '../services/layerStore';
 import { SliderViewComponent } from '../slider-view/slider-view.component';
+import { ProjectManagerService } from './project-manager.service';
+import { ProjectManagerStore } from './ProjectManagerStore';
 
 @Component({
   selector: 'app-project-manager-widget',
   templateUrl: './project-manager-widget.component.html',
-  styleUrls: ['./project-manager-widget.component.css']
+  styleUrls: ['./project-manager-widget.component.css'],
+  providers: [ProjectManagerService]
 })
 export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
 
@@ -22,15 +23,26 @@ export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
 
   layerDialogRef: MatDialogRef<DialogAddLayerComponent>;
 
-  layerStore: Subject<LayerStore>;
+  store: Subject<ProjectManagerStore>;
   public layers: string[] = [];
+  public project: any;
 
   constructor(
     private dialog: MatDialog,
-    private layerService: LayerService) {}
+    private projectManagerService: ProjectManagerService) {}
 
   public widthSubject = new Subject<number>();
   public navigationDepth = 0;
+
+  ngOnInit() {
+    this.store = this.projectManagerService.createStore();
+    this.store.subscribe(store => {
+      this.project = store.project;
+      this.layers = store.layers.map(layer => layer.name);
+      console.log("STORE", store);
+    });
+    this.getLayers();
+  }
 
   emitWidthToChild() {
     this.widthSubject.next((this.container.nativeElement as HTMLElement).offsetWidth);
@@ -40,22 +52,20 @@ export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
     this.slider.navigate("backward");
   }
 
+  public clickCreateProject(event) {
+    this.projectManagerService.createProject$().subscribe(response => {
+      if (response.ok) {
+
+      }
+    });
+  }
+
   slideChange(eventData: ISliderNavigationEvent) {
     this.menuTitle = eventData.targetSlideTitle;
     this.navigationDepth += eventData.direction == "forward" ? 1 : -1;
-    console.log("SLIDE CHANGE", this.navigationDepth);
-  }
-
-  ngOnInit() {
-    this.layerStore = this.layerService.createStore(this.widgetConfig.id);
-    this.layerStore.subscribe(layerStore => {
-      this.layers = layerStore.layers.map(layer => layer.name)
-    });
-    this.getLayers();
   }
 
   ngAfterViewInit() {
-    console.log(this.container.nativeElement);
   }
 
   public openAddLayerDialog(){
@@ -73,6 +83,6 @@ export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
   }
 
   private getLayers() {
-    this.layerService.getLayers(this.widgetConfig.id);
+    this.projectManagerService.getLayers();
   }
 }

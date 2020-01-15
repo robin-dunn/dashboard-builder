@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { Layer } from "./models/layer"
+import { Project } from './models/project';
 
 export class DAL {
 
@@ -41,13 +42,27 @@ export class DAL {
       tableName: "layers",
     });
 
+    Project.init({
+      id: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      name: {
+        type: new DataTypes.STRING(128),
+        allowNull: false,
+      }
+    }, {
+      sequelize: this.sequelize,
+      tableName: "projects",
+    });
+
     this.syncDbModel();
   }
 
   private static async syncDbModel() {
     // Drop old layer tables named as Layer_1, Layer_2, etc.
     let layers = await Layer.findAll();
-
     layers.map(layer => this.sequelize.query(`DROP TABLE Layer_${layer.id};`));
 
     this.sequelize.sync({ force: true });

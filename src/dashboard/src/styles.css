@@ -110,6 +110,6 @@ app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:no
     margin-left: auto;
 }
 
-.slide .slideNavButton:hover {
-    background-color: #aaa;
+.slide .slideNavButton a:hover {
+    background-color: #ccc;
 }

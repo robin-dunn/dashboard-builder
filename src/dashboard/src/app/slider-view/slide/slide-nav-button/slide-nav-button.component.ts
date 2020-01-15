@@ -18,7 +18,6 @@ export class SlideNavButtonComponent implements OnInit {
   }
 
   public onClick(event) {
-    console.log("NAV button clicked", this);
     this.sliderViewService.navigate(this.direction, this.targetSlideId);
   }
 }

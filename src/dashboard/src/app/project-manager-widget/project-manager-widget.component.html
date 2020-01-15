@@ -13,7 +13,7 @@
 
       <div class="projectManagerHomeContent">
 
-        <app-slide-nav-button [targetSlideId]="'projectEditor'" [direction]="'forward'">
+        <app-slide-nav-button [targetSlideId]="'projectEditor'" [direction]="'forward'" (click)="clickCreateProject($event)">
           <app-home-menu-button class="sliderButton" [buttonText]="'Create a new project'" title="Create a new project"
             [iconClass]="'icon-home-newproject'"></app-home-menu-button>
         </app-slide-nav-button>
@@ -43,7 +43,6 @@
     <app-slide [slideId]="'createLayer'" [title]="'Create Layer'" [visible]="false">
       CREATE LAYER
     </app-slide>
-
 
   </app-slider-view>
 </div>

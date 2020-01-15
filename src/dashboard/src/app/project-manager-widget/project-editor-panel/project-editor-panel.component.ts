@@ -3,11 +3,11 @@ import { ProjectManagerService } from '../project-manager.service';
 import { ProjectManagerStore } from '../ProjectManagerStore';
 
 @Component({
-  selector: "app-project-editor",
-  templateUrl: "./project-editor.component.html",
-  styleUrls: ["./project-editor.component.css"]
+  selector: "app-project-editor-panel",
+  templateUrl: "./project-editor-panel.component.html",
+  styleUrls: ["./project-editor-panel.component.css"]
 })
-export class ProjectEditorComponent implements OnInit {
+export class ProjectEditorPanelComponent implements OnInit {
 
   constructor(private projectManagerService: ProjectManagerService) { }
 

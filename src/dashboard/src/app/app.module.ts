@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogAddLayerComponent } from './project-manager-widget/dialog-add-layer/dialog-add-layer.component';
 import { MatDialogModule, MatButtonModule, MatExpansionModule } from '@angular/material';
 import { CentralStoreService } from './services/central-store.service';
-import { ProjectEditorComponent } from './project-manager-widget/project-editor/project-editor.component';
+import { ProjectEditorPanelComponent } from './project-manager-widget/project-editor-panel/project-editor-panel.component';
 import { SliderViewComponent } from './slider-view/slider-view.component';
 import { SlideComponent } from './slider-view/slide/slide.component';
 import { HomeMenuButtonComponent } from './project-manager-widget/home-menu-button/home-menu-button.component';
@@ -18,6 +18,8 @@ import { SlideNavButtonComponent } from './slider-view/slide/slide-nav-button/sl
 import { ExpandableMenuItemComponent } from './slider-view/expandable-menu-item/expandable-menu-item.component';
 import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.component';
 import { FormsModule } from '@angular/forms';
+import { CreateLayerPanelComponent } from './project-manager-widget/create-layer-panel/create-layer-panel.component';
+import { ProjectManagerHomePanelComponent } from './project-manager-home-panel/project-manager-home-panel.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { FormsModule } from '@angular/forms';
     MapWidgetComponent,
     ProjectManagerWidgetComponent,
     DialogAddLayerComponent,
-    ProjectEditorComponent,
+    ProjectEditorPanelComponent,
     SliderViewComponent,
     SlideComponent,
     HomeMenuButtonComponent,
     SlideNavButtonComponent,
     ExpandableMenuItemComponent,
-    MapToolbarComponent
+    MapToolbarComponent,
+    CreateLayerPanelComponent,
+    ProjectManagerHomePanelComponent
   ],
   imports: [
     BrowserModule,

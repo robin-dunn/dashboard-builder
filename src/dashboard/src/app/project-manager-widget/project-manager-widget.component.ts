@@ -13,7 +13,7 @@ import { ProjectManagerStore } from './ProjectManagerStore';
   styleUrls: ['./project-manager-widget.component.css'],
   providers: [ProjectManagerService]
 })
-export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
+export class ProjectManagerWidgetComponent implements OnInit {
 
   @Input() widgetConfig: IWidgetConfig;
   @ViewChild("container") container: ElementRef;
@@ -50,20 +50,9 @@ export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
     this.slider.navigate("backward");
   }
 
-  public clickCreateProject(event) {
-    this.projectManagerService.createProject$().subscribe(response => {
-      if (response.ok) {
-
-      }
-    });
-  }
-
   slideChange(eventData: ISliderNavigationEvent) {
     this.menuTitle = eventData.targetSlideTitle;
     this.navigationDepth += eventData.direction == "forward" ? 1 : -1;
-  }
-
-  ngAfterViewInit() {
   }
 
   public openAddLayerDialog(){

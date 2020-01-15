@@ -77,6 +77,21 @@ app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:no
     color: inherit;
 }
 
+.mat-expansion-panel-header .mat-content {
+    display: block;
+}
+
+
+.mat-expansion-panel-header-description {
+    display: block;
+    color: #fff;
+    font-size: 11px;
+    margin-top: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .mat-expansion-panel-content .mat-expansion-panel-body {
     background-color: #fff;
     padding: 0.2em 1.4em 0.2em 1.4em;
@@ -112,4 +127,8 @@ app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:no
 
 .slide .slideNavButton a:hover {
     background-color: #ccc;
+}
+
+.slide_createLayer .mat-expansion-panel-header-title {
+    font-weight: bold;
 }

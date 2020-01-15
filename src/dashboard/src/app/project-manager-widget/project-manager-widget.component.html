@@ -9,39 +9,16 @@
 
   <app-slider-view #slider (slideChange)=slideChange($event)>
 
-    <app-slide [class]="'slide_projectManagerHome'" [slideId]="'projectManagerHome'" [title]="'Home'" [visible]="true">
-
-      <div class="projectManagerHomeContent">
-
-        <app-slide-nav-button [targetSlideId]="'projectEditor'" [direction]="'forward'" (click)="clickCreateProject($event)">
-          <app-home-menu-button class="sliderButton" [buttonText]="'Create a new project'" title="Create a new project"
-            [iconClass]="'icon-home-newproject'"></app-home-menu-button>
-        </app-slide-nav-button>
-
-        <app-slide-nav-button [targetSlideId]="'projectList'" [direction]="'forward'">
-          <app-home-menu-button class="sliderButton" [buttonText]="'Open an existing project'" title="Open an existing project"
-            [iconClass]="'icon-home-existinproject'"></app-home-menu-button>
-        </app-slide-nav-button>
-
-        <app-slide-nav-button [targetSlideId]="'dataManager'" [direction]="'forward'">
-          <app-home-menu-button class="sliderButton" [buttonText]="'Manage your data'" title="Manage your data"
-            [iconClass]="'icon-home-datamanager'"></app-home-menu-button>
-        </app-slide-nav-button>
-
-        <button (click)="openAddLayerDialog()">Add Layer</button>
-        <ul>
-          <li *ngFor="let layer of layers">{{ layer }}</li>
-        </ul>
-      </div>
-
+    <app-slide [slideId]="'projectManagerHome'" [class]="'slide_projectManagerHome'" [title]="'Home'" [visible]="true">
+      <app-project-manager-home-panel></app-project-manager-home-panel>
     </app-slide>
 
-    <app-slide [slideId]="'projectEditor'" [title]="'Project Editor'" [visible]="true">
-      <app-project-editor></app-project-editor>
+    <app-slide [slideId]="'projectEditor'" [class]="'slide_projectEditor'" [title]="'Project Editor'" [visible]="true">
+      <app-project-editor-panel></app-project-editor-panel>
     </app-slide>
 
-    <app-slide [slideId]="'createLayer'" [title]="'Create Layer'" [visible]="false">
-      CREATE LAYER
+    <app-slide [slideId]="'createLayer'" [class]="'slide_createLayer'" [title]="'Create Layer'" [visible]="false">
+      <app-create-layer-panel></app-create-layer-panel>
     </app-slide>
 
   </app-slider-view>

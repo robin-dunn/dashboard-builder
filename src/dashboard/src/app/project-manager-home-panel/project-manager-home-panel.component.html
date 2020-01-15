@@ -1,0 +1,23 @@
+<div class="projectManagerHomeContent">
+
+  <app-slide-nav-button [targetSlideId]="'projectEditor'" [direction]="'forward'" (click)="clickCreateProject($event)">
+    <app-home-menu-button class="sliderButton" [buttonText]="'Create a new project'" title="Create a new project"
+      [iconClass]="'icon-home-newproject'"></app-home-menu-button>
+  </app-slide-nav-button>
+
+  <app-slide-nav-button [targetSlideId]="'projectList'" [direction]="'forward'">
+    <app-home-menu-button class="sliderButton" [buttonText]="'Open an existing project'" title="Open an existing project"
+      [iconClass]="'icon-home-existinproject'"></app-home-menu-button>
+  </app-slide-nav-button>
+
+  <app-slide-nav-button [targetSlideId]="'dataManager'" [direction]="'forward'">
+    <app-home-menu-button class="sliderButton" [buttonText]="'Manage your data'" title="Manage your data"
+      [iconClass]="'icon-home-datamanager'"></app-home-menu-button>
+  </app-slide-nav-button>
+
+  <button (click)="openAddLayerDialog()">Add Layer</button>
+  <ul>
+    <li *ngFor="let layer of layers">{{ layer }}</li>
+  </ul>
+
+</div>

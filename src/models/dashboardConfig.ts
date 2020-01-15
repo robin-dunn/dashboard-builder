@@ -1,4 +1,3 @@
-
 import { IWidgetConfig } from "../models/widgetConfig";
 
 export interface IDashboardConfig {

@@ -15,17 +15,19 @@ export class ProjectManagerService {
   constructor(
     private centralStoreService: CentralStoreService,
     private http: HttpClient) {
-  }
 
-  public createStore(): Subject<ProjectManagerStore> {
     this.store = new ProjectManagerStore();
     //this.centralStoreService.registerStore(this.constructor.name, storeId, this.store);
     this.storeSubject = new Subject<ProjectManagerStore>();
-    return this.storeSubject;
   }
 
-  private updateStore(mutation: any) {
+  public subscribeToStore(selector: any) {
+    this.storeSubject.subscribe(selector);
+  }
+
+  public updateStore(mutation: any) {
     mutation(this.store);
+    console.log(this.store);
     this.storeSubject.next(this.store);
   }
 

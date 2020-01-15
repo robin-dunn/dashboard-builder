@@ -35,11 +35,9 @@ export class ProjectManagerWidgetComponent implements OnInit, AfterViewInit {
   public navigationDepth = 0;
 
   ngOnInit() {
-    this.store = this.projectManagerService.createStore();
-    this.store.subscribe(store => {
+    this.projectManagerService.subscribeToStore((store:ProjectManagerStore) => {
       this.project = store.project;
       this.layers = store.layers.map(layer => layer.name);
-      console.log("STORE", store);
     });
     this.getLayers();
   }

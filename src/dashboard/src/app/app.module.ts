@@ -17,6 +17,7 @@ import { HomeMenuButtonComponent } from './project-manager-widget/home-menu-butt
 import { SlideNavButtonComponent } from './slider-view/slide/slide-nav-button/slide-nav-button.component';
 import { ExpandableMenuItemComponent } from './slider-view/expandable-menu-item/expandable-menu-item.component';
 import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.compon
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,

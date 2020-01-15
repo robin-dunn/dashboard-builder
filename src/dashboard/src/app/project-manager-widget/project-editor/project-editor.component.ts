@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectManagerService } from '../project-manager.service';
+import { ProjectManagerStore } from '../ProjectManagerStore';
 
 @Component({
   selector: "app-project-editor",
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectEditorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private projectManagerService: ProjectManagerService) { }
+
+  projectTitle = "";
 
   ngOnInit() {
+    this.projectManagerService.subscribeToStore((store:ProjectManagerStore) => {
+      this.projectTitle = store.project ? store.project.name : "";
+    })
+  }
+
+  changeProjectTitle(eventData) {
+    this.projectManagerService.updateStore(store => store.project.name = eventData);
   }
 
 }

@@ -1,7 +1,9 @@
 <app-expandable-menu-item [title]="'Project Name'">
   <p>
       <label>Name:</label>
-      <input id="txtProjectName" tabindex="1" accesskey="n" type="text" class="field txt-EnterName" value="Enter Name" style="width: 15.5em;" title="Type the name that you want to use to identify this project">
+      <input id="txtProjectName" tabindex="1" accesskey="n" type="text" class="field txt-EnterName"
+        value="Enter Name" [ngModel]="projectTitle" (ngModelChange)="changeProjectTitle($event)" style="width: 15.5em;" 
+        title="Type the name that you want to use to identify this project">
   </p>
 </app-expandable-menu-item>
 
@@ -28,8 +30,8 @@
     <i class="fa fa-chevron-right menuItemRightArrow"></i>
     </a>
   </p>
-</app-expandable-menu-item>
 
+</app-expandable-menu-item>
 
 <app-expandable-menu-item [title]="'My Data'">
   <p>Point Layers</p>

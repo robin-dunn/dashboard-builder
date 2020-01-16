@@ -35,7 +35,7 @@ export class ProjectManagerService {
 
     let httpResponseSubject = new Subject<HttpResponse<Object>>();
 
-    this.http.post('/api/project', { test: "test" },  {observe: 'response'})
+    this.http.post('/api/project', { test: "test" },  { observe: "response" })
       .subscribe(response => {
         if (response.ok) {
           this.updateStore(store => store.project = response.body);
@@ -62,7 +62,7 @@ export class ProjectManagerService {
 
     this.http.post('/api/layer', formData,  {observe: 'response'})
       .subscribe(response => {
-        if (response.status === 201) {
+        if (response.ok) {
           this.updateStore(store => store.layers = store.layers.concat([response.body as any]));
         }
         httpResponseSubject.next(response);

@@ -7,7 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MapWidgetComponent } from './map-widget/map-widget.component';
 import { ProjectManagerWidgetComponent } from './project-manager-widget/project-manager-widget.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogAddLayerComponent } from './project-manager-widget/dialog-add-layer/dialog-add-layer.component';
+import { DialogAddLayerComponent } from './project-manager-widget/create-layer-panel/import-data-panel/dialog-add-layer/dialog-add-layer.component';
 import { MatDialogModule, MatButtonModule, MatExpansionModule } from '@angular/material';
 import { CentralStoreService } from './services/central-store.service';
 import { ProjectEditorPanelComponent } from './project-manager-widget/project-editor-panel/project-editor-panel.component';
@@ -20,7 +20,7 @@ import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.compon
 import { FormsModule } from '@angular/forms';
 import { CreateLayerPanelComponent } from './project-manager-widget/create-layer-panel/create-layer-panel.component';
 import { ProjectManagerHomePanelComponent } from './project-manager-widget/project-manager-home-panel/project-manager-home-panel.component';
-import { ImportDataPanelComponent } from './project-manager-widget/import-data-panel/import-data-panel.component';
+import { ImportDataPanelComponent } from './project-manager-widget/create-layer-panel/import-data-panel/import-data-panel.component';
 import { CopyExistingLayerPanelComponent } from './project-manager-widget/copy-existing-layer-panel/copy-existing-layer-panel.component'
 
 @NgModule({

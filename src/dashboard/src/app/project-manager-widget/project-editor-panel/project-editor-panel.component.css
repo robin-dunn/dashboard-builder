@@ -18,3 +18,8 @@ h2 {
 .mat-expansion-panel-header .mat-expansion-indicator::after {
     color: #fff;
 }
+
+ul.layerList {
+    list-style-type: none;
+    padding: 0;
+}

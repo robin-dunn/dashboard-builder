@@ -12,10 +12,12 @@ export class ProjectEditorPanelComponent implements OnInit {
   constructor(private projectManagerService: ProjectManagerService) { }
 
   projectTitle = "";
+  layers: string[] = [];
 
   ngOnInit() {
     this.projectManagerService.subscribeToStore((store:ProjectManagerStore) => {
       this.projectTitle = store.project ? store.project.name : "";
+      this.layers = store.layers ? store.layers.map(l => l.name) : [];
     })
   }
 

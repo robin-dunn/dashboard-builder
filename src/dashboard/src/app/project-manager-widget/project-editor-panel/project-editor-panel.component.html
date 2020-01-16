@@ -40,6 +40,10 @@
 
 <app-expandable-menu-item [title]="'My Data'">
   <p>Point Layers</p>
+  <ul class="layerList">
+    <li *ngFor="let layer of layers">
+      <input type="checkbox" />{{ layer }}</li>
+  </ul>
   <p>Boundaries</p>
 </app-expandable-menu-item>
 

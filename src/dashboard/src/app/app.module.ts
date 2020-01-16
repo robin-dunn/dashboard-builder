@@ -20,6 +20,7 @@ import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.compon
 import { FormsModule } from '@angular/forms';
 import { CreateLayerPanelComponent } from './project-manager-widget/create-layer-panel/create-layer-panel.component';
 import { ProjectManagerHomePanelComponent } from './project-manager-widget/project-manager-home-panel/project-manager-home-panel.component';
+import { ImportDataPanelComponent } from './project-manager-widget/import-data-panel/import-data-panel.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProjectManagerHomePanelComponent } from './project-manager-widget/proje
     ExpandableMenuItemComponent,
     MapToolbarComponent,
     CreateLayerPanelComponent,
-    ProjectManagerHomePanelComponent
+    ProjectManagerHomePanelComponent,
+    ImportDataPanelComponent
   ],
   imports: [
     BrowserModule,

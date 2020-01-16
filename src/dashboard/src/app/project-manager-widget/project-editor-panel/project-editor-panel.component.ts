@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectManagerService } from '../project-manager.service';
-import { ProjectManagerStore } from '../ProjectManagerStore';
+import { ProjectManagerStore } from '../projectManagerStore';
 
 @Component({
   selector: "app-project-editor-panel",

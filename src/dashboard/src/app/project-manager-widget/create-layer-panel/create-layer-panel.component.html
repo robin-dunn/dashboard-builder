@@ -1,4 +1,28 @@
 <app-expandable-menu-item [headerHeight]="'60px'" [title]="'Map Pins'" [description]="'Plot your map data using pins on the map'">
+
+    <div class="buttonList">
+        <app-slide-nav-button [targetSlideId]="'projectList'" [direction]="'forward'">
+            <a href="#LayerEditorMapPins" class="proceed addtab-LayerEditorMapPins">
+            <span class="ficon icon-pin"></span> Manually Place Pins
+            <i class="fa fa-chevron-right menuItemRightArrow"></i>
+            </a>
+        </app-slide-nav-button>
+
+        <app-slide-nav-button [targetSlideId]="'projectList'" [direction]="'forward'">
+            <a href="#LayerEditorMapPins" class="proceed addtab-LayerEditorMapPins">
+            <span class="ficon icon-pin"></span> Import Data
+            <i class="fa fa-chevron-right menuItemRightArrow"></i>
+            </a>
+        </app-slide-nav-button>
+
+        <app-slide-nav-button [targetSlideId]="'projectList'" [direction]="'forward'">
+            <a href="#LayerEditorMapPins" class="proceed addtab-LayerEditorMapPins">
+            <span class="ficon icon-pin"></span> Copy Existing Layer
+            <i class="fa fa-chevron-right menuItemRightArrow"></i>
+            </a>
+        </app-slide-nav-button>
+    </div>
+
 </app-expandable-menu-item>
 
 <app-expandable-menu-item [headerHeight]="'60px'" [title]="'Catchment Areas'" [description]="'Catchments are trading areas which can overlap'">

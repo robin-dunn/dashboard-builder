@@ -13,13 +13,13 @@ import { CentralStoreService } from './services/central-store.service';
 import { ProjectEditorPanelComponent } from './project-manager-widget/project-editor-panel/project-editor-panel.component';
 import { SliderViewComponent } from './slider-view/slider-view.component';
 import { SlideComponent } from './slider-view/slide/slide.component';
-import { HomeMenuButtonComponent } from './project-manager-widget/home-menu-button/home-menu-button.component';
+import { HomeMenuButtonComponent } from './project-manager-widget/project-manager-home-panel/home-menu-button/home-menu-button.component';
 import { SlideNavButtonComponent } from './slider-view/slide/slide-nav-button/slide-nav-button.component';
 import { ExpandableMenuItemComponent } from './slider-view/expandable-menu-item/expandable-menu-item.component';
 import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.component';
 import { FormsModule } from '@angular/forms';
 import { CreateLayerPanelComponent } from './project-manager-widget/create-layer-panel/create-layer-panel.component';
-import { ProjectManagerHomePanelComponent } from './project-manager-home-panel/project-manager-home-panel.component';
+import { ProjectManagerHomePanelComponent } from './project-manager-widget/project-manager-home-panel/project-manager-home-panel.component';
 
 @NgModule({
   declarations: [

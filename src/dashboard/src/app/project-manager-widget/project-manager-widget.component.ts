@@ -5,7 +5,7 @@ import { DialogAddLayerComponent } from './dialog-add-layer/dialog-add-layer.com
 import { Subject } from 'rxjs';
 import { SliderViewComponent } from '../slider-view/slider-view.component';
 import { ProjectManagerService } from './project-manager.service';
-import { ProjectManagerStore } from './ProjectManagerStore';
+import { ProjectManagerStore } from './projectManagerStore';
 
 @Component({
   selector: 'app-project-manager-widget',

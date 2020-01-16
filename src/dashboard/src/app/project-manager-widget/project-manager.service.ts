@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { ProjectManagerStore } from "./ProjectManagerStore";
+import { ProjectManagerStore } from "./projectManagerStore";
 import { CentralStoreService } from '../services/central-store.service';
 
 @Injectable({

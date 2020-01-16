@@ -2,7 +2,7 @@
 @import "~leaflet/dist/leaflet.css";
 
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 html, body { height: 100%; }
@@ -11,6 +11,7 @@ body {
     min-height: 100%;
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 100%;
 }
 
 h2, h3, h4 {
@@ -97,18 +98,21 @@ app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:no
     padding: 0.2em 1.4em 0.2em 1.4em;
 }
 
-.mat-expansion-panel-body .sliderButton {
+.mat-expansion-panel-body .slideNavButton p {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.mat-expansion-panel-body .sliderButton a {
+.mat-expansion-panel-body .buttonIcon {
+    margin-right: 10px;
+}
+
+.mat-expansion-panel-body .slideNavButton a {
     display: flex;
     flex-direction: row;
     flex: 1;
     align-items: center;
-    margin: 0 0 0 10px;
     color: #000;
     text-decoration: none;
 }

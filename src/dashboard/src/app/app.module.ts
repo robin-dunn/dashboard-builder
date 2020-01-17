@@ -24,6 +24,7 @@ import { ImportDataPanelComponent } from './project-manager-widget/project-manag
 import { CopyExistingLayerPanelComponent } from './project-manager-widget/project-manager-home-panel/project-editor-panel/copy-existing-layer-panel/copy-existing-layer-panel.component';
 import { ProjectListPanelComponent } from './project-manager-widget/project-manager-home-panel/project-list-panel/project-list-panel.component';
 import { ProjectManagerMenuItem } from './project-manager-widget/project-manager-menu-item/project-manager-menu-item.component';
+import { DataManagerPanelComponent } from './project-manager-widget/project-manager-home-panel/data-manager-panel/data-manager-panel.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ProjectManagerMenuItem } from './project-manager-widget/project-manager
     ImportDataPanelComponent,
     CopyExistingLayerPanelComponent,
     ProjectListPanelComponent,
-    ProjectManagerMenuItem
+    ProjectManagerMenuItem,
+    DataManagerPanelComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,11 @@
 <div class="openProjectList">
-  <app-project-manager-menu-item
-    *ngFor="let project of projects; let first = first; let last = last"
-    [title]="project.name"
-    [class.first-item]="first"
-    [class.last-item]="last">
-  </app-project-manager-menu-item>
+  <app-slide-nav-button
+  *ngFor="let project of projects; let first = first; let last = last"
+  [targetSlideId]="'projectEditor'" [direction]="'forward'">
+    <app-project-manager-menu-item
+      [title]="project.name"
+      [class.first-item]="first"
+      [class.last-item]="last">
+    </app-project-manager-menu-item>
+  </app-slide-nav-button>
 </div>

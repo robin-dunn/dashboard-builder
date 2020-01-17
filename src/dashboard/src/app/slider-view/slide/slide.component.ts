@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, QueryList, ContentChildren, ElementRef, Output } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, QueryList, ContentChildren, ElementRef, Output, HostBinding } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { SlideNavButtonComponent } from './slide-nav-button/slide-nav-button.component';
 import { SliderViewService } from '../slider-view.service';
@@ -8,12 +8,11 @@ import { SliderViewService } from '../slider-view.service';
   templateUrl: './slide.component.html',
   styleUrls: ['./slide.component.css']
 })
-export class SlideComponent implements OnInit, AfterViewInit {
+export class SlideComponent implements OnInit {
 
-  @Output() sliderButtonsInitialized = new Observable<SlideNavButtonComponent[]>();
   @Input() slideId: string;
   @Input() title: string;
-  @ContentChildren(SlideNavButtonComponent) sliderButtons: QueryList<SlideNavButtonComponent>;
+  @HostBinding('style.order') @Input('cssOrder') cssOrder: number;
 
   _widthInPixels: number;
   _visible: boolean;
@@ -36,15 +35,9 @@ export class SlideComponent implements OnInit, AfterViewInit {
     return this._visible;
   }
 
-  constructor(private sliderViewService:SliderViewService) {
+  constructor() {
   }
 
   ngOnInit() {
-  }
-
-  ngAfterViewInit() {
-    if(this.sliderButtons) {
-      this.sliderButtonsInitialized = of(this.sliderButtons.toArray());
-    }
   }
 }

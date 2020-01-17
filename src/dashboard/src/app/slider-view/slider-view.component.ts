@@ -78,6 +78,11 @@ export class SliderViewComponent implements OnInit, AfterViewInit {
     let slidesToHide = this.slides.map(slide => slide.slideId)
                         .filter(slideId => slidesToShow.indexOf(slideId) < 0);
 
+    /* Set CSS order property of the slides so the current slide
+    is on the left and the next slide is on the right */
+    currentSlide.cssOrder = 1;
+    targetSlide.cssOrder = 2;
+
     this.showSlides(slidesToShow);
     this.hideSlides(slidesToHide);
 
@@ -135,6 +140,7 @@ export class SliderViewComponent implements OnInit, AfterViewInit {
   }
 
   public navigate(direction: string, targetSlideId?: string) {
+    console.log("NAV", arguments);
     if (direction === "forward") {
       if (!targetSlideId) {
         throw new Error("targetSlideId invalid");

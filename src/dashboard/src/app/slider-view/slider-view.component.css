@@ -8,6 +8,9 @@
 }
 
 .reel {
+    /* IMPORTANT: this needs to be 'display:flex' so we can use
+     the CSS 'order' property on the slides. */
+    display: flex;
     position: relative;
     left: 0px;
     width: 1000px;

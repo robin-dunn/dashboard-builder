@@ -73,7 +73,13 @@ export class SliderViewComponent implements OnInit, AfterViewInit {
   private moveForward(targetSlideId: string) {
     let currentSlide = this.getCurrentSlide();
     let targetSlide = this.getSlide(targetSlideId);
-    this.setSlideVisibility(targetSlideId, true);
+
+    let slidesToShow = [currentSlide.slideId, targetSlideId];
+    let slidesToHide = this.slides.map(slide => slide.slideId)
+                        .filter(slideId => slidesToShow.indexOf(slideId) < 0);
+
+    this.showSlides(slidesToShow);
+    this.hideSlides(slidesToHide);
 
     this.breadcrumbIndex++;
     this.currentAnimationState = "right-view";
@@ -83,7 +89,7 @@ export class SliderViewComponent implements OnInit, AfterViewInit {
     const animationDurationMs = 500;
     setTimeout(() => {
       if (this.breadcrumbIndex > 0) {
-        this.setSlideVisibility(targetSlideId, true, true);
+        this.hideSlides([currentSlide.slideId]);
       }
       this.currentAnimationState = 'left-view-no-animation';
     }, animationDurationMs);
@@ -95,7 +101,8 @@ export class SliderViewComponent implements OnInit, AfterViewInit {
     let currentSlide = this.getCurrentSlide();
     let targetSlideId = this.breadcrumbSlideIds[this.breadcrumbIndex - 1];
     let targetSlide = this.getSlide(targetSlideId);
-    this.setSlideVisibility(targetSlide.slideId, true);
+
+    this.showSlides([targetSlide.slideId]);
     this.currentAnimationState = "right-view-no-animation";
 
     // Wait a brief moment to allow the slider width and animation state to update,
@@ -139,13 +146,17 @@ export class SliderViewComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private setSlideVisibility(slideId: string, isVisible: boolean, hideOthers?: boolean) {
+  private showSlides(slideIds: string[]) {
     this.slides.forEach(s => {
-      if (s.slideId === slideId) {
-        s.visible = isVisible;
-        return;
+      if (slideIds.indexOf(s.slideId) >= 0) {
+        s.visible = true;
       }
-      if (hideOthers) {
+    });
+  }
+
+  private hideSlides(slideIds: string[]) {
+    this.slides.forEach(s => {
+      if (slideIds.indexOf(s.slideId) >= 0) {
         s.visible = false;
       }
     });

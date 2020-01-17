@@ -21,7 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { CreateLayerPanelComponent } from './project-manager-widget/create-layer-panel/create-layer-panel.component';
 import { ProjectManagerHomePanelComponent } from './project-manager-widget/project-manager-home-panel/project-manager-home-panel.component';
 import { ImportDataPanelComponent } from './project-manager-widget/create-layer-panel/import-data-panel/import-data-panel.component';
-import { CopyExistingLayerPanelComponent } from './project-manager-widget/create-layer-panel/copy-existing-layer-panel/copy-existing-layer-panel.component'
+import { CopyExistingLayerPanelComponent } from './project-manager-widget/create-layer-panel/copy-existing-layer-panel/copy-existing-layer-panel.component';
+import { ProjectListPanelComponent } from './project-manager-widget/project-list-panel/project-list-panel.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CopyExistingLayerPanelComponent } from './project-manager-widget/create
     CreateLayerPanelComponent,
     ProjectManagerHomePanelComponent,
     ImportDataPanelComponent,
-    CopyExistingLayerPanelComponent
+    CopyExistingLayerPanelComponent,
+    ProjectListPanelComponent
   ],
   imports: [
     BrowserModule,

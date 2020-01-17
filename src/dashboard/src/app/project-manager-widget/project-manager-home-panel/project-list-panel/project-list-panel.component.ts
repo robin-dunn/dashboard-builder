@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectListPanelComponent implements OnInit {
 
+  public projects: any[] = [{name:"P1"},{name:"P2"}];
+
   constructor() { }
 
   ngOnInit() {

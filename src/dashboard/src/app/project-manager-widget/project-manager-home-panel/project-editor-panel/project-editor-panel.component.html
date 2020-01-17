@@ -10,30 +10,18 @@
 <app-expandable-menu-item [title]="'Add Data'">
 
   <app-slide-nav-button [targetSlideId]="'createLayer'" [direction]="'forward'">
-    <p>
-      <i class="buttonIcon far fa-plus-square"></i>
-      <a href="#">Create New Layer
-      <i class="fa fa-chevron-right menuItemRightArrow"></i>
-      </a>
-    </p>
+    <app-project-manager-menu-item [title]="'Create New Layer'" [iconClass]="'far fa-plus-square'">
+    </app-project-manager-menu-item>
   </app-slide-nav-button>
 
   <app-slide-nav-button [targetSlideId]="'useExistingLayer'" [direction]="'forward'">
-    <p>
-      <i class="buttonIcon fas fa-layer-group"></i>
-      <a href="#">Use Existing Layer
-      <i class="fa fa-chevron-right menuItemRightArrow"></i>
-      </a>
-    </p>
+    <app-project-manager-menu-item [title]="'Use Existing Layer'" [iconClass]="'fas fa-layer-group'">
+    </app-project-manager-menu-item>
   </app-slide-nav-button>
 
   <app-slide-nav-button [targetSlideId]="'updateExistingLayer'" [direction]="'forward'">
-    <p>
-      <i class="buttonIcon fas fa-sync"></i>
-      <a href="#">Update Existing Layer
-      <i class="fa fa-chevron-right menuItemRightArrow"></i>
-      </a>
-    </p>
+    <app-project-manager-menu-item [title]="'Update Existing Layer'" [iconClass]="'fas fa-sync'">
+    </app-project-manager-menu-item>
   </app-slide-nav-button>
 
 </app-expandable-menu-item>

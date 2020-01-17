@@ -108,7 +108,7 @@ app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:no
     margin-right: 10px;
 }
 
-.mat-expansion-panel-body .slideNavButton a {
+.slideNavButton a {
     display: flex;
     flex-direction: row;
     flex: 1;

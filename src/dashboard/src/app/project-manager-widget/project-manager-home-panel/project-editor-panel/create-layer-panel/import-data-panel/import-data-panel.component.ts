@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectManagerService } from '../../project-manager.service';
+import { ProjectManagerService } from '../../../../project-manager.service';
 
 @Component({
   selector: 'app-import-data-panel',

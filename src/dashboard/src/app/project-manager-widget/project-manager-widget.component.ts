@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { IWidgetConfig } from '../../../../models/widgetConfig';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import { DialogAddLayerComponent } from './create-layer-panel/import-data-panel/dialog-add-layer/dialog-add-layer.component';
+import { DialogAddLayerComponent } from './project-manager-home-panel/project-editor-panel/create-layer-panel/import-data-panel/dialog-add-layer/dialog-add-layer.component';
 import { Subject } from 'rxjs';
 import { SliderViewComponent } from '../slider-view/slider-view.component';
 import { ProjectManagerService } from './project-manager.service';

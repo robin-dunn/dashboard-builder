@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
-import { ProjectManagerService } from '../../../project-manager.service';
+import { ProjectManagerService } from '../../../../../project-manager.service';
 
 @Component({
   selector: 'app-dialog-add-layer',

@@ -15,7 +15,7 @@ import { SliderViewComponent } from './slider-view/slider-view.component';
 import { SlideComponent } from './slider-view/slide/slide.component';
 import { HomeMenuButtonComponent } from './project-manager-widget/project-manager-home-panel/home-menu-button/home-menu-button.component';
 import { SlideNavButtonComponent } from './slider-view/slide/slide-nav-button/slide-nav-button.component';
-import { ExpandableMenuItemComponent } from './slider-view/expandable-menu-item/expandable-menu-item.component';
+import { ExpandableViewComponent } from './slider-view/expandable-view/expandable-view.component';
 import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.component';
 import { FormsModule } from '@angular/forms';
 import { CreateLayerPanelComponent } from './project-manager-widget/project-manager-home-panel/project-editor-panel/create-layer-panel/create-layer-panel.component';
@@ -38,7 +38,7 @@ import { DataManagerPanelComponent } from './project-manager-widget/project-mana
     SlideComponent,
     HomeMenuButtonComponent,
     SlideNavButtonComponent,
-    ExpandableMenuItemComponent,
+    ExpandableViewComponent,
     MapToolbarComponent,
     CreateLayerPanelComponent,
     ProjectManagerHomePanelComponent,

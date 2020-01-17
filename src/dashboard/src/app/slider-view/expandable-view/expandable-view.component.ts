@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-expandable-menu-item',
-  templateUrl: './expandable-menu-item.component.html',
-  styleUrls: ['./expandable-menu-item.component.css']
+  selector: 'app-expandable-view',
+  templateUrl: './expandable-view.component.html',
+  styleUrls: ['./expandable-view.component.css']
 })
-export class ExpandableMenuItemComponent implements OnInit {
+export class ExpandableViewComponent implements OnInit {
 
   @Input() title: string = "";
   @Input() description: string = "";

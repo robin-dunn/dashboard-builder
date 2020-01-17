@@ -1,13 +1,13 @@
-<app-expandable-menu-item [title]="'Project Name'">
+<app-expandable-view [title]="'Project Name'">
   <p>
       <label>Name:</label>
       <input id="txtProjectName" tabindex="1" accesskey="n" type="text" class="field txt-EnterName"
         value="Enter Name" [ngModel]="projectTitle" (ngModelChange)="changeProjectTitle($event)" style="width: 15.5em;" 
         title="Type the name that you want to use to identify this project">
   </p>
-</app-expandable-menu-item>
+</app-expandable-view>
 
-<app-expandable-menu-item [title]="'Add Data'">
+<app-expandable-view [title]="'Add Data'">
 
   <app-slide-nav-button [targetSlideId]="'createLayer'" [direction]="'forward'">
     <app-project-manager-menu-item [title]="'Create New Layer'" [iconClass]="'far fa-plus-square'">
@@ -24,22 +24,22 @@
     </app-project-manager-menu-item>
   </app-slide-nav-button>
 
-</app-expandable-menu-item>
+</app-expandable-view>
 
-<app-expandable-menu-item [title]="'My Data'">
+<app-expandable-view [title]="'My Data'">
   <p>Point Layers</p>
   <ul class="layerList">
     <li *ngFor="let layer of layers">
       <input type="checkbox" />{{ layer }}</li>
   </ul>
   <p>Boundaries</p>
-</app-expandable-menu-item>
+</app-expandable-view>
 
-<app-expandable-menu-item [title]="'System Data'">
+<app-expandable-view [title]="'System Data'">
   <p>Point Layers</p>
   <p>Boundaries</p>
-</app-expandable-menu-item>
+</app-expandable-view>
 
-<app-expandable-menu-item [title]="'Map Bases'">
+<app-expandable-view [title]="'Map Bases'">
   <p>Google Roads</p>
-</app-expandable-menu-item>
+</app-expandable-view>

@@ -1,0 +1,17 @@
+:host {
+    display: block;
+    padding: 1em 10px 1em 20px;
+    border: 1px solid #000;
+    border-bottom: none;
+}
+
+.proceed-inner {
+    display: flex;
+    flex-direction: row;
+    color: #000;
+}
+
+.proceed-inner a {
+    color: #000;
+    text-decoration: none;
+}

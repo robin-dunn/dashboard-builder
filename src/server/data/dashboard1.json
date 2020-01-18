@@ -8,8 +8,7 @@
             "styles": {
                 "grid-row-start": "1",
                 "grid-row-end": "3",
-                "background-color": "#555",
-                "color": "#fff"
+                "background-color": "#555"
             }
         },
         {

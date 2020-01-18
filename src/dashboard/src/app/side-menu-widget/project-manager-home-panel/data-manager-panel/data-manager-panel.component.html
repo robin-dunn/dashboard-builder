@@ -1,14 +1,17 @@
-<app-side-menu-section [title]="'Projects'">
+<app-side-menu-section [title]="'Projects'" [expandable]="true">
 </app-side-menu-section>
 
-<app-side-menu-section [title]="'Layers'">
+<app-side-menu-section [title]="'Layers'" [expandable]="true">
 </app-side-menu-section>
 
-<app-side-menu-section [title]="'Permissions'">
+<app-side-menu-section [title]="'Permissions'" [expandable]="true">
 </app-side-menu-section>
 
-<app-side-menu-section [title]="'System Data Layers'">
+<app-side-menu-section [title]="'System Data Layers'" [expandable]="true">
 </app-side-menu-section>
 
-<app-side-menu-section [title]="'Settigns'">
+<app-side-menu-section [title]="'Settings'" [expandable]="true">
+    <div class="buttonList">
+        <app-proceed-inner-button [title]="'Theme'"></app-proceed-inner-button>
+    </div>
 </app-side-menu-section>

@@ -26,6 +26,7 @@ import { ProjectListPanelComponent } from './side-menu-widget/project-manager-ho
 import { ProjectManagerMenuItem } from './side-menu-widget/project-manager-menu-item/project-manager-menu-item.component';
 import { DataManagerPanelComponent } from './side-menu-widget/project-manager-home-panel/data-manager-panel/data-manager-panel.component';
 import { SideMenuSectionComponent } from './side-menu-widget/side-menu-section/side-menu-section.component';
+import { ProceedInnerButtonComponent } from './side-menu-widget/side-menu-section/proceed-inner-button/proceed-inner-button.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SideMenuSectionComponent } from './side-menu-widget/side-menu-section/s
     ProjectListPanelComponent,
     ProjectManagerMenuItem,
     DataManagerPanelComponent,
-    SideMenuSectionComponent
+    SideMenuSectionComponent,
+    ProceedInnerButtonComponent
   ],
   imports: [
     BrowserModule,

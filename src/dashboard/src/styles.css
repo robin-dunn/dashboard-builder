@@ -61,6 +61,10 @@ input[type="text"] {
     font-size: 1.2em;
 }
 
+.side-menu-section .buttonList {
+    border-bottom: 1px solid #000;
+}
+
 .mat-expansion-panel, .mat-expansion-panel-header {
     font-family: "Source Sans Pro", Effra, Arial, Helvetica, FreeSans, sans-serif;
 }
@@ -116,15 +120,6 @@ app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:no
 
 .mat-expansion-panel-body .buttonIcon {
     margin-right: 10px;
-}
-
-.slideNavButton a {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    align-items: center;
-    color: #000;
-    text-decoration: none;
 }
 
 .mat-expansion-panel-body .sliderButton a:hover {

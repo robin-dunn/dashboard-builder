@@ -10,10 +10,15 @@
 }
 
 .section-header-title {
+    color: #fff;
     display: flex;
     align-items: center;
 }
 
 .section-header-title .proceed-right-arrow {
     margin-left: auto;
+}
+
+.mat-expansion-panel {
+    box-shadow: none;
 }

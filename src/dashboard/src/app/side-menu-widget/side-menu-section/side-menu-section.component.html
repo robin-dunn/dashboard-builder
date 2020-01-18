@@ -1,4 +1,4 @@
-<div class="side-menu-section" >
+<div class="side-menu-section">
   <ng-container
     *ngIf="expandable; then expandableView; else simpleView">
   </ng-container>
@@ -6,7 +6,7 @@
 
 <ng-template #expandableView>
   <mat-expansion-panel>
-    <mat-expansion-panel-header [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
+    <mat-expansion-panel-header class="section-header" [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
       <mat-panel-title>
         <h3 class="section-header-title">{{title}}</h3>
       </mat-panel-title>

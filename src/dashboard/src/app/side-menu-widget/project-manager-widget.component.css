@@ -6,6 +6,7 @@
 }
 
 .projectManagerHeader {
+    color: #fff;
     display: flex;
     position: relative;
     height: 30px;

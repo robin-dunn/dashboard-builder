@@ -1,0 +1,26 @@
+<div class="side-menu-section" >
+  <ng-container
+    *ngIf="expandable; then expandableView; else simpleView">
+  </ng-container>
+</div>
+
+<ng-template #expandableView>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
+      <mat-panel-title>
+        <h3 class="section-header-title">{{title}}</h3>
+      </mat-panel-title>
+      <mat-panel-description *ngIf="description" class="menu-section-description">
+        {{description}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <ng-content></ng-content>
+  </mat-expansion-panel>
+</ng-template>
+<ng-template #simpleView>
+  <div class="section-header">
+    <h3 [style.line-height]="headerHeight" class="section-header-title">{{title}}
+      <i class="fa fa-chevron-right proceed-right-arrow"></i></h3>
+    <p *ngIf="description" class="menu-section-description">{{description}}</p>
+  </div>
+</ng-template>

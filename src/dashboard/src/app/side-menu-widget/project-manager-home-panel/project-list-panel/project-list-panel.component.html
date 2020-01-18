@@ -5,7 +5,8 @@
     <app-project-manager-menu-item
       [title]="project.name"
       [class.first-item]="first"
-      [class.last-item]="last">
+      [class.last-item]="last"
+      (click)="clickProject(project.id)">
     </app-project-manager-menu-item>
   </app-slide-nav-button>
 </div>

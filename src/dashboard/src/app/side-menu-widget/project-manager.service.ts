@@ -46,6 +46,10 @@ export class ProjectManagerService {
     return httpResponseSubject;
   }
 
+  public openProject(projectId: number) {
+    console.log("open project");
+  }
+
   public getLayers() {
     this.http.get("/api/layer")
       .subscribe(responseBody => {

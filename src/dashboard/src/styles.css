@@ -2,7 +2,7 @@
 @import "~leaflet/dist/leaflet.css";
 
 * {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: "Source Sans Pro", Effra, Arial, Helvetica, FreeSans, sans-serif;
     font-size: 100%;
 }
 
@@ -57,8 +57,17 @@ input[type="text"] {
   flex: 1;
 }
 
+.projectManagerWidget .slider {
+    font-size: 1.2em;
+}
+
+.mat-expansion-panel, .mat-expansion-panel-header {
+    font-family: "Source Sans Pro", Effra, Arial, Helvetica, FreeSans, sans-serif;
+}
+
 .mat-expansion-panel-header {
     color: #fff;
+    font-size: 100%;
     background-color: rgb(85, 85, 85);
     border-bottom: 1px solid #aaa;
 }

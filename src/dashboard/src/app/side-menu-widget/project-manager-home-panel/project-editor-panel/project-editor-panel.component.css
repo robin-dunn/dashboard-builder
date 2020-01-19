@@ -19,6 +19,10 @@ h2 {
     color: #fff;
 }
 
+#txtProjectName {
+    width: 70%;
+}
+
 ul.layerList {
     list-style-type: none;
     padding: 0;

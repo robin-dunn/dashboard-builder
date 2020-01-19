@@ -1,8 +1,9 @@
+<mat-accordion>
 <app-side-menu-section [title]="'Project Name'" [expandable]="true">
   <p>
       <label>Name:</label>
       <input id="txtProjectName" tabindex="1" accesskey="n" type="text" class="field txt-EnterName"
-        value="Enter Name" [ngModel]="projectTitle" (ngModelChange)="changeProjectTitle($event)" style="width: 15.5em;" 
+        value="Enter Name" [ngModel]="projectTitle" (ngModelChange)="changeProjectTitle($event)"
         title="Type the name that you want to use to identify this project">
   </p>
 </app-side-menu-section>
@@ -43,3 +44,4 @@
 <app-side-menu-section [title]="'Map Bases'" [expandable]="true">
   <p>Google Roads</p>
 </app-side-menu-section>
+</mat-accordion>

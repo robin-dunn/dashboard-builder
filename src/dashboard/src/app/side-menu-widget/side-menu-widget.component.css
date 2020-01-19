@@ -15,6 +15,7 @@
     display: flex;
     position: relative;
     height: 30px;
+    min-height: 30px;
     font-size: 12px;
     padding: 3px 0;
     border-bottom: 1px solid #aaa;

@@ -25,3 +25,7 @@
 :host .mat-expansion-panel {
     box-shadow: none;
 }
+
+.menu-section-description {
+    display: block;
+}

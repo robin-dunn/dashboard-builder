@@ -6,6 +6,10 @@
     border-right: 1px solid #000;
 }
 
+:host:hover {
+    background-color: #ccc;
+}
+
 .proceed-inner {
     display: flex;
     flex-direction: row;

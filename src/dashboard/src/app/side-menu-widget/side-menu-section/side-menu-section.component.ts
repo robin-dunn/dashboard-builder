@@ -10,8 +10,7 @@ export class SideMenuSectionComponent implements OnInit {
   @Input() title: string = "";
   @Input() description: string = "";
   @Input() expandable: boolean = false;
-
-  public headerHeight = "40px";
+  @Input() headerHeight: string = "40px";
 
   constructor() { }
 

@@ -1,3 +1,7 @@
+.menu-item-description {
+    font-size: 11px;
+}
+
 a {
     padding: 1em 10px 1em 20px;
     border: 1px solid #333;

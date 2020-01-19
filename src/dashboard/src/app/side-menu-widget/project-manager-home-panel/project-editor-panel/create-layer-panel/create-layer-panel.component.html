@@ -1,26 +1,32 @@
-<app-expandable-view [headerHeight]="'60px'" [title]="'Map Pins'" [description]="'Plot your map data using pins on the map'">
+<app-side-menu-section [expandable]="true" [headerHeight]="'60px'" [title]="'Map Pins'" [description]="'Plot your map data using pins on the map'">
 
-    <div class="buttonList">
-        <app-slide-nav-button [targetSlideId]="'projectList'" [direction]="'forward'">
-            <app-proceed-inner-button [title]="'Manually Place Pins'" [iconClass]="'fas fa-map-marker-alt'">
-            </app-proceed-inner-button>
-        </app-slide-nav-button>
+    <p class="menu-item-description">
+        Plot your data as pins on the map to show geographic distribution.
+    </p>
 
-        <app-slide-nav-button [targetSlideId]="'importData'" [direction]="'forward'">
-            <app-proceed-inner-button [title]="'Import Data'" [iconClass]="'fas fa-map-marker-alt'">
-            </app-proceed-inner-button>
-        </app-slide-nav-button>
+    <p class="menu-item-description">
+        You can change the shape, size and colour of the pins based on values in your data.
+    </p>
 
-        <app-slide-nav-button [targetSlideId]="'copyExistingLayer'" [direction]="'forward'">
-            <app-proceed-inner-button [title]="'Copy Existing Layer'" [iconClass]="'fas fa-map-marker-alt'">
-            </app-proceed-inner-button>
-        </app-slide-nav-button>
-    </div>
+    <app-slide-nav-button [targetSlideId]="'projectList'" [direction]="'forward'">
+        <app-proceed-inner-button [title]="'Manually Place Pins'" [iconClass]="'fas fa-map-marker-alt'">
+        </app-proceed-inner-button>
+    </app-slide-nav-button>
 
-</app-expandable-view>
+    <app-slide-nav-button [targetSlideId]="'importData'" [direction]="'forward'">
+        <app-proceed-inner-button [title]="'Import Data'" [iconClass]="'fas fa-map-marker-alt'">
+        </app-proceed-inner-button>
+    </app-slide-nav-button>
 
-<app-expandable-view [headerHeight]="'60px'" [title]="'Catchment Areas'" [description]="'Catchments are trading areas which can overlap'">
-</app-expandable-view>
+    <app-slide-nav-button [targetSlideId]="'copyExistingLayer'" [direction]="'forward'">
+        <app-proceed-inner-button class="last-item" [title]="'Copy Existing Layer'" [iconClass]="'fas fa-map-marker-alt'">
+        </app-proceed-inner-button>
+    </app-slide-nav-button>
 
-<app-expandable-view [headerHeight]="'60px'" [title]="'Territories'"  [description]="'Organise your sales regions into non-overlapping territories'">
-</app-expandable-view>
+</app-side-menu-section>
+
+<app-side-menu-section [expandable]="true" [headerHeight]="'60px'"[title]="'Catchment Areas'" [description]="'Catchments are trading areas which can overlap'">
+</app-side-menu-section>
+
+<app-side-menu-section [expandable]="true" [headerHeight]="'60px'" [title]="'Territories'"  [description]="'Organise your sales regions into non-overlapping territories'">
+</app-side-menu-section>

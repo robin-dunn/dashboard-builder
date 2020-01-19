@@ -8,9 +8,9 @@ import { ProjectManagerService } from './project-manager.service';
 import { ProjectManagerStore } from './projectManagerStore';
 
 @Component({
-  selector: 'app-project-manager-widget',
-  templateUrl: './project-manager-widget.component.html',
-  styleUrls: ['./project-manager-widget.component.css'],
+  selector: 'app-side-menu-widget',
+  templateUrl: './side-menu-widget.component.html',
+  styleUrls: ['./side-menu-widget.component.css'],
   providers: [ProjectManagerService]
 })
 export class ProjectManagerWidgetComponent implements OnInit {

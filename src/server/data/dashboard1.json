@@ -6,8 +6,6 @@
             "widgetType": "projectManager",
             "title": "Project Manager",
             "styles": {
-                "grid-row-start": "1",
-                "grid-row-end": "3",
                 "background-color": "#555"
             }
         },
@@ -24,7 +22,6 @@
             "widgetType": "dataGrid",
             "title": "Data Grid Widget",
             "styles": {
-                "grid-column-start": 2
             }
         }
     ]

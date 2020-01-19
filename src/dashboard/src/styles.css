@@ -6,7 +6,9 @@
     font-size: 100%;
 }
 
-html, body { height: 100%; }
+html, body { 
+    height: 100%; overflow: hidden;
+}
 
 body {
     min-height: 100%;
@@ -61,12 +63,13 @@ input[type="text"] {
     font-size: 1.2em;
 }
 
-.side-menu-section .buttonList {
+.side-menu-section .last-item {
     border-bottom: 1px solid #000;
 }
 
-.mat-expansion-panel, .mat-expansion-panel-header {
+.mat-expansion-panel, .mat-expansion-panel-header, .mat-expansion-panel-header-title {
     font-family: "Source Sans Pro", Effra, Arial, Helvetica, FreeSans, sans-serif;
+    color: unset;
 }
 
 .mat-expansion-panel-header {
@@ -84,7 +87,7 @@ input[type="text"] {
     background-color: rgb(85, 85, 85);
 }
 
-app-project-manager-widget .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disabled=true]):hover  {
+app-side-menu-widget .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disabled=true]):hover  {
     background-color: #aaa !important;
 }
 

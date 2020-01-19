@@ -1,17 +1,39 @@
+<app-side-menu-section [title]="'Route Optimiser'">
+</app-side-menu-section>
+
 <app-side-menu-section [title]="'Projects'" [expandable]="true">
+    <app-proceed-inner-button [title]="'All Projects'"></app-proceed-inner-button>
+    <app-proceed-inner-button class="last-item" [title]="'My Projects'"></app-proceed-inner-button>
 </app-side-menu-section>
 
 <app-side-menu-section [title]="'Layers'" [expandable]="true">
+    <app-proceed-inner-button [title]="'All Layers'"></app-proceed-inner-button>
+    <app-proceed-inner-button [title]="'My Data'"></app-proceed-inner-button>
+    <app-proceed-inner-button class="last-item" [title]="'System Data'"></app-proceed-inner-button>
+</app-side-menu-section>
+
+<app-side-menu-section [title]="'Admin Users'">
 </app-side-menu-section>
 
 <app-side-menu-section [title]="'Permissions'" [expandable]="true">
+    <app-proceed-inner-button [title]="'Users'"></app-proceed-inner-button>
+    <app-proceed-inner-button [title]="'Groups'"></app-proceed-inner-button>
+    <app-proceed-inner-button class="last-item" [title]="'User Hierarchy'"></app-proceed-inner-button>
+</app-side-menu-section>
+
+<app-side-menu-section [title]="'Dashboard'">
+</app-side-menu-section>
+
+<app-side-menu-section [title]="'Survey'">
 </app-side-menu-section>
 
 <app-side-menu-section [title]="'System Data Layers'" [expandable]="true">
+    <app-proceed-inner-button [title]="'Download From S3'"></app-proceed-inner-button>
+    <app-proceed-inner-button [title]="'Add & Style New SDL'"></app-proceed-inner-button>
+    <app-proceed-inner-button [title]="'Maintain SDLs'"></app-proceed-inner-button>
+    <app-proceed-inner-button class="last-item" [title]="'Style Existing SDL'"></app-proceed-inner-button>
 </app-side-menu-section>
 
 <app-side-menu-section [title]="'Settings'" [expandable]="true">
-    <div class="buttonList">
-        <app-proceed-inner-button [title]="'Theme'"></app-proceed-inner-button>
-    </div>
+    <app-proceed-inner-button class="last-item" [title]="'Theme'"></app-proceed-inner-button>
 </app-side-menu-section>

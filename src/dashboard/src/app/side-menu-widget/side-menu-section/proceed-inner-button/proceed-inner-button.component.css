@@ -1,13 +1,15 @@
 :host {
     display: block;
     padding: 1em 10px 1em 20px;
-    border: 1px solid #000;
-    border-bottom: none;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
 }
 
 .proceed-inner {
     display: flex;
     flex-direction: row;
+    align-items: center;
     color: #000;
 }
 

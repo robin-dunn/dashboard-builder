@@ -26,6 +26,7 @@ export class MapWidgetComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.store = this.mapService.createStore();
+    if (!this.widgetConfig) { return; }
     for (const widgetId of this.widgetConfig.subjectWidgets) {
       this.store.subscribe(layersMetadata => {
           // Get layer GeoJson for current map window bounds

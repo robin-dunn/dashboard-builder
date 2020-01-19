@@ -1,16 +1,19 @@
 .section-header {
+    color: #fff;
+}
+
+.section-header:hover, .section-header *:hover {
+    color: #000;
+    background-color: #aaa !important;
+}
+
+.section-header {
     cursor: pointer;
     padding: 0 24px;
     border-bottom: 1px solid #aaa;
 }
 
-.section-header:hover {
-    color: #000;
-    background-color: #aaa !important;
-}
-
 .section-header-title {
-    color: #fff;
     display: flex;
     align-items: center;
 }

@@ -7,8 +7,8 @@
 <ng-template #expandableView>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="section-header" [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
-      <mat-panel-title>
-        <h3 class="section-header-title">{{title}}</h3>
+      <mat-panel-title class="section-header-title">
+        <h3 >{{title}}</h3>
       </mat-panel-title>
       <mat-panel-description *ngIf="description" class="menu-section-description">
         {{description}}

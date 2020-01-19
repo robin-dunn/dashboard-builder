@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MapWidgetComponent } from './map-widget/map-widget.component';
-import { ProjectManagerWidgetComponent } from './side-menu-widget/project-manager-widget.component';
+import { ProjectManagerWidgetComponent } from './side-menu-widget/side-menu-widget.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogAddLayerComponent } from './side-menu-widget/project-manager-home-panel/project-editor-panel/create-layer-panel/import-data-panel/dialog-add-layer/dialog-add-layer.component';
 import { MatDialogModule, MatButtonModule, MatExpansionModule } from '@angular/material';

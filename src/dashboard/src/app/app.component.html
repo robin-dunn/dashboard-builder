@@ -1,2 +1,3 @@
 <app-side-menu-widget></app-side-menu-widget>
-<app-map-widget></app-map-widget>
+<app-map-widget *ngIf="currentView === 'map'"></app-map-widget>
+<app-data-manager-view *ngIf="currentView === 'dataManager'"></app-data-manager-view>

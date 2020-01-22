@@ -91,7 +91,7 @@ input[type="text"] {
     background-color: rgb(85, 85, 85);
 }
 
-app-side-menu-widget .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disabled=true]):hover  {
+app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disabled=true]):hover  {
     background-color: #aaa !important;
 }
 

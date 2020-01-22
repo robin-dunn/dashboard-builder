@@ -1,7 +1,7 @@
 <ng-container *ngIf="dashboardConfig">
   <div class="widget-container" *ngFor="let widgetConfig of dashboardConfig.widgets" [ngStyle]="widgetConfig.styles">
     <ng-container [ngSwitch]="widgetConfig.widgetType">
-      <app-side-menu-widget *ngSwitchCase="'projectManager'" [widgetConfig]="widgetConfig"></app-side-menu-widget>
+      <app-side-menu *ngSwitchCase="'projectManager'" [widgetConfig]="widgetConfig"></app-side-menu>
       <app-map-widget *ngSwitchCase="'map'" [widgetConfig]="widgetConfig"></app-map-widget>
       <ng-container *ngSwitchDefault></ng-container>
     </ng-container>

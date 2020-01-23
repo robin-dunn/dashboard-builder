@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './app-store/app.reducer';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MapWidgetComponent } from './map-widget/map-widget.component';
-import { ProjectManagerWidgetComponent } from './side-menu/side-menu.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogAddLayerComponent } from './side-menu/project-manager-home-panel/project-editor-panel/create-layer-panel/import-data-panel/dialog-add-layer/dialog-add-layer.component';
 import { MatDialogModule, MatButtonModule, MatExpansionModule } from '@angular/material';
@@ -34,7 +36,7 @@ import { DataManagerViewComponent } from './data-manager-view/data-manager-view.
     AppComponent,
     DashboardComponent,
     MapWidgetComponent,
-    ProjectManagerWidgetComponent,
+    SideMenuComponent,
     DialogAddLayerComponent,
     ProjectEditorPanelComponent,
     SliderViewComponent,
@@ -61,7 +63,10 @@ import { DataManagerViewComponent } from './data-manager-view/data-manager-view.
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    StoreModule.forRoot({
+      app: appReducer
+    })
   ],
   providers: [CentralStoreService],
   bootstrap: [AppComponent],

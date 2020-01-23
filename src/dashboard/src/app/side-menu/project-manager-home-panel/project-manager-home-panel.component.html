@@ -10,7 +10,7 @@
       [iconClass]="'icon-home-existinproject'"></app-home-menu-button>
   </app-slide-nav-button>
 
-  <app-slide-nav-button [targetSlideId]="'dataManager'" [direction]="'forward'">
+  <app-slide-nav-button [targetSlideId]="'dataManager'" [direction]="'forward'" (click)="clickManageData($event)">
     <app-home-menu-button [buttonText]="'Manage your data'" title="Manage your data"
       [iconClass]="'icon-home-datamanager'"></app-home-menu-button>
   </app-slide-nav-button>

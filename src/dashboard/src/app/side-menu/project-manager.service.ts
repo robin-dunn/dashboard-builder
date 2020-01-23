@@ -9,26 +9,11 @@ import { CentralStoreService } from '../services/central-store.service';
 })
 export class ProjectManagerService {
 
-  store: ProjectManagerStore;
-  storeSubject: Subject<ProjectManagerStore>;
+  store: ProjectManagerStore = new ProjectManagerStore();
 
   constructor(
-    private centralStoreService: CentralStoreService,
     private http: HttpClient) {
-
-    this.store = new ProjectManagerStore();
     //this.centralStoreService.registerStore(this.constructor.name, storeId, this.store);
-    this.storeSubject = new Subject<ProjectManagerStore>();
-  }
-
-  public subscribeToStore(selector: any) {
-    this.storeSubject.subscribe(selector);
-  }
-
-  public updateStore(mutation: any) {
-    mutation(this.store);
-    console.log(this.store);
-    this.storeSubject.next(this.store);
   }
 
   public createProject$(): Observable<HttpResponse<Object>> {
@@ -38,7 +23,7 @@ export class ProjectManagerService {
     this.http.post('/api/project', { test: "test" },  { observe: "response" })
       .subscribe(response => {
         if (response.ok) {
-          this.updateStore(store => store.project = response.body);
+          this.store.update(store => store.project = response.body);
         }
         httpResponseSubject.next(response);
       });
@@ -53,7 +38,7 @@ export class ProjectManagerService {
   public getLayers() {
     this.http.get("/api/layer")
       .subscribe(responseBody => {
-        this.updateStore(store => store.layers = responseBody as Object[]);
+        this.store.update(store => store.layers = responseBody as Object[]);
       });
   }
 
@@ -67,7 +52,7 @@ export class ProjectManagerService {
     this.http.post('/api/layer', formData,  {observe: 'response'})
       .subscribe(response => {
         if (response.ok) {
-          this.updateStore(store => store.layers = store.layers.concat([response.body as any]));
+          this.store.update(store => store.layers = store.layers.concat([response.body as any]));
         }
         httpResponseSubject.next(response);
       });

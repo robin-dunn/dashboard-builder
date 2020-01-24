@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { ProjectManagerStore } from "./projectManagerStore";
-import { CentralStoreService } from '../services/central-store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,6 @@ export class ProjectManagerService {
 
   constructor(
     private http: HttpClient) {
-    //this.centralStoreService.registerStore(this.constructor.name, storeId, this.store);
   }
 
   public createProject$(): Observable<HttpResponse<Object>> {

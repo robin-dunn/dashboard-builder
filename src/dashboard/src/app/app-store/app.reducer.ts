@@ -14,6 +14,11 @@ const initialState: AppState = {
 export function appReducer(state: AppState = initialState, action: AppActions.Actions) {
 
     switch(action.type) {
+        case AppActions.GET_PROJECTS:
+            console.log("get proj");
+            return { ...state,
+                loading: true,
+            };
         case AppActions.SAVE_PROJECT:
             return { ...state,
                 loading: true,

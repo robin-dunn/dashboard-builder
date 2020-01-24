@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { _AppStore } from './app-store/_appStore';
 
 @Injectable({
   providedIn: 'root'

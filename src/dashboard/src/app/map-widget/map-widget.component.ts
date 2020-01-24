@@ -21,8 +21,7 @@ export class MapWidgetComponent implements OnInit, AfterViewInit {
   private map: any;
   store: Subject<MapStore>;
 
-  constructor(private dashboardService: DashboardService,
-    private mapService: MapService) { }
+  constructor(private mapService: MapService) { }
 
   ngOnInit() {
     this.store = this.mapService.createStore();
@@ -54,6 +53,11 @@ export class MapWidgetComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.initMap();
+
+    // Force map re-render to ensure all map tiles rendered. 
+    setTimeout(() => {
+      this.map.invalidateSize();
+    }, 100);
   }
 
   private initMap(): void {

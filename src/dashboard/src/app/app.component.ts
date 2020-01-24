@@ -30,16 +30,6 @@ export class AppComponent implements OnInit {
         this.store.dispatch(new AppActions.ChangeView("Map"));
       }
     });
-
-    /*this.appService.store.subscribe((value:IAppStoreState) => {
-      this.currentView = value.currentView;
-      //if (value.currentSideMenu === "projectManagerHome") {
-      //  this.appService.store.update((state:IAppStoreState) => state.currentView = "Map");
-      //}
-    });
-
-    this.appService.store.update((state:IAppStoreState) => state.currentView = "Map");
-    */
   }
 
   ngOnInit(){

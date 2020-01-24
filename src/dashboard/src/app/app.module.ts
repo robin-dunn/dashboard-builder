@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { appReducer } from './app-store/app.reducer';
+import { reducer } from './main.reducer';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -30,6 +30,8 @@ import { DataManagerPanelComponent } from './side-menu/project-manager-home-pane
 import { SideMenuSectionComponent } from './side-menu/side-menu-section/side-menu-section.component';
 import { ProceedInnerButtonComponent } from './side-menu/side-menu-section/proceed-inner-button/proceed-inner-button.component';
 import { DataManagerViewComponent } from './data-manager-view/data-manager-view.component';
+import { EffectsModule } from '@ngrx/effects';
+import { effects } from './effects';
 
 @NgModule({
   declarations: [
@@ -65,8 +67,9 @@ import { DataManagerViewComponent } from './data-manager-view/data-manager-view.
     MatDialogModule,
     MatExpansionModule,
     StoreModule.forRoot({
-      app: appReducer
-    })
+      app: reducer
+    }),
+    EffectsModule.forRoot(effects)
   ],
   providers: [CentralStoreService],
   bootstrap: [AppComponent],

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../models/appState';
-import * as AppActions from "../../../app-store/app.actions";
+import { MainState } from '../../../main.reducer';
+import * as MainActions from "../../../main.actions";
 import { ProjectManagerService } from '../../project-manager.service';
 
 @Component({
@@ -18,13 +18,13 @@ export class ProjectListPanelComponent implements OnInit {
   ];
 
   constructor(private projectManagerService: ProjectManagerService,
-  private store: Store<AppState>){
+  private store: Store<MainState>){
   }
 
   ngOnInit() {
     // TODO: subscribe to projects
-    this.store.select("app").subscribe(state => console.log(state));
-    this.store.dispatch(new AppActions.GetProjects());
+    this.store.select(state => state.projects).subscribe(state => console.log(state));
+    this.store.dispatch(new MainActions.GetProjects());
   }
 
   public clickProject(projectId: number) {

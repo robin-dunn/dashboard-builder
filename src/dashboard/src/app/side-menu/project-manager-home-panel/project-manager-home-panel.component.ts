@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectManagerService } from '../project-manager.service';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/models/appState';
-import * as AppActions from "../../app-store/app.actions";
+import * as MainActions from "../../main.actions";
+import { MainState } from 'src/app/main.reducer';
 
 @Component({
   selector: 'app-project-manager-home-panel',
@@ -13,7 +13,7 @@ export class ProjectManagerHomePanelComponent implements OnInit {
 
   constructor(
     private projectManagerService: ProjectManagerService,
-    private store: Store<AppState>) {}
+    private store: Store<MainState>) {}
 
   ngOnInit() {
   }
@@ -27,6 +27,6 @@ export class ProjectManagerHomePanelComponent implements OnInit {
   }
 
   public clickManageData(event) {
-    this.store.dispatch(new AppActions.ChangeView("DataManager"));
+    this.store.dispatch(new MainActions.ChangeView("DataManager"));
   }
 }

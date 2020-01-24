@@ -7,8 +7,8 @@ import { Subject } from 'rxjs';
 import { SliderViewComponent } from '../slider-view/slider-view.component';
 import { ProjectManagerService } from './project-manager.service';
 import { IProjectManagerStoreState } from './IProjectManagerStoreState';
-import { AppState } from '../models/appState';
-import * as AppActions from "../app-store/app.actions";
+import * as MainActions from "../main.actions";
+import { MainState } from '../main.reducer';
 
 @Component({
   selector: 'app-side-menu',
@@ -32,7 +32,7 @@ export class SideMenuComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private projectManagerService: ProjectManagerService,
-    private store: Store<AppState>) {}
+    private store: Store<MainState>) {}
 
   public widthSubject = new Subject<number>();
   public navigationDepth = 0;
@@ -54,7 +54,7 @@ export class SideMenuComponent implements OnInit {
   }
 
   slideChange(eventData: ISliderNavigationEvent) {
-    this.store.dispatch(new AppActions.SideMenuChanged(eventData.targetSlideId));
+    this.store.dispatch(new MainActions.SideMenuChanged(eventData.targetSlideId));
     this.menuTitle = eventData.targetSlideTitle;
     this.navigationDepth += eventData.direction == "forward" ? 1 : -1;
   }

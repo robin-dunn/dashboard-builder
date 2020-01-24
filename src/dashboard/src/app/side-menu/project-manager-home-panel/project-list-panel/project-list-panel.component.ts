@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { MainState } from '../../../main.reducer';
 import * as MainActions from "../../../main.actions";
-import { ProjectManagerService } from '../../project-manager.service';
 import { Project } from 'src/app/models/project';
 import { AppState } from 'src/app/reducers';
 
@@ -15,12 +13,12 @@ export class ProjectListPanelComponent implements OnInit {
 
   public projects: Project[];
 
-  constructor(private projectManagerService: ProjectManagerService,
-  private store: Store<AppState>){
+  constructor(private store: Store<AppState>){
   }
 
   ngOnInit() {
     this.store.select(state => state).subscribe(state => {
+      console.log(state);
       if (state.main && state.main.projects && state.main.projects.length > 0){
         this.projects = state.main.projects;
       }
@@ -30,6 +28,7 @@ export class ProjectListPanelComponent implements OnInit {
   }
 
   public clickProject(projectId: number) {
-    this.projectManagerService.openProject(projectId);
+    let project = this.projects.find(p => p.id === projectId);
+    this.store.dispatch(new MainActions.OpenProject(project));
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectManagerService } from '../../project-manager.service';
-import { IProjectManagerStoreState } from '../../IProjectManagerStoreState';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import * as MainActions from "../../../main.actions";
 
 @Component({
   selector: "app-project-editor-panel",
@@ -9,20 +10,20 @@ import { IProjectManagerStoreState } from '../../IProjectManagerStoreState';
 })
 export class ProjectEditorPanelComponent implements OnInit {
 
-  constructor(private projectManagerService: ProjectManagerService) { }
+  constructor(private store: Store<AppState>) { }
 
   projectTitle = "";
   layers: string[] = [];
 
   ngOnInit() {
-    this.projectManagerService.store.subscribe((store:IProjectManagerStoreState) => {
-      this.projectTitle = store.project ? store.project.name : "";
-      this.layers = store.layers ? store.layers.map(l => l.name) : [];
+    this.store.subscribe(state => {
+      this.projectTitle = state.main.currentProject ? state.main.currentProject.name : "";
+      //this.layers = state.main.layers ? store.layers.map(l => l.name) : [];
     })
   }
 
   changeProjectTitle(eventData) {
-    //this.projectManagerService.store.update(store => store.project.name = eventData);
+    this.store.dispatch(new MainActions.UpdateProject(p => { p.name = eventData; return p; }));
   }
 
 }

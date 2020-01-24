@@ -7,6 +7,9 @@ export const CHANGE_VIEW = "[UI] Change View";
 export const GET_PROJECTS = '[App] Get Projects';
 export const GET_PROJECTS_SUCCESS = '[App] Get Projects Success';
 export const GET_PROJECTS_FAILURE = '[App] Get Projects Failure';
+
+export const OPEN_PROJECT = '[App] Open Project';
+export const UPDATE_PROJECT = '[App] Update Project';
 export const SAVE_PROJECT = '[App] Save Project';
 export const SAVE_PROJECT_SUCCESS = '[App] Save Project Success';
 
@@ -35,6 +38,16 @@ export class GetProjectsFailure implements Action {
     constructor(public payload: any) {}
 }
 
+export class OpenProject implements Action {
+    readonly type = OPEN_PROJECT;
+    constructor(public payload: Project) {}
+}
+
+export class UpdateProject implements Action {
+    readonly type = UPDATE_PROJECT;
+    constructor(public payload:  (project: Project) => Project) {}
+}
+
 export class SaveProject implements Action {
     readonly type = SAVE_PROJECT;
     constructor(public payload: Project) {}
@@ -50,5 +63,7 @@ export type Actions =
 | ChangeView
 | GetProjects
 | GetProjectsSuccess
+| OpenProject
+| UpdateProject
 | SaveProject
 | SaveProjectSuccess;

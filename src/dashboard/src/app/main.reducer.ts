@@ -6,17 +6,20 @@ export class MainState {
     currentSideMenu: string;
     currentView: string;
     projects: Project[];
-    project: Project;
+    currentProjectId: string;
+    currentProject: Project;
 }
 
 const initialState: MainState = {
     loading: false,
-    currentSideMenu: "",
+    currentSideMenu: null,
     currentView: "Map",
     projects: [],
-    project: {
-        id: 0,
-        name: "New Project"
+    currentProjectId: null,
+    currentProject: {
+        id: -1,
+        name: "",
+        saved: false
     }
 }
 
@@ -31,6 +34,17 @@ export function reducer(state: MainState = initialState, action: MainActions.Act
             return { ...state,
                 loading: false,
                 projects: action.payload
+            };
+        case MainActions.OPEN_PROJECT:
+            return { ...state,
+                loading: true,
+                currentProjectId: action.payload.id,
+                currentProject: { ...action.payload }
+            };
+        case MainActions.UPDATE_PROJECT:
+            return { ...state,
+                loading: true,
+                currentProject: action.payload(state.currentProject)
             };
         case MainActions.SAVE_PROJECT:
             return { ...state,

@@ -8,11 +8,11 @@ import { environment } from "../environments/environment";
 import * as fromMain from "./main.reducer";
 
 export interface AppState {
-  mainState: fromMain.MainState;
+  main: fromMain.MainState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  mainState: fromMain.reducer
+  main: fromMain.reducer
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production

@@ -19,6 +19,7 @@ class ProjectController implements IControllerBase {
 
     getProjects = async (req: Request, res: Response) => {
         let projects = await Project.findAll();
+        console.log(projects);
         res.json(projects);
     }
 

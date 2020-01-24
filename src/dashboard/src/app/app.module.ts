@@ -32,6 +32,7 @@ import { ProceedInnerButtonComponent } from './side-menu/side-menu-section/proce
 import { DataManagerViewComponent } from './data-manager-view/data-manager-view.component';
 import { EffectsModule } from '@ngrx/effects';
 import { effects } from './effects';
+import { reducers } from './reducers';
 
 @NgModule({
   declarations: [
@@ -66,9 +67,7 @@ import { effects } from './effects';
     MatButtonModule,
     MatDialogModule,
     MatExpansionModule,
-    StoreModule.forRoot({
-      app: reducer
-    }),
+    StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects)
   ],
   providers: [CentralStoreService],

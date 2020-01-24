@@ -15,8 +15,8 @@ const initialState: MainState = {
     currentView: "Map",
     projects: [],
     project: {
-        name: "New Project",
-        dateLastSaved: null
+        id: 0,
+        name: "New Project"
     }
 }
 
@@ -26,6 +26,11 @@ export function reducer(state: MainState = initialState, action: MainActions.Act
         case MainActions.GET_PROJECTS:
             return { ...state,
                 loading: true,
+            };
+        case MainActions.GET_PROJECTS_SUCCESS:
+            return { ...state,
+                loading: false,
+                projects: action.payload
             };
         case MainActions.SAVE_PROJECT:
             return { ...state,

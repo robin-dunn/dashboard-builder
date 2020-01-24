@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { MainState } from './main.reducer';
 import * as AppActions from "./main.actions";
 import { Observable } from 'rxjs';
+import { AppState } from './reducers';
 
 @Component({
   selector: 'app-root',
@@ -15,18 +16,12 @@ export class AppComponent implements OnInit {
 
   public currentView:string = "";
 
-  public MainState$: Observable<MainState>;
+  constructor(private store: Store<AppState>){
 
-  constructor(private store: Store<MainState>){
+    this.store.subscribe((state:AppState) => {
+      this.currentView = state.main.currentView;
 
-    this.MainState$ = store.select('app');
-
-    this.MainState$.subscribe((MainState:MainState) => {
-      console.log("APP STATE CHANGED", MainState);
-      this.currentView = MainState.currentView;
-
-      // Should this be an EFFECT?
-      if (MainState.currentSideMenu === "projectManagerHome" && MainState.currentView !== "Map") {
+      if (state.main.currentSideMenu === "projectManagerHome" && state.main.currentView !== "Map") {
         this.store.dispatch(new AppActions.ChangeView("Map"));
       }
     });

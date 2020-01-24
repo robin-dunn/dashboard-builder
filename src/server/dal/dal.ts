@@ -51,6 +51,9 @@ export class DAL {
       name: {
         type: new DataTypes.STRING(128),
         allowNull: false,
+      },
+      saved: {
+        type: DataTypes.BOOLEAN
       }
     }, {
       sequelize: this.sequelize,
@@ -65,7 +68,12 @@ export class DAL {
     let layers = await Layer.findAll();
     layers.map(layer => this.sequelize.query(`DROP TABLE Layer_${layer.id};`));
 
-    this.sequelize.sync({ force: true });
+    await this.sequelize.sync({ force: true });
+
+    console.log("SEED TEST DATA");
+    await Project.create({ name: "Test Proj 1", saved: true });
+    await Project.create({ name: "Test Proj 2", saved: true });
+    await Project.create({ name: "Test Proj 3", saved: true });
   }
 
   public static async createLayer(name:string, columnNames: string[]) : Promise<Layer> {

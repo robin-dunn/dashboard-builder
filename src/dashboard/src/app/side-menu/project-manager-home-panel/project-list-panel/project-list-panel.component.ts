@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { MainState } from '../../../main.reducer';
 import * as MainActions from "../../../main.actions";
 import { ProjectManagerService } from '../../project-manager.service';
+import { Project } from 'src/app/models/project';
+import { AppState } from 'src/app/reducers';
 
 @Component({
   selector: 'app-project-list-panel',
@@ -11,19 +13,19 @@ import { ProjectManagerService } from '../../project-manager.service';
 })
 export class ProjectListPanelComponent implements OnInit {
 
-  // TODO: get projects from server
-  public projects: any[] = [
-    {id:1, name:"P1"},
-    {id: 2, name:"P2"}
-  ];
+  public projects: Project[];
 
   constructor(private projectManagerService: ProjectManagerService,
-  private store: Store<MainState>){
+  private store: Store<AppState>){
   }
 
   ngOnInit() {
-    // TODO: subscribe to projects
-    this.store.select(state => state.projects).subscribe(state => console.log(state));
+    this.store.select(state => state).subscribe(state => {
+      if (state.main && state.main.projects && state.main.projects.length > 0){
+        this.projects = state.main.projects;
+      }
+    });
+
     this.store.dispatch(new MainActions.GetProjects());
   }
 

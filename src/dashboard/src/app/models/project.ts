@@ -1,5 +1,6 @@
 
 export class Project {
+    id: number;
     name: string;
-    dateLastSaved: Date;
+    saved: boolean;
 }

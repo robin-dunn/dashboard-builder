@@ -18,6 +18,7 @@ class LayerController implements IControllerBase {
         this.router.get("/", this.getLayers);
         this.router.get("/geojson/:layerId", this.getLayerGeoJson);
         this.router.post("/", this.postUpload);
+        this.router.post("/pin", this.postPin);
     }
 
     getLayers = async (req: Request, res: Response) => {
@@ -50,6 +51,10 @@ class LayerController implements IControllerBase {
         });
 
         form.parse(req);
+    }
+
+    postPin = async (req: Request, res: Response) => {
+        res.status(201).json({ lat: 1, lng: 2 });
     }
 };
 

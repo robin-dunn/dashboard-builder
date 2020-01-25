@@ -16,6 +16,6 @@ export class ApiService {
   }
 
   public addMapPin(pin: MapPin): Observable<MapPin> {
-    return this.http.post<MapPin>("/api/point", pin);
+    return this.http.post<MapPin>("/api/layer/pin", pin);
   }
 }

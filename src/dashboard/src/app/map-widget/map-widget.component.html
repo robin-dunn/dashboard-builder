@@ -2,7 +2,9 @@
 <div class="mapOuterContainer">
   <div class="map-container">
     <div class="map-frame">
-      <div class="leaflet-map" #mapRef></div>
+      <div class="leaflet-map" #mapRef [style.cursor]="cursor"
+        (click)="onMapClick($event)"
+      ></div>
     </div>
   </div>
 </div>

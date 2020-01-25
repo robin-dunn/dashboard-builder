@@ -140,7 +140,6 @@ export class SliderViewComponent implements OnInit, AfterViewInit {
   }
 
   public navigate(direction: string, targetSlideId?: string) {
-    console.log("NAV", arguments);
     if (direction === "forward") {
       if (!targetSlideId) {
         throw new Error("targetSlideId invalid");

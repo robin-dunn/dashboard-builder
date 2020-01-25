@@ -12,15 +12,24 @@ export class MainEffects {
   constructor(private actions: Actions, private apiService: ApiService) {}
 
   @Effect()
-  loadData = this.actions.pipe(
+  getProjects = this.actions.pipe(
     ofType(MainActions.GET_PROJECTS),
-    switchMap(() => {
-        console.log("EFFECT");
+    switchMap((action) => {
       return this.apiService.getProjects().pipe(
         map((data:Project[]) => new MainActions.GetProjectsSuccess(data)),
         catchError(error =>
           of(new MainActions.GetProjectsFailure({ error: error }))
         )
+      );
+    })
+  );
+
+  @Effect()
+  addMapPin = this.actions.pipe(
+    ofType<MainActions.AddMapPin>(MainActions.ADD_MAP_PIN),
+    switchMap((action) => {
+      return this.apiService.addMapPin(action.payload).pipe(
+        map((mapPin) => new MainActions.AddMapPinSuccess(mapPin))
       );
     })
   );

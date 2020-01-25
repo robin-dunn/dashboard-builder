@@ -6,10 +6,10 @@ export class MainState {
     currentSideMenu: string;
     currentView: string;
     projects: Project[];
-    currentProjectId: string;
+    currentProjectId: number;
     currentProject: Project;
     tool: string;
-    editMode: Tool;
+    editMode: string;
 }
 
 const initialState: MainState = {
@@ -17,7 +17,7 @@ const initialState: MainState = {
     currentSideMenu: null,
     currentView: "Map",
     projects: [],
-    currentProjectId: null,
+    currentProjectId: -1,
     currentProject: {
         id: -1,
         name: "",
@@ -66,6 +66,11 @@ export function reducer(state: MainState = initialState, action: MainActions.Act
             return { ...state,
                 editMode: action.payload
             };
+        case MainActions.ADD_MAP_PIN:
+            return { ...state };
+        case MainActions.ADD_MAP_PIN_SUCCESS:
+            console.log("SUCCESS", action.payload);
+            return { ...state };
         case MainActions.SIDE_MENU_CHANGED:
             return { ...state,
                 currentSideMenu: action.payload

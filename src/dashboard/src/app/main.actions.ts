@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Project } from "./models/project";
+import { MapPin } from './models/mapPin';
 
 export const SIDE_MENU_CHANGED = '[App] Side Menu Changed';
 export const CHANGE_VIEW = "[App] Change View";
@@ -15,6 +16,8 @@ export const SAVE_PROJECT_SUCCESS = '[App] Save Project Success';
 
 export const SELECT_TOOL = '[App] Select Tool';
 export const SELECT_EDIT_MODE = '[App] Select Edit Mode';
+export const ADD_MAP_PIN = '[App] Add Map Pin';
+export const ADD_MAP_PIN_SUCCESS = '[App] Add Map Pin Success';
 
 export class SideMenuChanged implements Action {
     readonly type = SIDE_MENU_CHANGED;
@@ -71,6 +74,16 @@ export class SelectEditMode implements Action {
     constructor(public payload: string) {}
 }
 
+export class AddMapPin implements Action {
+    readonly type = ADD_MAP_PIN;
+    constructor(public payload: MapPin) {}
+}
+
+export class AddMapPinSuccess implements Action {
+    readonly type = ADD_MAP_PIN_SUCCESS;
+    constructor(public payload: MapPin) {}
+}
+
 export type Actions =
 | SideMenuChanged
 | ChangeView
@@ -81,4 +94,7 @@ export type Actions =
 | SaveProject
 | SaveProjectSuccess
 | SelectTool
-| SelectEditMode;
+| SelectEditMode
+| AddMapPin
+| AddMapPinSuccess
+;

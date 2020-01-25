@@ -1,10 +1,14 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input } from '@angular/core';
 import * as L from 'leaflet';
 import { IWidgetConfig } from '../../../../models/widgetConfig';
-import { DashboardService } from '../services/dashboard.service';
 import { MapService } from './map.service';
 import { MapStore } from './mapStore';
 import { Subject } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as MainActions from "../main.actions";
+import { AppState } from '../reducers';
+import { MainState } from '../main.reducer';
+import { MapPin } from '../models/mapPin';
 
 @Component({
   selector: 'app-map-widget',
@@ -18,15 +22,22 @@ export class MapWidgetComponent implements OnInit, AfterViewInit {
 
   @ViewChild('mapRef') mapRef: ElementRef
 
-  private map: any;
-  store: Subject<MapStore>;
+  public cursor: string = "default";
 
-  constructor(private mapService: MapService) { }
+  private map: any;
+  private tool: string;
+
+  constructor(private store:Store<AppState>, private mapService: MapService) {
+    this.store.subscribe(state => {
+      this.tool = state.main.tool;
+      this.cursor = this.tool === "manualPins" ? "crosshair" : "default";
+    });
+  }
 
   ngOnInit() {
-    this.store = this.mapService.createStore();
+    //this.store = this.mapService.createStore();
     if (!this.widgetConfig) { return; }
-    for (const widgetId of this.widgetConfig.subjectWidgets) {
+   /* for (const widgetId of this.widgetConfig.subjectWidgets) {
       this.store.subscribe(layersMetadata => {
           // Get layer GeoJson for current map window bounds
           if (layersMetadata.layers && layersMetadata.layers.length > 0) {
@@ -47,6 +58,7 @@ export class MapWidgetComponent implements OnInit, AfterViewInit {
           }
         });
     }
+        */
 
     // Draw the layers on the map
   }
@@ -62,7 +74,9 @@ export class MapWidgetComponent implements OnInit, AfterViewInit {
 
   private initMap(): void {
 
-    this.map = L.map(this.mapRef.nativeElement, {
+    const me = this;
+
+    me.map = L.map(this.mapRef.nativeElement, {
       center: [ 39.8282, -98.5795 ],
       zoom: 3
     });
@@ -72,6 +86,22 @@ export class MapWidgetComponent implements OnInit, AfterViewInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
-    tiles.addTo(this.map);
+    tiles.addTo(me.map);
+
+    me.map.on('click', function(e) {
+      if (me.tool === "manualPins") {
+        me.store.dispatch(new MainActions.AddMapPin({ lat: e.latlng.lat, lng: e.latlng.lng }))
+        L.circle([e.latlng.lat, e.latlng.lng], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(me.map);
+      }
+    });
+  }
+
+  private onMapClick(event) {
+    console.log(event);
   }
 }

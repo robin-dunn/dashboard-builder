@@ -10,7 +10,7 @@
     </p>
 
     <app-slide-nav-button [targetSlideId]="'manualPinLayer'" [direction]="'forward'">
-        <app-proceed-inner-button [title]="'Manually Place Pins'" [iconClass]="'fas fa-map-marker-alt'">
+        <app-proceed-inner-button [title]="'Manually Place Pins'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualPinsTool($event)">
         </app-proceed-inner-button>
     </app-slide-nav-button>
 

@@ -8,6 +8,8 @@ export class MainState {
     projects: Project[];
     currentProjectId: string;
     currentProject: Project;
+    tool: string;
+    editMode: Tool;
 }
 
 const initialState: MainState = {
@@ -20,7 +22,9 @@ const initialState: MainState = {
         id: -1,
         name: "",
         saved: false
-    }
+    },
+    tool: null,
+    editMode: null
 }
 
 export function reducer(state: MainState = initialState, action: MainActions.Actions) {
@@ -49,6 +53,18 @@ export function reducer(state: MainState = initialState, action: MainActions.Act
         case MainActions.SAVE_PROJECT:
             return { ...state,
                 loading: true,
+            };
+        case MainActions.SAVE_PROJECT_SUCCESS:
+            return { ...state,
+                loading: false,
+            };
+        case MainActions.SELECT_TOOL:
+            return { ...state,
+                tool: action.payload
+            };
+        case MainActions.SELECT_EDIT_MODE:
+            return { ...state,
+                editMode: action.payload
             };
         case MainActions.SIDE_MENU_CHANGED:
             return { ...state,

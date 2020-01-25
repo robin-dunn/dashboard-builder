@@ -4,9 +4,11 @@
     <input type="button" id="btnLocPin" title="Locate Map Pin on Map" value="Locate" onclick="btnLocatePinClick();" class="button singleMapShape">
 </div>
 <div>
-    <input id="rdoEditTypeAllPins" title="Edit Layer" name="rdoEditType" type="radio" [(ngModel)]="radioEditType" checked="checked">All
+    <input id="rdoEditTypeAllPins" title="Edit Layer" name="rdoEditType" value="editAll" type="radio" [(ngModel)]="radioEditType" (change)="onItemChange($event)">All
 </div>
 <div class="mv10">
-    <input id="rdoEditTypePin" title="Select a Single Map Pin" name="rdoEditType" type="radio" [(ngModel)]="radioEditType"><span id="spnPinEdit">Add: Click Map</span>
-    <input id="txtEditPin" title="Choose a Map Pin to Edit" type="text" class="field droparrow hide" style="width: 12em;" autocomplete="off"><ul class="jsonSuggest ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" style="top: 92.5625px; left: 63.9px; width: 130px; z-index: 999; display: none;"></ul>
+    <input id="rdoEditTypePin" title="Select a Single Map Pin" name="rdoEditType" value="editSingle" type="radio" [(ngModel)]="radioEditType" (change)="onItemChange($event)">
+    <span id="spnPinEdit">Add: Click Map</span>
+    <input id="txtEditPin" title="Choose a Map Pin to Edit" type="text" class="field droparrow hide" style="width: 12em;" autocomplete="off">
+    <ul class="jsonSuggest ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" style="top: 92.5625px; left: 63.9px; width: 130px; z-index: 999; display: none;"></ul>
 </div>

@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 import { Project } from "./models/project";
 
-export const SIDE_MENU_CHANGED = '[UI] Side Menu Changed';
-export const CHANGE_VIEW = "[UI] Change View";
+export const SIDE_MENU_CHANGED = '[App] Side Menu Changed';
+export const CHANGE_VIEW = "[App] Change View";
 
 export const GET_PROJECTS = '[App] Get Projects';
 export const GET_PROJECTS_SUCCESS = '[App] Get Projects Success';
@@ -12,6 +12,9 @@ export const OPEN_PROJECT = '[App] Open Project';
 export const UPDATE_PROJECT = '[App] Update Project';
 export const SAVE_PROJECT = '[App] Save Project';
 export const SAVE_PROJECT_SUCCESS = '[App] Save Project Success';
+
+export const SELECT_TOOL = '[App] Select Tool';
+export const SELECT_EDIT_MODE = '[App] Select Edit Mode';
 
 export class SideMenuChanged implements Action {
     readonly type = SIDE_MENU_CHANGED;
@@ -58,6 +61,16 @@ export class SaveProjectSuccess implements Action {
     constructor(public payload: Project) {}
 }
 
+export class SelectTool implements Action {
+    readonly type = SELECT_TOOL;
+    constructor(public payload: string) {}
+}
+
+export class SelectEditMode implements Action {
+    readonly type = SELECT_EDIT_MODE;
+    constructor(public payload: string) {}
+}
+
 export type Actions =
 | SideMenuChanged
 | ChangeView
@@ -66,4 +79,6 @@ export type Actions =
 | OpenProject
 | UpdateProject
 | SaveProject
-| SaveProjectSuccess;
+| SaveProjectSuccess
+| SelectTool
+| SelectEditMode;

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import * as MainActions from "../../../../main.actions";
 
 @Component({
   selector: 'app-create-layer-panel',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateLayerPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store:Store<AppState>) {
+  }
 
   ngOnInit() {
   }
 
+  clickManualPinsTool(event) {
+    this.store.dispatch(new MainActions.SelectTool("manualPins"));
+  }
 }

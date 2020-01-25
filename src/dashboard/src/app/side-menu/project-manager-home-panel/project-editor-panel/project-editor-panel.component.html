@@ -10,7 +10,7 @@
 
 <app-side-menu-section [title]="'Add Data'" [expandable]="true">
 
-  <app-slide-nav-button [targetSlideId]="'createLayer'" [direction]="'forward'">
+  <app-slide-nav-button [targetSlideId]="'createLayer'" [direction]="'forward'" (click)="clickCreateLayer($event)">
     <app-project-manager-menu-item [title]="'Create New Layer'" [iconClass]="'far fa-plus-square'">
     </app-project-manager-menu-item>
   </app-slide-nav-button>

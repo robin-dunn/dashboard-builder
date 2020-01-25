@@ -26,4 +26,9 @@ export class ProjectEditorPanelComponent implements OnInit {
     this.store.dispatch(new MainActions.UpdateProject(p => { p.name = eventData; return p; }));
   }
 
+  clickCreateLayer(event) {
+    // TODO: dispatch action to create layer
+    // this.store.dispatch(MainActions.CreateLayer());
+  }
+
 }

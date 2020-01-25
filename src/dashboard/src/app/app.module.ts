@@ -33,6 +33,9 @@ import { DataManagerViewComponent } from './data-manager-view/data-manager-view.
 import { EffectsModule } from '@ngrx/effects';
 import { effects } from './effects';
 import { reducers } from './reducers';
+import { ManualPinLayerComponent } from './side-menu/project-manager-home-panel/project-editor-panel/create-layer-panel/manual-pin-layer/manual-pin-layer.component';
+import { SelectFeatureComponent } from './side-menu/project-manager-home-panel/project-editor-panel/create-layer-panel/manual-pin-layer/select-feature/select-feature.component';
+import { DesignAndBuildComponent } from './side-menu/project-manager-home-panel/project-editor-panel/create-layer-panel/manual-pin-layer/design-and-build/design-and-build.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,10 @@ import { reducers } from './reducers';
     DataManagerPanelComponent,
     SideMenuSectionComponent,
     ProceedInnerButtonComponent,
-    DataManagerViewComponent
+    DataManagerViewComponent,
+    ManualPinLayerComponent,
+    SelectFeatureComponent,
+    DesignAndBuildComponent
   ],
   imports: [
     BrowserModule,

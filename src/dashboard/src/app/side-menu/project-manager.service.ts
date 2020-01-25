@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { ProjectManagerStore } from "./projectManagerStore";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectManagerService {
-
-  store: ProjectManagerStore = new ProjectManagerStore();
 
   constructor(
     private http: HttpClient) {
@@ -21,7 +18,7 @@ export class ProjectManagerService {
     this.http.post('/api/project', { test: "test" },  { observe: "response" })
       .subscribe(response => {
         if (response.ok) {
-          this.store.update(store => store.project = response.body);
+          //this.store.update(store => store.project = response.body);
         }
         httpResponseSubject.next(response);
       });
@@ -36,7 +33,7 @@ export class ProjectManagerService {
   public getLayers() {
     this.http.get("/api/layer")
       .subscribe(responseBody => {
-        this.store.update(store => store.layers = responseBody as Object[]);
+        //this.store.update(store => store.layers = responseBody as Object[]);
       });
   }
 
@@ -50,7 +47,7 @@ export class ProjectManagerService {
     this.http.post('/api/layer', formData,  {observe: 'response'})
       .subscribe(response => {
         if (response.ok) {
-          this.store.update(store => store.layers = store.layers.concat([response.body as any]));
+          //this.store.update(store => store.layers = store.layers.concat([response.body as any]));
         }
         httpResponseSubject.next(response);
       });

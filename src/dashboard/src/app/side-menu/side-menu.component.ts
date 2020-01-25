@@ -5,16 +5,13 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { DialogAddLayerComponent } from './project-manager-home-panel/project-editor-panel/create-layer-panel/import-data-panel/dialog-add-layer/dialog-add-layer.component';
 import { Subject } from 'rxjs';
 import { SliderViewComponent } from '../slider-view/slider-view.component';
-import { ProjectManagerService } from './project-manager.service';
-import { IProjectManagerStoreState } from './IProjectManagerStoreState';
 import * as MainActions from "../main.actions";
-import { MainState } from '../main.reducer';
+import { AppState } from '../reducers';
 
 @Component({
   selector: 'app-side-menu',
   templateUrl: './side-menu.component.html',
-  styleUrls: ['./side-menu.component.css'],
-  providers: [ProjectManagerService]
+  styleUrls: ['./side-menu.component.css']
 })
 export class SideMenuComponent implements OnInit {
 
@@ -31,16 +28,15 @@ export class SideMenuComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private projectManagerService: ProjectManagerService,
-    private store: Store<MainState>) {}
+    private store: Store<AppState>) {}
 
   public widthSubject = new Subject<number>();
   public navigationDepth = 0;
 
   ngOnInit() {
-    this.projectManagerService.store.subscribe((storeState:IProjectManagerStoreState) => {
-      this.project = storeState.project;
-      this.layers = storeState.layers.map(layer => layer.name);
+    this.store.subscribe((state:AppState) => {
+      this.project = state.main.currentProject;
+      //this.layers = state.main.currentProject.layers.map(layer => layer.name);
     });
     this.getLayers();
   }
@@ -74,6 +70,6 @@ export class SideMenuComponent implements OnInit {
   }
 
   private getLayers() {
-    this.projectManagerService.getLayers();
+    //this.projectManagerService.getLayers();
   }
 }

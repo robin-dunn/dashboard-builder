@@ -1,0 +1,27 @@
+<app-side-menu-section [title]="'Select'" [expandable]="true" [expanded]="true">
+  <app-select-feature></app-select-feature>
+</app-side-menu-section>
+
+<app-side-menu-section [title]="'Pin Name'" [expandable]="true">
+  <p>
+      <label>Name:</label>
+      <input id="txtPinName" tabindex="1" accesskey="n" type="text" class="field txt-EnterName"
+        value="Enter Name" [ngModel]="pinName" (ngModelChange)="changePinName($event)"
+        title="Type the name that you want to use to identify this item">
+  </p>
+</app-side-menu-section>
+
+<app-side-menu-section [title]="'Design & Build'" [expandable]="true">
+  <app-design-and-build></app-design-and-build>
+</app-side-menu-section>
+
+<app-side-menu-section [title]="'Attachable Content'" [expandable]="true">
+</app-side-menu-section>
+
+<app-side-menu-section [title]="'Data'" [expandable]="true">
+  <app-side-menu-section [title]="'Columns'" [expandable]="true">
+  </app-side-menu-section>
+</app-side-menu-section>
+
+<app-side-menu-section [title]="'Chart'" [expandable]="true">
+</app-side-menu-section>

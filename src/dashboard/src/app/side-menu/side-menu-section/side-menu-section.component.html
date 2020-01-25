@@ -5,7 +5,7 @@
 </div>
 
 <ng-template #expandableView>
-  <mat-expansion-panel>
+  <mat-expansion-panel [expanded]="expanded">
     <mat-expansion-panel-header class="section-header" [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
       <mat-panel-title class="section-header-title">
         <h3 >{{title}}</h3>

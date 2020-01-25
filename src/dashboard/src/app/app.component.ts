@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { MainState } from './main.reducer';
 import * as AppActions from "./main.actions";
-import { Observable } from 'rxjs';
 import { AppState } from './reducers';
 
 @Component({

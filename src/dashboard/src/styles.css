@@ -6,7 +6,7 @@
     font-size: 100%;
 }
 
-html, body { 
+html, body {
     height: 100%; overflow: hidden;
 }
 
@@ -59,12 +59,51 @@ input[type="text"] {
   flex: 1;
 }
 
+.button {
+    border: 2px solid #000;
+    background-color: #000;
+    color: #fff;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 100%;
+    overflow: visible;
+    width: auto;
+    padding: .33em 0.85em;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+}
+
 .projectManagerWidget .slider {
     font-size: 1.2em;
 }
 
+.side-menu-section {
+    width: 100%;
+}
+
 .side-menu-section .last-item {
     border-bottom: 1px solid #000;
+}
+
+.side-menu-section .side-menu-section {
+    border: 1px solid #555;
+}
+
+.side-menu-section .side-menu-section:hover {
+    background-color: #aaa;
+}
+
+.side-menu-section .side-menu-section .section-header {
+    color: #000;
+    background-color: #fff;
+    border: none;
+}
+
+.side-menu-section .side-menu-section .section-header:hover {
+  background-color: #aaa;
 }
 
 .mat-accordion .side-menu-section .mat-expansion-panel.mat-expansion-panel-spacing {
@@ -91,6 +130,10 @@ input[type="text"] {
     background-color: rgb(85, 85, 85);
 }
 
+.mat-expansion-panel-header.mat-expanded {
+    border-bottom: none;
+}
+
 app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disabled=true]):hover  {
     background-color: #aaa !important;
 }
@@ -102,7 +145,6 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
 .mat-expansion-panel-header .mat-content {
     display: block;
 }
-
 
 .mat-expansion-panel-header-description {
     display: block;
@@ -116,7 +158,7 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
 
 .mat-expansion-panel-content .mat-expansion-panel-body {
     background-color: #fff;
-    padding: 0.2em 1.4em 0.2em 1.4em;
+    padding: 0 1.4em 0.2em 1.4em;
 }
 
 .mat-expansion-panel-body .slideNavButton p {

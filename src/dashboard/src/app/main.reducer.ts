@@ -1,5 +1,6 @@
 import * as MainActions from "./main.actions";
 import { Project } from "./models/project";
+import { Layer } from "./models/layer";
 
 export class MainState {
     loading: boolean;
@@ -8,6 +9,7 @@ export class MainState {
     projects: Project[];
     currentProjectId: number;
     currentProject: Project;
+    projectLayers: Layer[];
     tool: string;
     editMode: string;
 }
@@ -23,6 +25,7 @@ const initialState: MainState = {
         name: "",
         saved: false
     },
+    projectLayers: [],
     tool: null,
     editMode: null
 }
@@ -58,6 +61,15 @@ export function reducer(state: MainState = initialState, action: MainActions.Act
             return { ...state,
                 loading: false,
             };
+        case MainActions.CREATE_LAYER:
+            return { ...state,
+                loading: true,
+            };
+        case MainActions.CREATE_LAYER_SUCCESS:
+            return { ...state,
+                projectLayers: [...state.projectLayers, action.payload],
+                loading: false,
+            };
         case MainActions.SELECT_TOOL:
             return { ...state,
                 tool: action.payload
@@ -69,7 +81,6 @@ export function reducer(state: MainState = initialState, action: MainActions.Act
         case MainActions.ADD_MAP_PIN:
             return { ...state };
         case MainActions.ADD_MAP_PIN_SUCCESS:
-            console.log("SUCCESS", action.payload);
             return { ...state };
         case MainActions.SIDE_MENU_CHANGED:
             return { ...state,

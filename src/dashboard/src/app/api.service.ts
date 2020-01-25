@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Project } from './models/project';
 import { MapPin } from './models/mapPin';
+import { Layer } from './models/layer';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class ApiService {
 
   public addMapPin(pin: MapPin): Observable<MapPin> {
     return this.http.post<MapPin>("/api/layer/pin", pin);
+  }
+
+  public createLayer(projectId: number): Observable<Layer> {
+    return this.http.post<Layer>("/api/layer", { projectId: projectId });
   }
 }

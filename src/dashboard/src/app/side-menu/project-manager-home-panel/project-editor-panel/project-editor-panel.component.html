@@ -1,47 +1,47 @@
 <mat-accordion>
-<app-side-menu-section [title]="'Project Name'" [expandable]="true">
-  <p>
-      <label>Name:</label>
-      <input id="txtProjectName" tabindex="1" accesskey="n" type="text" class="field txt-EnterName"
-        value="Enter Name" [ngModel]="projectTitle" (ngModelChange)="changeProjectTitle($event)"
-        title="Type the name that you want to use to identify this project">
-  </p>
-</app-side-menu-section>
+  <app-side-menu-section [title]="'Project Name'" [expandable]="true">
+    <p>
+        <label>Name:</label>
+        <input id="txtProjectName" tabindex="1" accesskey="n" type="text" class="field txt-EnterName"
+          value="Enter Name" [ngModel]="projectTitle" (ngModelChange)="changeProjectTitle($event)"
+          title="Type the name that you want to use to identify this project">
+    </p>
+  </app-side-menu-section>
 
-<app-side-menu-section [title]="'Add Data'" [expandable]="true">
+  <app-side-menu-section [title]="'Add Data'" [expandable]="true">
 
-  <app-slide-nav-button [targetSlideId]="'createLayer'" [direction]="'forward'" (click)="clickCreateLayer($event)">
-    <app-project-manager-menu-item [title]="'Create New Layer'" [iconClass]="'far fa-plus-square'">
-    </app-project-manager-menu-item>
-  </app-slide-nav-button>
+    <app-slide-nav-button [targetSlideId]="'createLayer'" [direction]="'forward'" (click)="clickCreateLayer($event)">
+      <app-project-manager-menu-item [title]="'Create New Layer'" [iconClass]="'far fa-plus-square'">
+      </app-project-manager-menu-item>
+    </app-slide-nav-button>
 
-  <app-slide-nav-button [targetSlideId]="'useExistingLayer'" [direction]="'forward'">
-    <app-project-manager-menu-item [title]="'Use Existing Layer'" [iconClass]="'fas fa-layer-group'">
-    </app-project-manager-menu-item>
-  </app-slide-nav-button>
+    <app-slide-nav-button [targetSlideId]="'useExistingLayer'" [direction]="'forward'">
+      <app-project-manager-menu-item [title]="'Use Existing Layer'" [iconClass]="'fas fa-layer-group'">
+      </app-project-manager-menu-item>
+    </app-slide-nav-button>
 
-  <app-slide-nav-button [targetSlideId]="'updateExistingLayer'" [direction]="'forward'">
-    <app-project-manager-menu-item [title]="'Update Existing Layer'" [iconClass]="'fas fa-sync'">
-    </app-project-manager-menu-item>
-  </app-slide-nav-button>
+    <app-slide-nav-button [targetSlideId]="'updateExistingLayer'" [direction]="'forward'">
+      <app-project-manager-menu-item [title]="'Update Existing Layer'" [iconClass]="'fas fa-sync'">
+      </app-project-manager-menu-item>
+    </app-slide-nav-button>
 
-</app-side-menu-section>
+  </app-side-menu-section>
 
-<app-side-menu-section [title]="'My Data'" [expandable]="true">
-  <p>Point Layers</p>
-  <ul class="layerList">
-    <li *ngFor="let layer of layers">
-      <input type="checkbox" />{{ layer }}</li>
-  </ul>
-  <p>Boundaries</p>
-</app-side-menu-section>
+  <app-side-menu-section [title]="'My Data'" [expandable]="true">
+    <p>Point Layers</p>
+    <ul class="layerList">
+      <li *ngFor="let layer of layers">
+        <input type="checkbox" />{{ layer.name }}</li>
+    </ul>
+    <p>Boundaries</p>
+  </app-side-menu-section>
 
-<app-side-menu-section [title]="'System Data'" [expandable]="true">
-  <p>Point Layers</p>
-  <p>Boundaries</p>
-</app-side-menu-section>
+  <app-side-menu-section [title]="'System Data'" [expandable]="true">
+    <p>Point Layers</p>
+    <p>Boundaries</p>
+  </app-side-menu-section>
 
-<app-side-menu-section [title]="'Map Bases'" [expandable]="true">
-  <p>Google Roads</p>
-</app-side-menu-section>
+  <app-side-menu-section [title]="'Map Bases'" [expandable]="true">
+    <p>Google Roads</p>
+  </app-side-menu-section>
 </mat-accordion>

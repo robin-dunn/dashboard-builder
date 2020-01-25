@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { Project } from "./models/project";
 import { MapPin } from './models/mapPin';
+import { Layer } from './models/layer';
 
 export const SIDE_MENU_CHANGED = '[App] Side Menu Changed';
 export const CHANGE_VIEW = "[App] Change View";
@@ -11,13 +12,18 @@ export const GET_PROJECTS_FAILURE = '[App] Get Projects Failure';
 
 export const OPEN_PROJECT = '[App] Open Project';
 export const UPDATE_PROJECT = '[App] Update Project';
+
 export const SAVE_PROJECT = '[App] Save Project';
 export const SAVE_PROJECT_SUCCESS = '[App] Save Project Success';
 
 export const SELECT_TOOL = '[App] Select Tool';
 export const SELECT_EDIT_MODE = '[App] Select Edit Mode';
+
 export const ADD_MAP_PIN = '[App] Add Map Pin';
 export const ADD_MAP_PIN_SUCCESS = '[App] Add Map Pin Success';
+
+export const CREATE_LAYER = '[App] Create Layer';
+export const CREATE_LAYER_SUCCESS = '[App] Create Layer Success';
 
 export class SideMenuChanged implements Action {
     readonly type = SIDE_MENU_CHANGED;
@@ -84,6 +90,16 @@ export class AddMapPinSuccess implements Action {
     constructor(public payload: MapPin) {}
 }
 
+export class CreateLayer implements Action {
+    readonly type = CREATE_LAYER;
+    constructor(public payload: { projectId: number }) {}
+}
+
+export class CreateLayerSuccess implements Action {
+    readonly type = CREATE_LAYER_SUCCESS;
+    constructor(public payload: Layer) {}
+}
+
 export type Actions =
 | SideMenuChanged
 | ChangeView
@@ -97,4 +113,6 @@ export type Actions =
 | SelectEditMode
 | AddMapPin
 | AddMapPinSuccess
+| CreateLayer
+| CreateLayerSuccess
 ;

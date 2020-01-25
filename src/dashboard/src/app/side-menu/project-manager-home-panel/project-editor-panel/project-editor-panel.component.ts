@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import * as MainActions from "../../../main.actions";
+import { Layer } from 'src/app/models/layer';
 
 @Component({
   selector: "app-project-editor-panel",
@@ -12,13 +13,15 @@ export class ProjectEditorPanelComponent implements OnInit {
 
   constructor(private store: Store<AppState>) { }
 
-  projectTitle = "";
-  layers: string[] = [];
+  public projectTitle = "";
+  public layers: Layer[] = [];
+  private projectId: number;
 
   ngOnInit() {
     this.store.subscribe(state => {
+      this.projectId = state.main.currentProjectId;
       this.projectTitle = state.main.currentProject ? state.main.currentProject.name : "";
-      //this.layers = state.main.layers ? store.layers.map(l => l.name) : [];
+      this.layers = state.main.projectLayers ? state.main.projectLayers : [];
     })
   }
 
@@ -27,8 +30,9 @@ export class ProjectEditorPanelComponent implements OnInit {
   }
 
   clickCreateLayer(event) {
-    // TODO: dispatch action to create layer
-    // this.store.dispatch(MainActions.CreateLayer());
+    if (this.projectId > 0) {
+      this.store.dispatch(new MainActions.CreateLayer({ projectId: this.projectId }));
+    }
   }
 
 }

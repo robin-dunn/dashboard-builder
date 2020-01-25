@@ -33,4 +33,14 @@ export class MainEffects {
       );
     })
   );
+
+  @Effect()
+  createLayer = this.actions.pipe(
+    ofType<MainActions.CreateLayer>(MainActions.CREATE_LAYER),
+    switchMap((action) => {
+      return this.apiService.createLayer(action.payload.projectId).pipe(
+        map((layer) => new MainActions.CreateLayerSuccess(layer))
+      );
+    })
+  );
 }

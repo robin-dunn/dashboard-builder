@@ -17,7 +17,8 @@ class LayerController implements IControllerBase {
     public initRoutes() {
         this.router.get("/", this.getLayers);
         this.router.get("/geojson/:layerId", this.getLayerGeoJson);
-        this.router.post("/", this.postUpload);
+        this.router.post("/", this.postCreateLayer);
+        this.router.post("/upload", this.postUploadLayer);
         this.router.post("/pin", this.postPin);
     }
 
@@ -32,7 +33,13 @@ class LayerController implements IControllerBase {
         res.json(layerGeoJson);
     }
 
-    postUpload = async (req: Request, res: Response) => {
+    postCreateLayer = async (req: Request, res: Response) => {
+        let projectId =  parseInt(req.body.projectId);
+        let newLayer = await DAL.createLayer("NEW LAYER", projectId, []);
+        res.status(201).json(newLayer);
+    }
+
+    postUploadLayer = async (req: Request, res: Response) => {
         var form = new IncomingForm();
         form.keepExtensions = true;
 

@@ -27,21 +27,6 @@ export class DAL {
         }
     );
 
-    Layer.init({
-      id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        autoIncrement: true,
-        primaryKey: true,
-      },
-      name: {
-        type: new DataTypes.STRING(128),
-        allowNull: false,
-      }
-    }, {
-      sequelize: this.sequelize,
-      tableName: "layers",
-    });
-
     Project.init({
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
@@ -60,6 +45,26 @@ export class DAL {
       tableName: "projects",
     });
 
+    Layer.init({
+      id: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      projectId: {
+        type: DataTypes.INTEGER.UNSIGNED
+      },
+      name: {
+        type: new DataTypes.STRING(128),
+        allowNull: false,
+      }
+    }, {
+      sequelize: this.sequelize,
+      tableName: "layers",
+    });
+
+    Layer.belongsTo(Project, { foreignKey: "projectId" });
+
     this.syncDbModel();
   }
 
@@ -76,9 +81,9 @@ export class DAL {
     await Project.create({ name: "Test Proj 3", saved: true });
   }
 
-  public static async createLayer(name:string, columnNames: string[]) : Promise<Layer> {
+  public static async createLayer(name:string, projectId:number, columnNames: string[]) : Promise<Layer> {
 
-    let newLayer = await Layer.create({ name: name });
+    let newLayer = await Layer.create({ name: name, projectId: projectId });
 
     let tableName = `Layer_${newLayer.id.toString()}`;
 

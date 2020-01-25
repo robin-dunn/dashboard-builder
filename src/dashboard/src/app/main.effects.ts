@@ -11,7 +11,7 @@ import { Project } from "./models/project";
 export class MainEffects {
   constructor(private actions: Actions, private apiService: ApiService) {}
 
-  @Effect()
+  @Effect() /* GET_PROJECTS */
   getProjects = this.actions.pipe(
     ofType(MainActions.GET_PROJECTS),
     switchMap((action) => {
@@ -24,7 +24,7 @@ export class MainEffects {
     })
   );
 
-  @Effect()
+  @Effect() /* ADD_MAP_PIN */
   addMapPin = this.actions.pipe(
     ofType<MainActions.AddMapPin>(MainActions.ADD_MAP_PIN),
     switchMap((action) => {
@@ -34,7 +34,7 @@ export class MainEffects {
     })
   );
 
-  @Effect()
+  @Effect() /* CREATE_LAYER */
   createLayer = this.actions.pipe(
     ofType<MainActions.CreateLayer>(MainActions.CREATE_LAYER),
     switchMap((action) => {

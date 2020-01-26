@@ -5,6 +5,7 @@ import { IncomingForm } from "formidable";
 import FileImporter from "../framework/fileImporter";
 import { Layer } from "../dal/models/layer";
 import { DAL } from "../dal/dal";
+import * as moment from "moment";
 
 class LayerController implements IControllerBase {
     public routeBase = "/api/layer";
@@ -35,7 +36,8 @@ class LayerController implements IControllerBase {
 
     postCreateLayer = async (req: Request, res: Response) => {
         let projectId =  parseInt(req.body.projectId);
-        let newLayer = await DAL.createLayer("NEW LAYER", projectId, []);
+        let layerName: string = "Map Pin " + moment().format("DD-MM-YYYY");
+        let newLayer = await DAL.createLayer(layerName, projectId, []);
         res.status(201).json(newLayer);
     }
 

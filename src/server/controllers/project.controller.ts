@@ -2,7 +2,6 @@ import * as express from "express"
 import { Request, Response } from "express"
 import IControllerBase from "../interfaces/IControllerBase.interface"
 import { Project } from "../dal/models/project";
-import * as moment from "moment";
 
 class ProjectController implements IControllerBase {
     public routeBase = "/api/project";

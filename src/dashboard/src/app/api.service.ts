@@ -28,18 +28,22 @@ export class ApiService {
     return this.http.post<Layer>("/api/layer", { projectId: projectId });
   }
 
-  public getLayers(params: { isSystemLayer: boolean, projectId?: number }): Observable<Layer[]> {
-    let url =`/api/layer?isSystemLayer=${params.isSystemLayer}`;
-    if (params.projectId) url += `&projectId=${params.projectId}`;
+  public getLayers(args: { isSystemLayer: boolean, projectId?: number }): Observable<Layer[]> {
+    let url =`/api/layer?isSystemLayer=${args.isSystemLayer.toString()}`;
+    if (args.projectId) url += `&projectId=${args.projectId}`;
     return this.http.get<Layer[]>(url);
   }
 
-  public uploadLayer(uploadFile: File, projectId: number, isSystemLayer: boolean = false): Observable<Layer> {
+  public uploadLayer(args: { file: File, projectId: number, isSystemLayer: boolean, layerName?: string }): Observable<Layer> {
 
     let formData = new FormData();
-    formData.append("projectId", projectId.toString());
-    formData.append("isSystemLayer", isSystemLayer.toString());
-    formData.append("uploadFile", uploadFile, uploadFile.name);
+    formData.append("projectId", args.projectId.toString());
+    formData.append("isSystemLayer", args.isSystemLayer.toString());
+    formData.append("uploadFile", args.file, args.file.name);
+
+    if (args.layerName){
+      formData.append("layerName", args.layerName);
+    }
 
     return this.http.post<Layer>(`/api/layer/upload`, formData);
   }

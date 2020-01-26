@@ -24,8 +24,14 @@ class LayerController implements IControllerBase {
     }
 
     getLayers = async (req: Request, res: Response) => {
-        // TODO: where clause
-        let layers = await Layer.findAll();
+        let isSystemLayer = typeof req.query.isSystemLayer === "boolean"
+            ? req.query.isSystemLayer : false;
+        console.log("req", req.query);
+        let layers = await Layer.findAll({
+            where: {
+                isSystemLayer: isSystemLayer
+            }
+        });
         res.json(layers);
     }
 
@@ -53,13 +59,20 @@ class LayerController implements IControllerBase {
 
         form.parse(req, async (err, fields, files) => {
             let file = files.uploadFile;
-            console.log(">>> fields", fields);
-             newLayer = await FileImporter.importFile(file.path, "New Layer", fields.isSystemLayer, fields.projectId);
-             if (newLayer) {
-                 res.status(201).json(newLayer);
-             } else {
-                 res.status(400).json({ message: "bad request" })
-             }
+            let layerName = fields.layerName ?? "New Layer";
+
+            newLayer = await FileImporter.importFile({
+                filePath: file.path,
+                isSystemLayer: fields.isSystemLayer,
+                layerName: layerName,
+                projectId: fields.projectId
+            });
+
+            if (newLayer) {
+                res.status(201).json(newLayer);
+            } else {
+                res.status(400).json({ message: "bad request" })
+            }
         });
     }
 

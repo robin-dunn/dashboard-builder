@@ -11,6 +11,7 @@ import { Layer } from '../models/layer';
 })
 export class DataManagerViewComponent implements OnInit {
 
+  public layerName = "";
   public layers: Layer[];
 
   private uploadedFiles: Array<File>;
@@ -30,7 +31,8 @@ export class DataManagerViewComponent implements OnInit {
       this.store.dispatch(new MainActions.UploadLayer({
         file: this.uploadedFiles[0],
         projectId: 0,
-        isSystemLayer: true
+        isSystemLayer: true,
+        layerName: this.layerName
       }))
     }
   }

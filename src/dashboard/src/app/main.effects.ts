@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
-import { map, switchMap, catchError, mergeMap } from "rxjs/operators";
+import { map, switchMap, catchError } from "rxjs/operators";
 import { of } from "rxjs";
 
 import * as MainActions from "./main.actions";
@@ -86,7 +86,12 @@ export class MainEffects {
     ofType<MainActions.UploadLayer>(MainActions.UPLOAD_LAYER),
     switchMap((action) => {
       let payload = action.payload;
-      return this.apiService.uploadLayer(payload.file, payload.projectId, payload.isSystemLayer).pipe(
+      return this.apiService.uploadLayer({
+        file: payload.file,
+        projectId: payload.projectId,
+        isSystemLayer: payload.isSystemLayer,
+        layerName: payload.layerName
+      }).pipe(
         map((layer) => new MainActions.UploadLayerSuccess(layer))
       );
     })

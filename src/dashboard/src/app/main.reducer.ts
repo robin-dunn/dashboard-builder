@@ -81,6 +81,18 @@ export function reducer(state: MainState = initialState, action: MainActions.Act
                 projectLayers: [...state.projectLayers, action.payload],
                 loading: false,
             };
+        case MainActions.UPLOAD_LAYER:
+            return { ...state,
+                loading: true,
+            };
+        case MainActions.UPLOAD_LAYER_SUCCESS:
+            let newState = { ...state, loading: false };
+            if (action.payload.isSystemLayer) {
+                newState.systemLayers = newState.systemLayers.concat(action.payload)
+            } else {
+                newState.projectLayers = newState.projectLayers.concat(action.payload)
+            }
+            return newState;
         case MainActions.GET_SYSTEM_LAYERS:
             return { ...state,
                 loading: true,

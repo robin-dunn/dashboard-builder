@@ -124,7 +124,7 @@ export class CreateLayerSuccess implements Action {
 
 export class UploadLayer implements Action {
     readonly type = UPLOAD_LAYER;
-    constructor(public payload: { file: File, projectId: number, isSystemLayer?: boolean}) {}
+    constructor(public payload: { file: File, projectId: number, isSystemLayer?: boolean, layerName?: string }) {}
 }
 
 export class UploadLayerSuccess implements Action {

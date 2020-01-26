@@ -38,7 +38,7 @@ export class MainEffects {
   @Effect() /* OPEN_PROJECT */
   openProject = this.actions.pipe(
     ofType<MainActions.OpenProject>(MainActions.OPEN_PROJECT),
-    map((action) => new MainActions.GetLayers(action.payload.id))
+    map((action) => new MainActions.GetProjectLayers({ projectId: action.payload.id }))
   );
 
   @Effect() /* ADD_MAP_PIN */
@@ -61,13 +61,35 @@ export class MainEffects {
     })
   );
 
-  @Effect() /* GET_LAYERS */
-  getLayers = this.actions.pipe(
-    ofType<MainActions.GetLayers>(MainActions.GET_LAYERS),
+  @Effect() /* GET_PROJECT_LAYERS */
+  getProjectLayers = this.actions.pipe(
+    ofType<MainActions.GetProjectLayers>(MainActions.GET_PROJECT_LAYERS),
     switchMap((action) => {
-      return this.apiService.getLayers(action.payload).pipe(
-        map((layers:Layer[]) => new MainActions.GetLayersSuccess(layers))
+      return this.apiService.getLayers({ isSystemLayer: false, projectId: action.payload.projectId }).pipe(
+        map((layers:Layer[]) => new MainActions.GetProjectLayersSuccess(layers))
       );
     })
   );
+
+  @Effect() /* GET_SYSTEM_LAYERS */
+  getSystemLayers = this.actions.pipe(
+    ofType<MainActions.GetSystemLayers>(MainActions.GET_SYSTEM_LAYERS),
+    switchMap((action) => {
+      return this.apiService.getLayers({ isSystemLayer: true }).pipe(
+        map((layers:Layer[]) => new MainActions.GetSystemLayersSuccess(layers))
+      );
+    })
+  );
+
+  @Effect() /* UPLOAD_LAYER */
+  uploadLayer = this.actions.pipe(
+    ofType<MainActions.UploadLayer>(MainActions.UPLOAD_LAYER),
+    switchMap((action) => {
+      let payload = action.payload;
+      return this.apiService.uploadLayer(payload.file, payload.projectId, payload.isSystemLayer).pipe(
+        map((layer) => new MainActions.UploadLayerSuccess(layer))
+      );
+    })
+  );
+
 }

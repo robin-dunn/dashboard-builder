@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
       if (state.main.currentSideMenu === "projectManagerHome" && state.main.currentView !== "Map") {
         this.store.dispatch(new AppActions.ChangeView("Map"));
       }
+
+      console.log(state);
     });
   }
 

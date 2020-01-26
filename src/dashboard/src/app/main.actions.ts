@@ -28,8 +28,14 @@ export const ADD_MAP_PIN_SUCCESS = '[App] Add Map Pin Success';
 export const CREATE_LAYER = '[App] Create Layer';
 export const CREATE_LAYER_SUCCESS = '[App] Create Layer Success';
 
-export const GET_LAYERS = '[App] Get Layers';
-export const GET_LAYERS_SUCCESS = '[App] Get Layers Success';
+export const UPLOAD_LAYER = '[App] Upload Layer';
+export const UPLOAD_LAYER_SUCCESS = '[App] Upload Layer Success';
+
+export const GET_PROJECT_LAYERS = '[App] Get Project Layers';
+export const GET_PROJECT_LAYERS_SUCCESS = '[App] Get Project Layers Success';
+
+export const GET_SYSTEM_LAYERS = '[App] Get System Layers';
+export const GET_SYSTEM_LAYERS_SUCCESS = '[App] Get System Layers Success';
 
 export class SideMenuChanged implements Action {
     readonly type = SIDE_MENU_CHANGED;
@@ -116,13 +122,33 @@ export class CreateLayerSuccess implements Action {
     constructor(public payload: Layer) {}
 }
 
-export class GetLayers implements Action {
-    readonly type = GET_LAYERS;
-    constructor(public payload: number) {}
+export class UploadLayer implements Action {
+    readonly type = UPLOAD_LAYER;
+    constructor(public payload: { file: File, projectId: number, isSystemLayer?: boolean}) {}
 }
 
-export class GetLayersSuccess implements Action {
-    readonly type = GET_LAYERS_SUCCESS;
+export class UploadLayerSuccess implements Action {
+    readonly type = UPLOAD_LAYER_SUCCESS;
+    constructor(public payload: Layer) {}
+}
+
+export class GetProjectLayers implements Action {
+    readonly type = GET_PROJECT_LAYERS;
+    constructor(public payload: { projectId: number }) {}
+}
+
+export class GetProjectLayersSuccess implements Action {
+    readonly type = GET_PROJECT_LAYERS_SUCCESS;
+    constructor(public payload: Layer[]) {}
+}
+
+export class GetSystemLayers implements Action {
+    readonly type = GET_SYSTEM_LAYERS;
+    constructor() {}
+}
+
+export class GetSystemLayersSuccess implements Action {
+    readonly type = GET_SYSTEM_LAYERS_SUCCESS;
     constructor(public payload: Layer[]) {}
 }
 
@@ -143,4 +169,10 @@ export type Actions =
 | AddMapPinSuccess
 | CreateLayer
 | CreateLayerSuccess
+| UploadLayer
+| UploadLayerSuccess
+| GetProjectLayers
+| GetProjectLayersSuccess
+| GetSystemLayers
+| GetSystemLayersSuccess
 ;

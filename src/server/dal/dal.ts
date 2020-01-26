@@ -52,12 +52,15 @@ export class DAL {
         autoIncrement: true,
         primaryKey: true,
       },
-      projectId: {
-        type: DataTypes.INTEGER.UNSIGNED
+      isSystemLayer: {
+        type: DataTypes.BOOLEAN
       },
       name: {
         type: new DataTypes.STRING(128),
         allowNull: false,
+      },
+      projectId: {
+        type: DataTypes.INTEGER.UNSIGNED
       }
     }, {
       sequelize: this.sequelize,
@@ -82,9 +85,15 @@ export class DAL {
     await Project.create({ name: "Test Proj 3", saved: true });
   }
 
-  public static async createLayer(name:string, projectId:number, columnNames: string[]) : Promise<Layer> {
+  public static async createLayer(name:string, isSystemLayer:boolean, columnNames: string[], projectId?:number) : Promise<Layer> {
 
-    let newLayer = await Layer.create({ name: name, projectId: projectId });
+    let layerModel = {
+      name: name,
+      isSystemLayer: isSystemLayer,
+      projectId: isSystemLayer ? null : projectId
+    };
+
+    let newLayer = await Layer.create(layerModel);
 
     let tableName = `Layer_${newLayer.id.toString()}`;
 
@@ -93,7 +102,6 @@ export class DAL {
       "geography GEOGRAPHY"
     ];
 
-    // TODO: support different column types.
     columns = columns.concat(columnNames.map(colName => `"${colName}" TEXT`));
 
     let sqlCreateTable = `CREATE TABLE ${tableName} (${columns.join(",")})`;

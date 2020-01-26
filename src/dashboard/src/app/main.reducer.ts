@@ -10,6 +10,7 @@ export class MainState {
     currentProjectId: number;
     currentProject: Project;
     projectLayers: Layer[];
+    systemLayers: Layer[];
     tool: string;
     editMode: string;
 }
@@ -26,6 +27,7 @@ const initialState: MainState = {
         saved: false
     },
     projectLayers: [],
+    systemLayers: [],
     tool: null,
     editMode: null
 }
@@ -77,6 +79,24 @@ export function reducer(state: MainState = initialState, action: MainActions.Act
         case MainActions.CREATE_LAYER_SUCCESS:
             return { ...state,
                 projectLayers: [...state.projectLayers, action.payload],
+                loading: false,
+            };
+        case MainActions.GET_SYSTEM_LAYERS:
+            return { ...state,
+                loading: true,
+            };
+        case MainActions.GET_SYSTEM_LAYERS_SUCCESS:
+            return { ...state,
+                systemLayers: state.systemLayers.concat(action.payload),
+                loading: false,
+            };
+        case MainActions.GET_PROJECT_LAYERS:
+            return { ...state,
+                loading: true,
+            };
+        case MainActions.GET_PROJECT_LAYERS_SUCCESS:
+            return { ...state,
+                projectLayers: state.projectLayers.concat(action.payload),
                 loading: false,
             };
         case MainActions.SELECT_TOOL:

@@ -7,9 +7,11 @@ import { QueryTypes } from 'sequelize';
 
 export class GeoJsonFileImporter {
 
-    public static async importFile(filePath:string, newLayerName:string, projectId: number): Promise<Layer> {
+    public static async importFile(filePath:string, newLayerName:string, isSystemLayer:boolean, projectId?: number): Promise<Layer> {
 
-        let newLayer = await DAL.createLayer(newLayerName, projectId, []);
+        let newLayer = await DAL.createLayer(newLayerName, isSystemLayer, [], projectId);
+
+        console.log("Importing GeoJSON file...", filePath);
 
         return new Promise<Layer>(function (resolve, reject) {
             fs.createReadStream(filePath)
@@ -19,7 +21,7 @@ export class GeoJsonFileImporter {
                     return data;
                 }))
                 .on("end", function () {
-                    console.log("GEOJSON file import complete!")
+                    console.log("GeoJSON file import complete!")
                     resolve(newLayer);
                 })
         });

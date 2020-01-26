@@ -6,7 +6,7 @@ import { Layer } from "../dal/models/layer";
 
 export class CsvFileImporter {
 
-    public static async importFile(filePath:string, newLayerName:string, projectId: number): Promise<Layer> {
+    public static async importFile(filePath:string, newLayerName:string, isSystemLayer:boolean, projectId?: number): Promise<Layer> {
 
         // TODO: handle CSV files with no column headers
         let columnNames = await this.getColumnNamesAsync(filePath);
@@ -17,13 +17,13 @@ export class CsvFileImporter {
         let rowsBatch = [];
         const rowsBatchSize = 100;
 
-        let newLayer = await DAL.createLayer(newLayerName, projectId, sqlColumnNames);
+        let newLayer = await DAL.createLayer(newLayerName, isSystemLayer, sqlColumnNames, projectId);
         let layerId = newLayer.id.toString();
 
         return new Promise<Layer>(function (resolve, reject) {
             fs.createReadStream(filePath)
                 .pipe(csv.parse({ headers: true, trim: true }))
-                .on('data', function(row) {
+                .on('data', (row) => {
                     row[latitudeColumnName] = parseFloat(row[latitudeColumnName]),
                     row[longitudeColumnName] = parseFloat(row[longitudeColumnName]),
 
@@ -33,12 +33,12 @@ export class CsvFileImporter {
                         rowsBatch = [];
                     }
                 })
-                .on("end", function () {
-                    CsvFileImporter.InsertRows(layerId, rowsBatch, latitudeColumnName, longitudeColumnName);
+                .on("end", () => {
+                    this.InsertRows(layerId, rowsBatch, latitudeColumnName, longitudeColumnName);
                     console.log("File import complete!")
                     resolve(newLayer);
                 })
-                .on("error", function (error) {
+                .on("error", (error) => {
                     console.log(error)
                     reject();
                 });

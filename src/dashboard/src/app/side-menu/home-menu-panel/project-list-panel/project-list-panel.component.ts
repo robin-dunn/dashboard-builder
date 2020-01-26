@@ -18,7 +18,6 @@ export class ProjectListPanelComponent implements OnInit {
 
   ngOnInit() {
     this.store.select(state => state).subscribe(state => {
-      console.log(state);
       if (state.main && state.main.projects && state.main.projects.length > 0){
         this.projects = state.main.projects;
       }

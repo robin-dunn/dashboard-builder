@@ -24,6 +24,7 @@ class LayerController implements IControllerBase {
     }
 
     getLayers = async (req: Request, res: Response) => {
+        // TODO: where clause
         let layers = await Layer.findAll();
         res.json(layers);
     }
@@ -37,7 +38,7 @@ class LayerController implements IControllerBase {
     postCreateLayer = async (req: Request, res: Response) => {
         let projectId =  parseInt(req.body.projectId);
         let layerName: string = "Map Pin " + moment().format("DD-MM-YYYY");
-        let newLayer = await DAL.createLayer(layerName, projectId, []);
+        let newLayer = await DAL.createLayer(layerName, req.body.isSystemLayer, [], projectId);
         res.status(201).json(newLayer);
     }
 
@@ -47,19 +48,19 @@ class LayerController implements IControllerBase {
 
         let newLayer: Layer;
 
-        form.on('file', async (field, file) => {
-            newLayer = await FileImporter.importFile(file.path, "New Layer");
-            if (newLayer) {
-                res.status(201).json(newLayer);
-            } else {
-                res.status(400).json({ message: "bad request" })
-            }
-        });
-
         form.on('end', () => {
         });
 
-        form.parse(req);
+        form.parse(req, async (err, fields, files) => {
+            let file = files.uploadFile;
+            console.log(">>> fields", fields);
+             newLayer = await FileImporter.importFile(file.path, "New Layer", fields.isSystemLayer, fields.projectId);
+             if (newLayer) {
+                 res.status(201).json(newLayer);
+             } else {
+                 res.status(400).json({ message: "bad request" })
+             }
+        });
     }
 
     postPin = async (req: Request, res: Response) => {

@@ -27,4 +27,8 @@ export class ApiService {
   public createLayer(projectId: number): Observable<Layer> {
     return this.http.post<Layer>("/api/layer", { projectId: projectId });
   }
+
+  public getLayers(projectId: number): Observable<Layer[]> {
+    return this.http.get<Layer[]>(`/api/layer?projectId=${projectId}`);
+  }
 }

@@ -28,6 +28,9 @@ export const ADD_MAP_PIN_SUCCESS = '[App] Add Map Pin Success';
 export const CREATE_LAYER = '[App] Create Layer';
 export const CREATE_LAYER_SUCCESS = '[App] Create Layer Success';
 
+export const GET_LAYERS = '[App] Get Layers';
+export const GET_LAYERS_SUCCESS = '[App] Get Layers Success';
+
 export class SideMenuChanged implements Action {
     readonly type = SIDE_MENU_CHANGED;
     constructor(public payload: string) {}
@@ -111,6 +114,16 @@ export class CreateLayer implements Action {
 export class CreateLayerSuccess implements Action {
     readonly type = CREATE_LAYER_SUCCESS;
     constructor(public payload: Layer) {}
+}
+
+export class GetLayers implements Action {
+    readonly type = GET_LAYERS;
+    constructor(public payload: number) {}
+}
+
+export class GetLayersSuccess implements Action {
+    readonly type = GET_LAYERS_SUCCESS;
+    constructor(public payload: Layer[]) {}
 }
 
 export type Actions =

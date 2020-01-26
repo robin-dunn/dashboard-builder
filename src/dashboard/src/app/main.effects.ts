@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
-import { map, switchMap, catchError } from "rxjs/operators";
+import { map, switchMap, catchError, mergeMap } from "rxjs/operators";
 import { of } from "rxjs";
 
 import * as MainActions from "./main.actions";
 import { ApiService } from "./api.service";
 import { Project } from "./models/project";
+import { Layer } from "./models/layer";
 
 @Injectable()
 export class MainEffects {
@@ -34,6 +35,12 @@ export class MainEffects {
     })
   );
 
+  @Effect() /* OPEN_PROJECT */
+  openProject = this.actions.pipe(
+    ofType<MainActions.OpenProject>(MainActions.OPEN_PROJECT),
+    map((action) => new MainActions.GetLayers(action.payload.id))
+  );
+
   @Effect() /* ADD_MAP_PIN */
   addMapPin = this.actions.pipe(
     ofType<MainActions.AddMapPin>(MainActions.ADD_MAP_PIN),
@@ -50,6 +57,16 @@ export class MainEffects {
     switchMap((action) => {
       return this.apiService.createLayer(action.payload.projectId).pipe(
         map((layer) => new MainActions.CreateLayerSuccess(layer))
+      );
+    })
+  );
+
+  @Effect() /* GET_LAYERS */
+  getLayers = this.actions.pipe(
+    ofType<MainActions.GetLayers>(MainActions.GET_LAYERS),
+    switchMap((action) => {
+      return this.apiService.getLayers(action.payload).pipe(
+        map((layers:Layer[]) => new MainActions.GetLayersSuccess(layers))
       );
     })
   );

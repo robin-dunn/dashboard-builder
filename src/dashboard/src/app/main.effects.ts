@@ -11,6 +11,16 @@ import { Project } from "./models/project";
 export class MainEffects {
   constructor(private actions: Actions, private apiService: ApiService) {}
 
+  @Effect() /* CREATE_PROJECT */
+  createProject = this.actions.pipe(
+    ofType<MainActions.CreateProject>(MainActions.CREATE_PROJECT),
+    switchMap((action) => {
+      return this.apiService.createProject(action.payload).pipe(
+        map((project) => new MainActions.CreateProjectSuccess(project))
+      );
+    })
+  );
+
   @Effect() /* GET_PROJECTS */
   getProjects = this.actions.pipe(
     ofType(MainActions.GET_PROJECTS),

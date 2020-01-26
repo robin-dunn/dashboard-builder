@@ -19,13 +19,13 @@ class ProjectController implements IControllerBase {
 
     getProjects = async (req: Request, res: Response) => {
         let projects = await Project.findAll();
-        console.log(projects);
         res.json(projects);
     }
 
     postCreateProject = async (req: Request, res: Response) => {
-        let newProjectName:string = moment().format("YYYYMMDD_h_mm_ss");
-        let newProject: Project = await Project.create({ name: newProjectName });
+        let projectName = req.body.name;
+        console.log("PROJECT name", projectName);
+        let newProject: Project = await Project.create({ name: projectName });
         res.json(newProject);
     }
 };

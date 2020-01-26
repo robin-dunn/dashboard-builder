@@ -20,6 +20,10 @@ export class ApiService {
     return this.http.post<MapPin>("/api/layer/pin", pin);
   }
 
+  public createProject(name: string): Observable<Project> {
+    return this.http.post<Project>("/api/project", { name: name });
+  }
+
   public createLayer(projectId: number): Observable<Layer> {
     return this.http.post<Layer>("/api/layer", { projectId: projectId });
   }

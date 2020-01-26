@@ -33,6 +33,15 @@ const initialState: MainState = {
 export function reducer(state: MainState = initialState, action: MainActions.Actions) {
     console.log("ACTION", action);
     switch(action.type) {
+        case MainActions.CREATE_PROJECT:
+            return { ...state,
+                loading: true,
+            };
+        case MainActions.CREATE_PROJECT_SUCCESS:
+            return { ...state,
+                loading: false,
+                projects: [...state.projects, action.payload],
+            };
         case MainActions.GET_PROJECTS:
             return { ...state,
                 loading: true,

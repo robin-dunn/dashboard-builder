@@ -6,6 +6,9 @@ import { Layer } from './models/layer';
 export const SIDE_MENU_CHANGED = '[App] Side Menu Changed';
 export const CHANGE_VIEW = "[App] Change View";
 
+export const CREATE_PROJECT = '[App] Create Project';
+export const CREATE_PROJECT_SUCCESS = '[App] Create Project Success';
+
 export const GET_PROJECTS = '[App] Get Projects';
 export const GET_PROJECTS_SUCCESS = '[App] Get Projects Success';
 export const GET_PROJECTS_FAILURE = '[App] Get Projects Failure';
@@ -33,6 +36,16 @@ export class SideMenuChanged implements Action {
 export class ChangeView implements Action {
     readonly type = CHANGE_VIEW;
     constructor(public payload: string) {}
+}
+
+export class CreateProject implements Action {
+    readonly type = CREATE_PROJECT;
+    constructor(public payload: string) {}
+}
+
+export class CreateProjectSuccess implements Action {
+    readonly type = CREATE_PROJECT_SUCCESS
+    constructor(public payload: Project) {}
 }
 
 export class GetProjects implements Action {
@@ -103,6 +116,8 @@ export class CreateLayerSuccess implements Action {
 export type Actions =
 | SideMenuChanged
 | ChangeView
+| CreateProject
+| CreateProjectSuccess
 | GetProjects
 | GetProjectsSuccess
 | OpenProject

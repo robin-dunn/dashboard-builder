@@ -23,7 +23,8 @@ export class DAL {
         databaseUser,
         databasePassword, {
             host: "localhost",
-            dialect: "postgres"
+            dialect: "postgres",
+            logging: false
         }
     );
 
@@ -89,7 +90,7 @@ export class DAL {
 
     let columns = [
       "id SERIAL PRIMARY KEY",
-      "location GEOGRAPHY(Point)"
+      "geography GEOGRAPHY"
     ];
 
     // TODO: support different column types.
@@ -107,10 +108,10 @@ export class DAL {
     let sqlSelectGeoJson = `SELECT json_build_object(
       'type', 'FeatureCollection',
       'metadata',  json_build_object(
-        'minX', MIN(ST_X(location::geometry)),
-        'minY', MIN(ST_Y(location::geometry)),
-        'maxX', MAX(ST_X(location::geometry)),
-        'maxY', MAX(ST_Y(location::geometry))
+        'minX', MIN(ST_X(geography::geometry)),
+        'minY', MIN(ST_Y(geography::geometry)),
+        'maxX', MAX(ST_X(geography::geometry)),
+        'maxY', MAX(ST_Y(geography::geometry))
       ),
       'crs',  json_build_object(
         'type',      'name',
@@ -122,7 +123,7 @@ export class DAL {
           json_build_object(
             'type',       'Feature',
             'id',         id,
-            'geometry',   ST_AsGeoJSON(location)::json
+            'geometry',   ST_AsGeoJSON(geography)::json
           )
       )
     ) as geojson

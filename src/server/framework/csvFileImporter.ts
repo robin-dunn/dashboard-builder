@@ -6,7 +6,7 @@ import { Layer } from "../dal/models/layer";
 
 export class CsvFileImporter {
 
-    public static async importFile(filePath:string, newLayerName:string): Promise<Layer> {
+    public static async importFile(filePath:string, newLayerName:string, projectId: number): Promise<Layer> {
 
         // TODO: handle CSV files with no column headers
         let columnNames = await this.getColumnNamesAsync(filePath);
@@ -17,7 +17,7 @@ export class CsvFileImporter {
         let rowsBatch = [];
         const rowsBatchSize = 100;
 
-        let newLayer = await DAL.createLayer(newLayerName, sqlColumnNames);
+        let newLayer = await DAL.createLayer(newLayerName, projectId, sqlColumnNames);
         let layerId = newLayer.id.toString();
 
         return new Promise<Layer>(function (resolve, reject) {
@@ -78,7 +78,7 @@ export class CsvFileImporter {
                                 .filter(propName => propName !== latitudeColumnName && propName !== longitudeColumnName);
 
             // The location column is a point created from latitude and longitude.
-            let sqlInsert = `INSERT INTO Layer_${layerId} (${columnNames.concat(["location"]).map(colName => `"${colName}"`).join(",")}) `
+            let sqlInsert = `INSERT INTO Layer_${layerId} (${columnNames.concat(["geography"]).map(colName => `"${colName}"`).join(",")}) `
                             + ` VALUES (${columnNames.map(colName => "?").join(",")},`
                                 + ` ST_SetSRID(ST_MakePoint(?, ?), 4326))`;
 

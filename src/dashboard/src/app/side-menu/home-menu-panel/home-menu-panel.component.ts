@@ -4,11 +4,11 @@ import * as MainActions from "../../main.actions";
 import { AppState } from 'src/app/reducers';
 
 @Component({
-  selector: 'app-project-manager-home-panel',
-  templateUrl: './project-manager-home-panel.component.html',
-  styleUrls: ['./project-manager-home-panel.component.css']
+  selector: 'app-home-menu-panel',
+  templateUrl: './home-menu-panel.component.html',
+  styleUrls: ['./home-menu-panel.component.css']
 })
-export class ProjectManagerHomePanelComponent implements OnInit {
+export class HomeMenuPanelComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>) {}

@@ -35,6 +35,7 @@ import { ManualPinLayerComponent } from './side-menu/home-menu-panel/project-edi
 import { SelectFeatureComponent } from './side-menu/home-menu-panel/project-editor-panel/create-layer-panel/select-feature/select-feature.component';
 import { DesignAndBuildComponent } from './side-menu/home-menu-panel/project-editor-panel/create-layer-panel/manual-pin-layer/design-and-build/design-and-build.component';
 import { ManualCatchmentLayerComponent } from './side-menu/home-menu-panel/project-editor-panel/create-layer-panel/manual-catchment-layer/manual-catchment-layer.component';
+import { UseExistingLayerPanelComponent } from './side-menu/home-menu-panel/project-editor-panel/use-existing-layer-panel/use-existing-layer-panel.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ManualCatchmentLayerComponent } from './side-menu/home-menu-panel/proje
     ManualPinLayerComponent,
     SelectFeatureComponent,
     DesignAndBuildComponent,
-    ManualCatchmentLayerComponent
+    ManualCatchmentLayerComponent,
+    UseExistingLayerPanelComponent
   ],
   imports: [
     BrowserModule,

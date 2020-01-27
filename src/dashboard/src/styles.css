@@ -90,6 +90,7 @@ input[type="text"] {
 
 .side-menu-section .side-menu-section {
     border: 1px solid #555;
+    border-top: none;
 }
 
 .side-menu-section .side-menu-section:hover {

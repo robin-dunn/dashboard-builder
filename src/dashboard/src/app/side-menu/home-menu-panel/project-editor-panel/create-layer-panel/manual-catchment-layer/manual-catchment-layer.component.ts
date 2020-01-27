@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManualCatchmentLayerComponent implements OnInit {
 
+  public layerTitle = "";
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changeLayerTitle(event) {
+
   }
 
 }

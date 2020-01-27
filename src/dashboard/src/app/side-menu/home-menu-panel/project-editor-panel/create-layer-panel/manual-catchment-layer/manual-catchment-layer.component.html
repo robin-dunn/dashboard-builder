@@ -1,3 +1,41 @@
-<p>
-  manual-catchment-layer works!
-</p>
+<mat-accordion>
+  <app-side-menu-section [expandable]="true" [title]="'Select'">
+    <app-select-feature></app-select-feature>
+  </app-side-menu-section>
+
+  <app-side-menu-section [expandable]="true" [title]="'Catchment Name'">
+    <p>
+        <label>Name:</label>
+        <input id="txtLayerName" tabindex="1" accesskey="n" type="text" class="field txt-EnterName"
+          value="Enter Name" [ngModel]="layerTitle" (ngModelChange)="changeLayerTitle($event)"
+          title="Type the name that you want to use to identify this project">
+    </p>
+  </app-side-menu-section>
+
+  <app-side-menu-section [expandable]="true" [title]="'Design & Build'">
+    <mat-accordion>
+      <app-side-menu-section [expandable]="true" [title]="'Shape'">
+      </app-side-menu-section>
+      <app-side-menu-section [expandable]="true" [title]="'Colour'">
+      </app-side-menu-section>
+      <app-side-menu-section [expandable]="true" [title]="'Size'">
+      </app-side-menu-section>
+      <app-side-menu-section [expandable]="true" [title]="'Label'">
+      </app-side-menu-section>
+      <app-side-menu-section [expandable]="true" [title]="'Visibility'">
+      </app-side-menu-section>
+    </mat-accordion>
+  </app-side-menu-section>
+
+  <app-side-menu-section [expandable]="true" [title]="'Tools'">
+  </app-side-menu-section>
+
+  <app-side-menu-section [expandable]="true" [title]="'Attachable Content'">
+  </app-side-menu-section>
+
+  <app-side-menu-section [expandable]="true" [title]="'Data'">
+  </app-side-menu-section>
+
+  <app-side-menu-section [expandable]="true" [title]="'Chart'">
+  </app-side-menu-section>
+</mat-accordion>

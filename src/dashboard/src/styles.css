@@ -190,3 +190,35 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
 .slide_createLayer .mat-expansion-panel-header-title {
     font-weight: bold;
 }
+
+.attachable-content select {
+    width: 220px;
+}
+
+.attachable-content .icon {
+    font-size: 20px;
+    width: 20px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.homeButton {
+    display: block;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    border: 1px solid #fff;
+    text-decoration: none;
+    color: #fff;
+}
+
+.homeButton:hover {
+    border-color: #000;
+    color: #000 !important;
+}
+
+.homeButton .icon {
+    display: block;
+    font-size: 2.4em;
+}

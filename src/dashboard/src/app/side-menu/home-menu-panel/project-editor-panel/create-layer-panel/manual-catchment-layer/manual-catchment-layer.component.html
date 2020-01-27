@@ -15,6 +15,12 @@
   <app-side-menu-section [expandable]="true" [title]="'Design & Build'">
     <mat-accordion>
       <app-side-menu-section [expandable]="true" [title]="'Shape'">
+        <label>Boundary Type:</label>
+        <select>
+          <option>Hand Drawn</option>
+          <option>Radius</option>
+          <option>Travel Time</option>
+        </select>
       </app-side-menu-section>
       <app-side-menu-section [expandable]="true" [title]="'Colour'">
       </app-side-menu-section>
@@ -28,12 +34,33 @@
   </app-side-menu-section>
 
   <app-side-menu-section [expandable]="true" [title]="'Tools'">
+      <app-side-menu-section [expandable]="true" [title]="'What\'s in My Catchments?'">
+      </app-side-menu-section>
+      <app-side-menu-section [expandable]="true" [title]="'Overlap Analysis'">
+      </app-side-menu-section>
+      <app-side-menu-section [expandable]="true" [title]="'Analogue Comparison'">
+      </app-side-menu-section>
   </app-side-menu-section>
 
-  <app-side-menu-section [expandable]="true" [title]="'Attachable Content'">
+  <app-side-menu-section class="attachable-content" [expandable]="true" [title]="'Attachable Content'">
+    <p>
+      <i class="icon far fa-file-alt"></i><select></select>
+    </p>
+    <p>
+      <i class="icon fas fa-link"></i><select></select>
+    </p>
+    <p>
+      <i class="icon far fa-envelope"></i><select></select>
+    </p>
   </app-side-menu-section>
 
   <app-side-menu-section [expandable]="true" [title]="'Data'">
+    <mat-accordion>
+      <app-side-menu-section [expandable]="true" [title]="'Columns'">
+      </app-side-menu-section>
+      <app-side-menu-section [expandable]="true" [title]="'Filter'">
+      </app-side-menu-section>
+    </mat-accordion>
   </app-side-menu-section>
 
   <app-side-menu-section [expandable]="true" [title]="'Chart'">

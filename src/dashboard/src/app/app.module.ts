@@ -14,7 +14,6 @@ import { CentralStoreService } from './services/central-store.service';
 import { ProjectEditorPanelComponent } from './side-menu/home-menu-panel/project-editor-panel/project-editor-panel.component';
 import { SliderViewComponent } from './slider-view/slider-view.component';
 import { SlideComponent } from './slider-view/slide/slide.component';
-import { HomeMenuButtonComponent } from './side-menu/home-menu-panel/home-menu-button/home-menu-button.component';
 import { SlideNavButtonComponent } from './slider-view/slide/slide-nav-button/slide-nav-button.component';
 import { ExpandableViewComponent } from './expandable-view/expandable-view.component';
 import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.component';
@@ -52,7 +51,6 @@ import { ManualCatchmentLayerComponent } from './side-menu/home-menu-panel/proje
     MapToolbarComponent,
     CreateLayerPanelComponent,
     HomeMenuPanelComponent,
-    HomeMenuButtonComponent,
     ImportDataPanelComponent,
     CopyExistingLayerPanelComponent,
     ProjectListPanelComponent,

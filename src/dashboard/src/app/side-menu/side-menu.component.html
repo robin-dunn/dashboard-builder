@@ -10,16 +10,34 @@
   <div class="projectManagerBody">
     <app-slider-view #slider (slideChange)=slideChange($event)>
 
+      <!-- Menu: HOME -->
       <app-slide [slideId]="'projectManagerHome'" [class]="'slide_projectManagerHome'" [title]="'Home'" [visible]="true">
         <app-home-menu-panel></app-home-menu-panel>
       </app-slide>
-
+      <app-slide [slideId]="'projectList'" [class]="'slide_projectList'" [title]="'Projects'">
+        <app-project-list-panel></app-project-list-panel>
+      </app-slide>
       <app-slide [slideId]="'projectEditor'" [class]="'slide_projectEditor'" [title]="'Project'">
         <app-project-editor-panel></app-project-editor-panel>
       </app-slide>
+      <app-slide [slideId]="'dataManager'" [class]="'slide_dataManager'" [title]="'Data Manager'">
+        <app-data-manager-panel></app-data-manager-panel>
+      </app-slide>
+      <!-- end -->
+
+      <!-- Menu: ADD DATA -->
       <app-slide [slideId]="'createLayer'" [class]="'slide_createLayer'" [title]="'Create Layer'">
         <app-create-layer-panel></app-create-layer-panel>
       </app-slide>
+      <app-slide [slideId]="'useExistingLayer'" [class]="'slide_useExistingLayer'" [title]="'Create Layer'">
+        <p>Use existing layer</p>
+      </app-slide>
+      <app-slide [slideId]="'updateExistingLayer'" [class]="'slide_updateExistingLayer'" [title]="'Create Layer'">
+        <p>Update existing layer</p>
+      </app-slide>
+      <!-- end -->
+
+      <!-- Menu: MAP PINS -->
       <app-slide [slideId]="'manualPinLayer'" [class]="'slide_manualPinLayer'" [title]="'Layer'">
         <app-manual-pin-layer></app-manual-pin-layer>
       </app-slide>
@@ -29,13 +47,14 @@
       <app-slide [slideId]="'copyExistingLayer'" [class]="'slide_copyExistingLayer'" [title]="'Existing Layer'">
         <app-copy-existing-layer-panel></app-copy-existing-layer-panel>
       </app-slide>
+      <!-- end -->
 
-      <app-slide [slideId]="'projectList'" [class]="'slide_projectList'" [title]="'Projects'">
-        <app-project-list-panel></app-project-list-panel>
+      <!-- Menu: CATCHMENTS -->
+      <app-slide [slideId]="'manualCatchmentLayer'" [class]="'slide_manualCatchmentLayer'" [title]="'Layer'">
+        <p>Manual catchment</p>
       </app-slide>
-
-      <app-slide [slideId]="'dataManager'" [class]="'slide_dataManager'" [title]="'Data Manager'">
-        <app-data-manager-panel></app-data-manager-panel>
+      <app-slide [slideId]="'catchmentImportData'" [class]="'slide_catchmentImportData'" [title]="'Import Data'">
+        <p>Import catchment</p>
       </app-slide>
 
     </app-slider-view>

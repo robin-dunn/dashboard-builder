@@ -38,7 +38,15 @@
 
   <app-side-menu-section [title]="'System Data'" [expandable]="true">
     <p>Point Layers</p>
+    <ul class="layerList">
+      <li *ngFor="let layer of systemPointLayers">
+        <input type="checkbox" />{{ layer.name }}</li>
+    </ul>
     <p>Boundaries</p>
+    <ul class="layerList">
+      <li *ngFor="let layer of systemBoundaryLayers">
+        <input type="checkbox" />{{ layer.name }}</li>
+    </ul>
   </app-side-menu-section>
 
   <app-side-menu-section [title]="'Map Bases'" [expandable]="true">

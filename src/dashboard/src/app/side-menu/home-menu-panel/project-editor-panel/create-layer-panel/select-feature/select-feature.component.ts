@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
-import * as MainActions from "../../../../../../main.actions";
+import * as MainActions from "../../../../../main.actions";
 
 @Component({
   selector: 'app-select-feature',

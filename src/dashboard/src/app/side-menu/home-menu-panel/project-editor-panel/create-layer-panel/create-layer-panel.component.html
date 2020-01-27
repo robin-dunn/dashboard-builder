@@ -27,6 +27,24 @@
 </app-side-menu-section>
 
 <app-side-menu-section [expandable]="true" [headerHeight]="'60px'"[title]="'Catchment Areas'" [description]="'Catchments are trading areas which can overlap'">
+
+    <p class="menu-item-description">
+        Create Catchment Areas around locations such as stores, depots or Field Reps using a hand-drawn shape, a radius or a travel time.
+    </p>
+
+    <p class="menu-item-description">
+        Identify gaps and overlaps. Assess coverage and identify what falls within these areas of influence.
+    </p>
+
+    <app-slide-nav-button [targetSlideId]="'manualCatchmentLayer'" [direction]="'forward'">
+        <app-proceed-inner-button [title]="'Create Catchments Manually'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualPinsTool($event)">
+        </app-proceed-inner-button>
+    </app-slide-nav-button>
+
+    <app-slide-nav-button [targetSlideId]="'importCatchments'" [direction]="'forward'">
+        <app-proceed-inner-button class="last-item" [title]="'Import Data'" [iconClass]="'fas fa-map-marker-alt'">
+        </app-proceed-inner-button>
+    </app-slide-nav-button>
 </app-side-menu-section>
 
 <app-side-menu-section [expandable]="true" [headerHeight]="'60px'" [title]="'Territories'"  [description]="'Organise your sales regions into non-overlapping territories'">

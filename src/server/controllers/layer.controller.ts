@@ -26,7 +26,7 @@ class LayerController implements IControllerBase {
     getLayers = async (req: Request, res: Response) => {
         let isSystemLayer = typeof req.query.isSystemLayer === "boolean"
             ? req.query.isSystemLayer : false;
-        console.log("req", req.query);
+
         let layers = await Layer.findAll({
             where: {
                 isSystemLayer: isSystemLayer

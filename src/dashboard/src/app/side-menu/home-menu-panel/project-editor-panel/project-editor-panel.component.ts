@@ -14,14 +14,16 @@ export class ProjectEditorPanelComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   public projectTitle = "";
-  public layers: Layer[] = [];
+  public projectLayers: Layer[] = [];
+  public systemBoundaryLayers: Layer[] = [];
   private projectId: number;
 
   ngOnInit() {
     this.store.subscribe(state => {
       this.projectId = state.main.currentProjectId;
       this.projectTitle = state.main.currentProject ? state.main.currentProject.name : "";
-      this.layers = state.main.projectLayers ? state.main.projectLayers : [];
+      this.systemBoundaryLayers = state.main.systemLayers ? state.main.systemLayers : [];
+      this.projectLayers = state.main.projectLayers ? state.main.projectLayers : [];
     })
   }
 

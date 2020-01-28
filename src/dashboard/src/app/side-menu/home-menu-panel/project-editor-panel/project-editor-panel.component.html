@@ -1,5 +1,5 @@
 <mat-accordion>
-  <app-side-menu-section [title]="'Project Name'" [expandable]="true">
+  <app-side-menu-section class="padding" [title]="'Project Name'" [expandable]="true">
     <p>
         <label>Name:</label>
         <input id="txtProjectName" tabindex="1" accesskey="n" type="text" class="field txt-EnterName"
@@ -8,7 +8,7 @@
     </p>
   </app-side-menu-section>
 
-  <app-side-menu-section [title]="'Add Data'" [expandable]="true">
+  <app-side-menu-section class="padding" [title]="'Add Data'" [expandable]="true">
 
     <app-slide-nav-button [targetSlideId]="'createLayer'" [direction]="'forward'" (click)="clickCreateLayer($event)">
       <app-proceed-inner-button class="slim" [iconClass]="'far fa-plus-square'" [title]="'Create New Layer'">

@@ -1,5 +1,6 @@
-<mat-accordion>
+<mat-accordion class="create-layer-panel">
 
+    <!-- MAP PINS -->
     <app-side-menu-section [expandable]="true" [headerHeight]="'60px'" 
         [title]="'Map Pins'" [description]="'Plot your map data using pins on the map'">
 
@@ -28,6 +29,7 @@
 
     </app-side-menu-section>
 
+    <!-- CATCHMENT AREAS -->
     <app-side-menu-section [expandable]="true" [headerHeight]="'60px'"[title]="'Catchment Areas'" [description]="'Catchments are trading areas which can overlap'">
 
         <p class="menu-item-description">
@@ -39,7 +41,7 @@
         </p>
 
         <app-slide-nav-button [targetSlideId]="'manualCatchmentLayer'" [direction]="'forward'">
-            <app-proceed-inner-button [title]="'Create Catchments Manually'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualCatchmentsTool($event)">
+            <app-proceed-inner-button class="first-item" [title]="'Create Catchments Manually'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualCatchmentsTool($event)">
             </app-proceed-inner-button>
         </app-slide-nav-button>
 
@@ -47,8 +49,10 @@
             <app-proceed-inner-button class="last-item" [title]="'Import Data'" [iconClass]="'fas fa-table'">
             </app-proceed-inner-button>
         </app-slide-nav-button>
+
     </app-side-menu-section>
 
+    <!-- TERRITORIES -->
     <app-side-menu-section [expandable]="true" [headerHeight]="'60px'" [title]="'Territories'"  [description]="'Organise your sales regions into non-overlapping territories'">
     </app-side-menu-section>
 

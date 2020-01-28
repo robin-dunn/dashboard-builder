@@ -23,7 +23,6 @@ import { HomeMenuPanelComponent } from './side-menu/home-menu-panel/home-menu-pa
 import { ImportDataPanelComponent } from './side-menu/home-menu-panel/project-editor-panel/create-layer-panel/import-data-panel/import-data-panel.component';
 import { CopyExistingLayerPanelComponent } from './side-menu/home-menu-panel/project-editor-panel/copy-existing-layer-panel/copy-existing-layer-panel.component';
 import { ProjectListPanelComponent } from './side-menu/home-menu-panel/project-list-panel/project-list-panel.component';
-import { ProjectManagerMenuItem } from './side-menu/project-manager-menu-item/project-manager-menu-item.component';
 import { DataManagerPanelComponent } from './side-menu/home-menu-panel/data-manager-panel/data-manager-panel.component';
 import { SideMenuSectionComponent } from './side-menu/side-menu-section/side-menu-section.component';
 import { ProceedInnerButtonComponent } from './side-menu/side-menu-section/proceed-inner-button/proceed-inner-button.component';
@@ -55,7 +54,6 @@ import { UseExistingLayerPanelComponent } from './side-menu/home-menu-panel/proj
     ImportDataPanelComponent,
     CopyExistingLayerPanelComponent,
     ProjectListPanelComponent,
-    ProjectManagerMenuItem,
     DataManagerPanelComponent,
     SideMenuSectionComponent,
     ProceedInnerButtonComponent,

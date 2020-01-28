@@ -84,7 +84,7 @@ input[type="text"] {
     width: 100%;
 }
 
-.side-menu-section .last-item {
+.side-menu-section .last-item .proceed-inner {
     border-bottom: 1px solid #000;
 }
 
@@ -163,6 +163,10 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
 
 .mat-expansion-panel-content .mat-expansion-panel-body {
     background-color: #fff;
+    padding: 0 16px 16px 16px;
+}
+
+.padding .mat-expansion-panel-content .mat-expansion-panel-body {
     padding: 16px;
 }
 
@@ -184,7 +188,7 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
     display: flex;
 }
 
-.slideNavButton .menuItemRightArrow {
+.proceed-inner .menuItemRightArrow {
     font-size: 17px;
     margin-left: auto;
 }

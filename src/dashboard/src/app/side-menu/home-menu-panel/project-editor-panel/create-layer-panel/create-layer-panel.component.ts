@@ -19,4 +19,8 @@ export class CreateLayerPanelComponent implements OnInit {
   clickManualPinsTool(event) {
     this.store.dispatch(new MainActions.SelectTool("manualPins"));
   }
+
+  clickManualCatchmentsTool(event) {
+    this.store.dispatch(new MainActions.SelectTool("manualCatchments"));
+  }
 }

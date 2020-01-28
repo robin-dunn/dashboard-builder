@@ -11,18 +11,18 @@
   <app-side-menu-section [title]="'Add Data'" [expandable]="true">
 
     <app-slide-nav-button [targetSlideId]="'createLayer'" [direction]="'forward'" (click)="clickCreateLayer($event)">
-      <app-project-manager-menu-item [title]="'Create New Layer'" [iconClass]="'far fa-plus-square'">
-      </app-project-manager-menu-item>
+      <app-proceed-inner-button class="slim" [iconClass]="'icon far fa-plus-square'" [title]="'Create New Layer'">
+      </app-proceed-inner-button>
     </app-slide-nav-button>
 
     <app-slide-nav-button [targetSlideId]="'useExistingLayer'" [direction]="'forward'">
-      <app-project-manager-menu-item [title]="'Use Existing Layer'" [iconClass]="'fas fa-layer-group'">
-      </app-project-manager-menu-item>
+      <app-proceed-inner-button class="slim" [iconClass]="'icon fas fa-layer-group'" [title]="'Use Existing Layer'">
+      </app-proceed-inner-button>
     </app-slide-nav-button>
 
     <app-slide-nav-button [targetSlideId]="'updateExistingLayer'" [direction]="'forward'">
-      <app-project-manager-menu-item [title]="'Update Existing Layer'" [iconClass]="'fas fa-sync'">
-      </app-project-manager-menu-item>
+      <app-proceed-inner-button class="slim" [iconClass]="'icon fas fa-sync'" [title]="'Update Existing Layer'">
+      </app-proceed-inner-button>
     </app-slide-nav-button>
 
   </app-side-menu-section>

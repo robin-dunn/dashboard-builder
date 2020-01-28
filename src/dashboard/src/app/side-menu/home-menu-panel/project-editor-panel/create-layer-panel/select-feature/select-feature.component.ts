@@ -13,15 +13,20 @@ export class SelectFeatureComponent implements OnInit {
   public radioEditType: string = "editSingle";
 
   constructor(private store:Store<AppState>) {
-    this.selectEditMode(this.radioEditType);
+    this.store.select(state => state.main.editMode).subscribe(editMode => {
+      console.log(">> Edit Change ["+editMode+"]");
+      this.radioEditType = editMode;
+      console.log("RET", this.radioEditType);
+    });
+    //this.selectEditMode(this.radioEditType);
   }
 
   ngOnInit() {
   }
 
   onItemChange(event) {
-    this.radioEditType = event.target.value;
-    this.selectEditMode(this.radioEditType);
+    console.log("TEST", event.target);
+    this.selectEditMode(event.target.value);
   }
 
   selectEditMode(editMode:string) {

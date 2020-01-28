@@ -159,7 +159,7 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
 
 .mat-expansion-panel-content .mat-expansion-panel-body {
     background-color: #fff;
-    padding: 0 1.4em 0.2em 1.4em;
+    padding: 16px;
 }
 
 .mat-expansion-panel-body .slideNavButton p {
@@ -181,6 +181,7 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
 }
 
 .mat-expansion-panel-body .menuItemRightArrow {
+    font-size: 17px;
     margin-left: auto;
 }
 
@@ -222,4 +223,22 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
 .homeButton .icon {
     display: block;
     font-size: 2.4em;
+}
+
+.proceed-inner {
+    display: block;
+    padding: 1em 10px 1em 20px;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.proceed-inner .icon {
+    margin-right: 10px;
+}
+
+.slim .proceed-inner {
+    padding: 0;
+    margin-bottom: 0.4em;
+    border: none;
 }

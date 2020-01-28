@@ -18,8 +18,10 @@ export class SideMenuComponent implements OnInit {
   @Input() widgetConfig: IWidgetConfig;
   @ViewChild("container") container: ElementRef;
   @ViewChild("slider") slider: SliderViewComponent;
+  @ViewChild("sideMenuBody") sideMenuBody: ElementRef;
 
   public menuTitle = "Home";
+  public scrollbarOptions;
 
   layerDialogRef: MatDialogRef<DialogAddLayerComponent>;
 
@@ -28,7 +30,24 @@ export class SideMenuComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private store: Store<AppState>) {}
+    private store: Store<AppState>) {
+
+      this.scrollbarOptions = {
+        axis: 'y',
+        theme: 'minimal-dark',
+        autoHideScrollbar: false,
+        scrollbarPosition: "outside",
+        mouseWheel:{ enable: true },
+        scrollButtons:{ enable: true },
+        advanced:{ updateOnContentResize: true },
+        callbacks:{
+          onCreate: () => {
+            console.log("created", this.sideMenuBody.nativeElement.style.overflow = "hidden");
+          }
+        }
+      };
+
+    }
 
   public widthSubject = new Subject<number>();
   public navigationDepth = 0;

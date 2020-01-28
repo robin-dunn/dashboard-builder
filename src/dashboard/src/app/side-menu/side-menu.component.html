@@ -7,7 +7,8 @@
     <h2 class="currentMenuTitle">{{ menuTitle }}</h2>
   </div>
 
-  <div class="projectManagerBody">
+  <!-- style mCSB_dragger_bar -->
+  <div #sideMenuBody class="projectManagerBody" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
     <app-slider-view #slider (slideChange)=slideChange($event)>
 
       <!-- Menu: HOME -->

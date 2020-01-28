@@ -35,6 +35,7 @@ import { SelectFeatureComponent } from './side-menu/home-menu-panel/project-edit
 import { DesignAndBuildComponent } from './side-menu/home-menu-panel/project-editor-panel/create-layer-panel/manual-pin-layer/design-and-build/design-and-build.component';
 import { ManualCatchmentLayerComponent } from './side-menu/home-menu-panel/project-editor-panel/create-layer-panel/manual-catchment-layer/manual-catchment-layer.component';
 import { UseExistingLayerPanelComponent } from './side-menu/home-menu-panel/project-editor-panel/use-existing-layer-panel/use-existing-layer-panel.component';
+import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { UseExistingLayerPanelComponent } from './side-menu/home-menu-panel/proj
     MatDialogModule,
     MatExpansionModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot(effects)
+    EffectsModule.forRoot(effects),
+    MalihuScrollbarModule.forRoot()
   ],
   providers: [CentralStoreService],
   bootstrap: [AppComponent],

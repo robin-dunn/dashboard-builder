@@ -2,11 +2,7 @@
   <app-slide-nav-button
   *ngFor="let project of projects; let first = first; let last = last"
   [targetSlideId]="'projectEditor'" [direction]="'forward'">
-    <app-project-manager-menu-item
-      [title]="project.name"
-      [class.first-item]="first"
-      [class.last-item]="last"
-      (click)="clickProject(project.id)">
-    </app-project-manager-menu-item>
+    <app-proceed-inner-button class="slim" [title]="project.name" (click)="clickProject(project.id)">
+    </app-proceed-inner-button>
   </app-slide-nav-button>
 </div>

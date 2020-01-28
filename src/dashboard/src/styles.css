@@ -157,6 +157,10 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
     overflow: hidden;
 }
 
+.mat-expansion-panel-content {
+    font: unset;
+}
+
 .mat-expansion-panel-content .mat-expansion-panel-body {
     background-color: #fff;
     padding: 16px;
@@ -180,7 +184,7 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
     display: flex;
 }
 
-.mat-expansion-panel-body .menuItemRightArrow {
+.slideNavButton .menuItemRightArrow {
     font-size: 17px;
     margin-left: auto;
 }
@@ -257,3 +261,7 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
     margin-bottom: 0.4em;
     border: none;
 }
+
+    .slim .proceed-inner .icon {
+        font-size: 19px;
+    }

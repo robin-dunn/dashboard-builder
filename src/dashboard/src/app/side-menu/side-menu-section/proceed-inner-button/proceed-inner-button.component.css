@@ -2,18 +2,3 @@
     cursor: pointer;
     background-color: #ccc;
 }
-
-.proceed-inner {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: #000;
-}
-
-.proceed-inner a {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    color: #000;
-    text-decoration: none;
-}

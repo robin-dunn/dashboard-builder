@@ -227,15 +227,30 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
 
 .proceed-inner {
     display: block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #000;
     padding: 1em 10px 1em 20px;
     border-top: 1px solid #000;
     border-left: 1px solid #000;
     border-right: 1px solid #000;
 }
 
-.proceed-inner .icon {
-    margin-right: 10px;
-}
+    .proceed-inner a {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        color: #000;
+        text-decoration: none;
+    }
+
+    .proceed-inner .icon {
+        text-align: center;
+        font-size: 1.5em;
+        width: 30px;
+        margin-right: 10px;
+    }
 
 .slim .proceed-inner {
     padding: 0;

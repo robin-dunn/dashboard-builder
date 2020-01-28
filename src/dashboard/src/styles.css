@@ -154,7 +154,7 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
 
 .mat-expansion-panel-header-description {
     display: block;
-    color: #fff;
+    color: unset;
     font-size: 11px;
     margin-top: 2px;
     text-overflow: ellipsis;
@@ -244,10 +244,9 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
     flex-direction: row;
     align-items: center;
     color: #000;
-    padding: 1em 10px 1em 20px;
-    border-top: 1px solid #000;
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
+    padding: 12px 10px 12px 10px;
+    border: 1px solid #000;
+    border-top: none;
 }
 
     .proceed-inner a {
@@ -264,6 +263,10 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
         width: 30px;
         margin-right: 10px;
     }
+
+.create-layer-panel .proceed-inner.first-item {
+    border-top:1px solid #000;
+}
 
 .slim .proceed-inner {
     padding: 0;

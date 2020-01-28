@@ -13,7 +13,7 @@
         </p>
 
         <app-slide-nav-button [targetSlideId]="'manualPinLayer'" [direction]="'forward'">
-            <app-proceed-inner-button [title]="'Manually Place Pins'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualPinsTool($event)">
+            <app-proceed-inner-button [outerClass]="'first-item'" [title]="'Manually Place Pins'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualPinsTool($event)">
             </app-proceed-inner-button>
         </app-slide-nav-button>
 
@@ -23,7 +23,7 @@
         </app-slide-nav-button>
 
         <app-slide-nav-button [targetSlideId]="'copyExistingLayer'" [direction]="'forward'">
-            <app-proceed-inner-button class="last-item" [title]="'Copy Existing Layer'" [iconClass]="'fas fa-map-marker-alt'">
+            <app-proceed-inner-button [title]="'Copy Existing Layer'" [iconClass]="'fas fa-layer-group'">
             </app-proceed-inner-button>
         </app-slide-nav-button>
 
@@ -41,12 +41,12 @@
         </p>
 
         <app-slide-nav-button [targetSlideId]="'manualCatchmentLayer'" [direction]="'forward'">
-            <app-proceed-inner-button class="first-item" [title]="'Create Catchments Manually'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualCatchmentsTool($event)">
+            <app-proceed-inner-button [outerClass]="'first-item'" [title]="'Create Catchments Manually'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualCatchmentsTool($event)">
             </app-proceed-inner-button>
         </app-slide-nav-button>
 
         <app-slide-nav-button [targetSlideId]="'importCatchments'" [direction]="'forward'">
-            <app-proceed-inner-button class="last-item" [title]="'Import Data'" [iconClass]="'fas fa-table'">
+            <app-proceed-inner-button [title]="'Import Data'" [iconClass]="'fas fa-table'">
             </app-proceed-inner-button>
         </app-slide-nav-button>
 

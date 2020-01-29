@@ -1,44 +1,48 @@
 <mat-accordion>
 
-<app-side-menu-section [title]="'Route Optimiser'">
-</app-side-menu-section>
+    <app-side-menu-section>
+        <app-proceed [title]="'Route Optimiser'" [showView]="'route-optimiser-config'"></app-proceed>
+    </app-side-menu-section>
 
-<app-side-menu-section [title]="'Projects'" [expandable]="true">
-    <app-proceed [title]="'All Projects'"></app-proceed>
-    <app-proceed class="last-item" [title]="'My Projects'"></app-proceed>
-</app-side-menu-section>
+    <app-side-menu-section [title]="'Projects'" [expandable]="true">
+        <app-proceed [title]="'All Projects'"></app-proceed>
+        <app-proceed class="last-item" [title]="'My Projects'"></app-proceed>
+    </app-side-menu-section>
 
-<app-side-menu-section [title]="'Layers'" [expandable]="true">
-    <app-proceed [title]="'All Layers'"></app-proceed>
-    <app-proceed [title]="'My Data'"></app-proceed>
-    <app-proceed class="last-item" [title]="'System Data'"></app-proceed>
-</app-side-menu-section>
+    <app-side-menu-section [title]="'Layers'" [expandable]="true">
+        <app-proceed [title]="'All Layers'"></app-proceed>
+        <app-proceed [title]="'My Data'"></app-proceed>
+        <app-proceed class="last-item" [title]="'System Data'"></app-proceed>
+    </app-side-menu-section>
 
-<app-side-menu-section [title]="'Admin Users'">
-</app-side-menu-section>
+    <app-side-menu-section>
+        <app-proceed [title]="'Admin Users'" [showView]="'admin-users'"></app-proceed>
+    </app-side-menu-section>
 
-<app-side-menu-section [title]="'Permissions'" [expandable]="true">
-    <app-proceed [title]="'Users'"></app-proceed>
-    <app-proceed [title]="'Groups'"></app-proceed>
-    <app-proceed class="last-item" [title]="'User Hierarchy'"></app-proceed>
-</app-side-menu-section>
+    <app-side-menu-section [title]="'Permissions'" [expandable]="true">
+        <app-proceed [title]="'Users'"></app-proceed>
+        <app-proceed [title]="'Groups'"></app-proceed>
+        <app-proceed class="last-item" [title]="'User Hierarchy'"></app-proceed>
+    </app-side-menu-section>
 
-<app-side-menu-section [title]="'Dashboard'">
-</app-side-menu-section>
+    <app-side-menu-section>
+        <app-proceed [title]="'Dashboard'" [showView]="'dashboard-config'"></app-proceed>
+    </app-side-menu-section>
 
-<app-side-menu-section [title]="'Survey'">
-</app-side-menu-section>
+    <app-side-menu-section>
+        <app-proceed [title]="'Survey'" [showView]="'survey-config'"></app-proceed>
+    </app-side-menu-section>
 
-<app-side-menu-section [title]="'System Data Layers'" [expandable]="true">
-    <app-proceed [title]="'Download From S3'"></app-proceed>
-    <app-proceed [title]="'Add & Style New SDL'"></app-proceed>
-    <app-proceed [title]="'Upload New SDL'"></app-proceed>
-    <app-proceed [title]="'Maintain SDLs'"></app-proceed>
-    <app-proceed class="last-item" [title]="'Style Existing SDL'"></app-proceed>
-</app-side-menu-section>
+    <app-side-menu-section [title]="'System Data Layers'" [expandable]="true">
+        <app-proceed [title]="'Download From S3'"></app-proceed>
+        <app-proceed [title]="'Add & Style New SDL'"></app-proceed>
+        <app-proceed [title]="'Upload New SDL'"></app-proceed>
+        <app-proceed [title]="'Maintain SDLs'"></app-proceed>
+        <app-proceed class="last-item" [title]="'Style Existing SDL'"></app-proceed>
+    </app-side-menu-section>
 
-<app-side-menu-section [title]="'Settings'" [expandable]="true">
-    <app-proceed class="last-item" [title]="'Theme'"></app-proceed>
-</app-side-menu-section>
+    <app-side-menu-section [title]="'Settings'" [expandable]="true">
+        <app-proceed class="last-item" [title]="'Theme'"></app-proceed>
+    </app-side-menu-section>
 
 </mat-accordion>

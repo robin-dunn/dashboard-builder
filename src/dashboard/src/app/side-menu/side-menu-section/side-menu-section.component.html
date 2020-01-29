@@ -1,25 +1,24 @@
 <div class="side-menu-section" (click)="onClick($event)">
-  <ng-container
-    *ngIf="expandable; then expandableView; else simpleView">
+  <ng-container *ngIf="expandable">
+    <mat-expansion-panel [expanded]="expanded" [style.border-radius]="'0'">
+      <mat-expansion-panel-header class="section-header" [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
+        <mat-panel-title class="section-header-title">
+          <h3 >{{title}}</h3>
+        </mat-panel-title>
+        <mat-panel-description *ngIf="description" class="menu-section-description">
+          {{description}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ng-container *ngTemplateOutlet="templateOutlet"></ng-container>
+    </mat-expansion-panel>
+  </ng-container>
+  <ng-container *ngIf="!expandable">
+    <div class="section-header">
+      <ng-container *ngTemplateOutlet="templateOutlet"></ng-container>
+    </div>
   </ng-container>
 </div>
 
-<ng-template #expandableView>
-  <mat-expansion-panel [expanded]="expanded" [style.border-radius]="'0'">
-    <mat-expansion-panel-header class="section-header" [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
-      <mat-panel-title class="section-header-title">
-        <h3 >{{title}}</h3>
-      </mat-panel-title>
-      <mat-panel-description *ngIf="description" class="menu-section-description">
-        {{description}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <ng-content></ng-content>
-  </mat-expansion-panel>
-</ng-template>
-<ng-template #simpleView>
-  <div class="section-header">
-    <app-proceed [title]="title"></app-proceed>
-    <p *ngIf="description" class="menu-section-description">{{description}}</p>
-  </div>
-</ng-template>
+ <ng-template #templateOutlet>
+     <ng-content></ng-content>
+ </ng-template>

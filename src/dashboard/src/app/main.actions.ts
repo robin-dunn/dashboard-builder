@@ -4,7 +4,8 @@ import { MapPin } from './models/mapPin';
 import { Layer } from './models/layer';
 
 export const SIDE_MENU_CHANGED = '[App] Side Menu Changed';
-export const CHANGE_VIEW = "[App] Change View";
+export const CHANGE_PARENT_VIEW = "[App] Change Parent View";
+export const CHANGE_CHILD_VIEW = "[App] Change Child View";
 
 export const CREATE_PROJECT = '[App] Create Project';
 export const CREATE_PROJECT_SUCCESS = '[App] Create Project Success';
@@ -42,8 +43,13 @@ export class SideMenuChanged implements Action {
     constructor(public payload: string) {}
 }
 
-export class ChangeView implements Action {
-    readonly type = CHANGE_VIEW;
+export class ChangeParentView implements Action {
+    readonly type = CHANGE_PARENT_VIEW;
+    constructor(public payload: string) {}
+}
+
+export class ChangeChildView implements Action {
+    readonly type = CHANGE_CHILD_VIEW;
     constructor(public payload: string) {}
 }
 

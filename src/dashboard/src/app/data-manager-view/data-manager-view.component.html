@@ -1,3 +1,8 @@
 <h2>Data Manager</h2>
 
-<app-upload-sdl-panel></app-upload-sdl-panel>
+<!-- <app-upload-sdl-panel></app-upload-sdl-panel> -->
+
+<app-route-optimiser-config *ngIf="currentView === 'route-optimiser-config'"></app-route-optimiser-config>
+<app-admin-users *ngIf="currentView === 'admin-users'"></app-admin-users>
+<app-dashboard-config *ngIf="currentView === 'dashboard-config'"></app-dashboard-config>
+<app-survey-config *ngIf="currentView === 'survey-config'"></app-survey-config>

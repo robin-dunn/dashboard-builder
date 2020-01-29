@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as MainActions from "../../../main.actions";
+import { AppState } from '../../../reducers';
 
 @Component({
   selector: 'app-proceed',
@@ -12,14 +15,15 @@ export class ProceedComponent implements OnInit {
   @Input() iconClass: string;
   @Input() showView: string;
 
-  constructor() { }
+  constructor(private store:Store<AppState>) {
+  }
 
   ngOnInit() {
   }
 
   onClick(event) {
     if (this.showView) {
-      alert("show " + this.showView);
+      this.store.dispatch(new MainActions.ChangeChildView(this.showView));
     }
   }
 }

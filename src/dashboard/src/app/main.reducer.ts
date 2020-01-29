@@ -5,7 +5,8 @@ import { Layer } from "./models/layer";
 export class MainState {
     loading: boolean;
     currentSideMenu: string;
-    currentView: string;
+    currentParentView: string;
+    currentChildView: string;
     projects: Project[];
     currentProjectId: number;
     currentProject: Project;
@@ -18,7 +19,8 @@ export class MainState {
 const initialState: MainState = {
     loading: false,
     currentSideMenu: null,
-    currentView: "Map",
+    currentParentView: "Map",
+    currentChildView: "",
     projects: [],
     currentProjectId: -1,
     currentProject: {
@@ -127,9 +129,13 @@ export function reducer(state: MainState = initialState, action: MainActions.Act
             return { ...state,
                 currentSideMenu: action.payload
             };
-        case MainActions.CHANGE_VIEW:
+        case MainActions.CHANGE_PARENT_VIEW:
             return { ...state,
-                currentView: action.payload
+                currentParentView: action.payload
+            };
+        case MainActions.CHANGE_CHILD_VIEW:
+            return { ...state,
+                currentChildView: action.payload
             };
         default:
             return state;

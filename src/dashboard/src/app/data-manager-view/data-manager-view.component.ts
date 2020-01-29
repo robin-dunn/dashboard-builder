@@ -9,6 +9,15 @@ import { AppState } from 'src/app/reducers';
 })
 export class DataManagerViewComponent implements OnInit {
 
+  public currentView: string;
+
+  constructor(private store:Store<AppState>) {
+    this.store.subscribe(state => {
+      this.currentView = state.main.currentChildView;
+      console.log("current view", this.currentView);
+    })
+  }
+
   ngOnInit() {
   }
 }

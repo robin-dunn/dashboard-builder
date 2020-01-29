@@ -38,6 +38,10 @@ import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { DataManagerToolbarComponent } from './data-manager-toolbar/data-manager-toolbar.component';
 import { UploadSdlPanelComponent } from './data-manager-view/upload-sdl-panel/upload-sdl-panel.component';
+import { RouteOptimiserConfigComponent } from './data-manager-view/route-optimiser-config/route-optimiser-config.component';
+import { AdminUsersComponent } from './data-manager-view/admin-users/admin-users.component';
+import { DashboardConfigComponent } from './data-manager-view/dashboard-config/dashboard-config.component';
+import { SurveyConfigComponent } from './data-manager-view/survey-config/survey-config.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +71,11 @@ import { UploadSdlPanelComponent } from './data-manager-view/upload-sdl-panel/up
     UseExistingLayerPanelComponent,
     ToolbarComponent,
     DataManagerToolbarComponent,
-    UploadSdlPanelComponent
+    UploadSdlPanelComponent,
+    RouteOptimiserConfigComponent,
+    AdminUsersComponent,
+    DashboardConfigComponent,
+    SurveyConfigComponent
   ],
   imports: [
     BrowserModule,

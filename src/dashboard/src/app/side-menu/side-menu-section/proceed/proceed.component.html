@@ -1,4 +1,4 @@
-<div class="proceed-inner {{outerClass}}">
+<div class="proceed {{outerClass}}" (click)="onClick($event)">
     <i *ngIf="iconClass" class="icon {{iconClass}}"></i>
     <a href="#">{{title}}
         <i class="fa fa-chevron-right menuItemRightArrow"></i>

@@ -13,19 +13,19 @@
         </p>
 
         <app-slide-nav-button [targetSlideId]="'manualPinLayer'">
-            <app-proceed-inner-button [outerClass]="'first-item'" [title]="'Manually Place Pins'"
+            <app-proceed [outerClass]="'first-item'" [title]="'Manually Place Pins'"
                 [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualPinsTool($event)">
-            </app-proceed-inner-button>
+            </app-proceed>
         </app-slide-nav-button>
 
         <app-slide-nav-button [targetSlideId]="'importData'">
-            <app-proceed-inner-button [title]="'Import Data'" [iconClass]="'fas fa-table'">
-            </app-proceed-inner-button>
+            <app-proceed [title]="'Import Data'" [iconClass]="'fas fa-table'">
+            </app-proceed>
         </app-slide-nav-button>
 
         <app-slide-nav-button [targetSlideId]="'copyExistingLayer'">
-            <app-proceed-inner-button [title]="'Copy Existing Layer'" [iconClass]="'fas fa-layer-group'">
-            </app-proceed-inner-button>
+            <app-proceed [title]="'Copy Existing Layer'" [iconClass]="'fas fa-layer-group'">
+            </app-proceed>
         </app-slide-nav-button>
 
     </app-side-menu-section>
@@ -42,13 +42,13 @@
         </p>
 
         <app-slide-nav-button [targetSlideId]="'manualCatchmentLayer'" >
-            <app-proceed-inner-button [outerClass]="'first-item'" [title]="'Create Catchments Manually'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualCatchmentsTool($event)">
-            </app-proceed-inner-button>
+            <app-proceed [outerClass]="'first-item'" [title]="'Create Catchments Manually'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualCatchmentsTool($event)">
+            </app-proceed>
         </app-slide-nav-button>
 
         <app-slide-nav-button [targetSlideId]="'importCatchments'" >
-            <app-proceed-inner-button [title]="'Import Data'" [iconClass]="'fas fa-table'">
-            </app-proceed-inner-button>
+            <app-proceed [title]="'Import Data'" [iconClass]="'fas fa-table'">
+            </app-proceed>
         </app-slide-nav-button>
 
     </app-side-menu-section>

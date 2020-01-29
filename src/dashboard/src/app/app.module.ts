@@ -24,7 +24,7 @@ import { CopyExistingLayerPanelComponent } from './side-menu/home-menu-panel/pro
 import { ProjectListPanelComponent } from './side-menu/home-menu-panel/project-list-panel/project-list-panel.component';
 import { DataManagerPanelComponent } from './side-menu/home-menu-panel/data-manager-panel/data-manager-panel.component';
 import { SideMenuSectionComponent } from './side-menu/side-menu-section/side-menu-section.component';
-import { ProceedInnerButtonComponent } from './side-menu/side-menu-section/proceed-inner-button/proceed-inner-button.component';
+import { ProceedComponent } from './side-menu/side-menu-section/proceed/proceed.component';
 import { DataManagerViewComponent } from './data-manager-view/data-manager-view.component';
 import { EffectsModule } from '@ngrx/effects';
 import { effects } from './effects';
@@ -58,7 +58,7 @@ import { UploadSdlPanelComponent } from './data-manager-view/upload-sdl-panel/up
     ProjectListPanelComponent,
     DataManagerPanelComponent,
     SideMenuSectionComponent,
-    ProceedInnerButtonComponent,
+    ProceedComponent,
     DataManagerViewComponent,
     ManualPinLayerComponent,
     SelectFeatureComponent,

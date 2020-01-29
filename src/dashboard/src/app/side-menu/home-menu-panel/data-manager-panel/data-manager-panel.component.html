@@ -4,23 +4,23 @@
 </app-side-menu-section>
 
 <app-side-menu-section [title]="'Projects'" [expandable]="true">
-    <app-proceed-inner-button [title]="'All Projects'"></app-proceed-inner-button>
-    <app-proceed-inner-button class="last-item" [title]="'My Projects'"></app-proceed-inner-button>
+    <app-proceed [title]="'All Projects'"></app-proceed>
+    <app-proceed class="last-item" [title]="'My Projects'"></app-proceed>
 </app-side-menu-section>
 
 <app-side-menu-section [title]="'Layers'" [expandable]="true">
-    <app-proceed-inner-button [title]="'All Layers'"></app-proceed-inner-button>
-    <app-proceed-inner-button [title]="'My Data'"></app-proceed-inner-button>
-    <app-proceed-inner-button class="last-item" [title]="'System Data'"></app-proceed-inner-button>
+    <app-proceed [title]="'All Layers'"></app-proceed>
+    <app-proceed [title]="'My Data'"></app-proceed>
+    <app-proceed class="last-item" [title]="'System Data'"></app-proceed>
 </app-side-menu-section>
 
 <app-side-menu-section [title]="'Admin Users'">
 </app-side-menu-section>
 
 <app-side-menu-section [title]="'Permissions'" [expandable]="true">
-    <app-proceed-inner-button [title]="'Users'"></app-proceed-inner-button>
-    <app-proceed-inner-button [title]="'Groups'"></app-proceed-inner-button>
-    <app-proceed-inner-button class="last-item" [title]="'User Hierarchy'"></app-proceed-inner-button>
+    <app-proceed [title]="'Users'"></app-proceed>
+    <app-proceed [title]="'Groups'"></app-proceed>
+    <app-proceed class="last-item" [title]="'User Hierarchy'"></app-proceed>
 </app-side-menu-section>
 
 <app-side-menu-section [title]="'Dashboard'">
@@ -30,15 +30,15 @@
 </app-side-menu-section>
 
 <app-side-menu-section [title]="'System Data Layers'" [expandable]="true">
-    <app-proceed-inner-button [title]="'Download From S3'"></app-proceed-inner-button>
-    <app-proceed-inner-button [title]="'Add & Style New SDL'"></app-proceed-inner-button>
-    <app-proceed-inner-button [title]="'Upload New SDL'"></app-proceed-inner-button>
-    <app-proceed-inner-button [title]="'Maintain SDLs'"></app-proceed-inner-button>
-    <app-proceed-inner-button class="last-item" [title]="'Style Existing SDL'"></app-proceed-inner-button>
+    <app-proceed [title]="'Download From S3'"></app-proceed>
+    <app-proceed [title]="'Add & Style New SDL'"></app-proceed>
+    <app-proceed [title]="'Upload New SDL'"></app-proceed>
+    <app-proceed [title]="'Maintain SDLs'"></app-proceed>
+    <app-proceed class="last-item" [title]="'Style Existing SDL'"></app-proceed>
 </app-side-menu-section>
 
 <app-side-menu-section [title]="'Settings'" [expandable]="true">
-    <app-proceed-inner-button class="last-item" [title]="'Theme'"></app-proceed-inner-button>
+    <app-proceed class="last-item" [title]="'Theme'"></app-proceed>
 </app-side-menu-section>
 
 </mat-accordion>

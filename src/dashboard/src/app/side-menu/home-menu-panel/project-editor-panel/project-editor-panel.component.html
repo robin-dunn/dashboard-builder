@@ -11,18 +11,18 @@
   <app-side-menu-section class="padding" [title]="'Add Data'" [expandable]="true">
 
     <app-slide-nav-button [targetSlideId]="'createLayer'"  (click)="clickCreateLayer($event)">
-      <app-proceed-inner-button class="slim" [iconClass]="'far fa-plus-square'" [title]="'Create New Layer'">
-      </app-proceed-inner-button>
+      <app-proceed class="slim" [iconClass]="'far fa-plus-square'" [title]="'Create New Layer'">
+      </app-proceed>
     </app-slide-nav-button>
 
     <app-slide-nav-button [targetSlideId]="'useExistingLayer'" >
-      <app-proceed-inner-button class="slim" [iconClass]="'fas fa-layer-group'" [title]="'Use Existing Layer'">
-      </app-proceed-inner-button>
+      <app-proceed class="slim" [iconClass]="'fas fa-layer-group'" [title]="'Use Existing Layer'">
+      </app-proceed>
     </app-slide-nav-button>
 
     <app-slide-nav-button [targetSlideId]="'updateExistingLayer'" >
-      <app-proceed-inner-button class="slim" [iconClass]="'fas fa-sync'" [title]="'Update Existing Layer'">
-      </app-proceed-inner-button>
+      <app-proceed class="slim" [iconClass]="'fas fa-sync'" [title]="'Update Existing Layer'">
+      </app-proceed>
     </app-slide-nav-button>
 
   </app-side-menu-section>

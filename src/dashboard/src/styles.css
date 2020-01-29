@@ -84,7 +84,7 @@ input[type="text"] {
     width: 100%;
 }
 
-.side-menu-section .last-item .proceed-inner {
+.side-menu-section .last-item .proceed {
     border-bottom: 1px solid #000;
 }
 
@@ -193,7 +193,7 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
     display: flex;
 }
 
-.proceed-inner .menuItemRightArrow {
+.proceed .menuItemRightArrow {
     font-size: 17px;
     margin-left: auto;
 }
@@ -238,7 +238,7 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
     font-size: 2.4em;
 }
 
-.proceed-inner {
+.proceed {
     display: block;
     display: flex;
     flex-direction: row;
@@ -249,7 +249,7 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
     border-top: none;
 }
 
-    .proceed-inner a {
+    .proceed a {
         display: flex;
         flex: 1;
         align-items: center;
@@ -257,44 +257,44 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
         text-decoration: none;
     }
 
-    .proceed-inner .icon {
+    .proceed .icon {
         text-align: center;
         font-size: 1.5em;
         width: 30px;
         margin-right: 10px;
     }
 
-.create-layer-panel .proceed-inner.first-item {
+.create-layer-panel .proceed.first-item {
     border-top:1px solid #000;
 }
 
-.slim .proceed-inner {
+.slim .proceed {
     padding: 0;
     margin-bottom: 0.4em;
     border: none;
 }
 
-    .slim .proceed-inner .icon {
+    .slim .proceed .icon {
         font-size: 19px;
     }
 
-.section-header .proceed-inner {
+.section-header .proceed {
     color: #fff;
     font-weight: bold;
     border: none;
     padding: 0;
 }
 
-.section-header .proceed-inner:hover, .section-header .proceed-inner a:hover {
+.section-header .proceed:hover, .section-header .proceed a:hover {
     color: #000;
     background-color: unset;
 }
 
-    .section-header .proceed-inner a {
+    .section-header .proceed a {
         color:inherit;
         line-height: 40px;
     }
 
-.mat-expansion-panel-body .proceed-inner:hover {
+.mat-expansion-panel-body .proceed:hover {
     background-color: #ccc;
 }

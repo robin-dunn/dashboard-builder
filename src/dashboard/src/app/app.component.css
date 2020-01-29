@@ -4,3 +4,9 @@
     height: 100%;
     flex-direction: row;
 }
+
+.main-content-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}

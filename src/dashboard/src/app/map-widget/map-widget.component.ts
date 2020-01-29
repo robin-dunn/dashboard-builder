@@ -2,8 +2,6 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input } from '
 import * as L from 'leaflet';
 import { IWidgetConfig } from '../../../../models/widgetConfig';
 import { MapService } from './map.service';
-import { MapStore } from './mapStore';
-import { Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as MainActions from "../main.actions";
 import { AppState } from '../reducers';

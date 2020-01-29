@@ -4,9 +4,6 @@
   font-size: 24px;
   display: flex;
   align-items: center;
-  height: 30px;
-  padding: 3px 0;
-  border-bottom: 1px solid #aaaaaa;
 }
 
 .mapToolbarButton {

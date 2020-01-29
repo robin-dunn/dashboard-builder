@@ -36,6 +36,9 @@ import { DesignAndBuildComponent } from './side-menu/home-menu-panel/project-edi
 import { ManualCatchmentLayerComponent } from './side-menu/home-menu-panel/project-editor-panel/create-layer-panel/manual-catchment-layer/manual-catchment-layer.component';
 import { UseExistingLayerPanelComponent } from './side-menu/home-menu-panel/project-editor-panel/use-existing-layer-panel/use-existing-layer-panel.component';
 import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { DataManagerToolbarComponent } from './data-manager-toolbar/data-manager-toolbar.component';
+import { UploadSdlPanelComponent } from './data-manager-view/upload-sdl-panel/upload-sdl-panel.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
     SelectFeatureComponent,
     DesignAndBuildComponent,
     ManualCatchmentLayerComponent,
-    UseExistingLayerPanelComponent
+    UseExistingLayerPanelComponent,
+    ToolbarComponent,
+    DataManagerToolbarComponent,
+    UploadSdlPanelComponent
   ],
   imports: [
     BrowserModule,

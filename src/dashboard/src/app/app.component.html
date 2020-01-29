@@ -1,3 +1,9 @@
 <app-side-menu></app-side-menu>
-<app-map-widget *ngIf="currentView === 'Map'"></app-map-widget>
-<app-data-manager-view *ngIf="currentView === 'DataManager'"></app-data-manager-view>
+<div class="main-content-container">
+    <app-toolbar>
+        <app-map-toolbar *ngIf="currentView === 'Map'"></app-map-toolbar>
+        <app-data-manager-toolbar *ngIf="currentView === 'DataManager'"></app-data-manager-toolbar>
+    </app-toolbar>
+    <app-map-widget *ngIf="currentView === 'Map'"></app-map-widget>
+    <app-data-manager-view *ngIf="currentView === 'DataManager'"></app-data-manager-view>
+</div>

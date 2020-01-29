@@ -1,14 +1,3 @@
 <h2>Data Manager</h2>
 
-<h3>Upload System Data Layer</h3>
-
-<input type="text" placeholder="Layer name" [(ngModel)]="layerName" />
-<p id="FileUploadChooser">
-    <input type="file" (change)="fileOnChange($event)"
-     title="Specify one of the following file types: .csv, .xls, .xlsx, .shp, .mid, .mif or .kml" 
-        size="28" class="fileinput" id="fileupload1" style="width: 260px;">
-</p>
-
-<ul>
-  <li *ngFor="let layer of layers">{{layer.name}}</li>
-</ul>
+<app-upload-sdl-panel></app-upload-sdl-panel>

@@ -15,7 +15,6 @@ import { ProjectEditorPanelComponent } from './side-menu/home-menu-panel/project
 import { SliderViewComponent } from './slider-view/slider-view.component';
 import { SlideComponent } from './slider-view/slide/slide.component';
 import { SlideNavButtonComponent } from './slider-view/slide/slide-nav-button/slide-nav-button.component';
-import { ExpandableViewComponent } from './expandable-view/expandable-view.component';
 import { MapToolbarComponent } from './map-widget/map-toolbar/map-toolbar.component';
 import { FormsModule } from '@angular/forms';
 import { CreateLayerPanelComponent } from './side-menu/home-menu-panel/project-editor-panel/create-layer-panel/create-layer-panel.component';
@@ -51,7 +50,6 @@ import { UploadSdlPanelComponent } from './data-manager-view/upload-sdl-panel/up
     SliderViewComponent,
     SlideComponent,
     SlideNavButtonComponent,
-    ExpandableViewComponent,
     MapToolbarComponent,
     CreateLayerPanelComponent,
     HomeMenuPanelComponent,

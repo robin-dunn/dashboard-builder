@@ -21,7 +21,6 @@ class DashboardController implements IControllerBase {
         let json = fs.readFileSync(path.join(__dirname, "..\\data\\dashboard1.json"));
 
         const dashboard = JSON.parse(json as any);
-console.log(dashboard);
         res.json(dashboard);
     }
 };

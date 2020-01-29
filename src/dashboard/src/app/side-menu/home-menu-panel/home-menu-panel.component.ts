@@ -21,6 +21,6 @@ export class HomeMenuPanelComponent implements OnInit {
   }
 
   public clickManageData(event) {
-    this.store.dispatch(new MainActions.ChangeView("DataManager"));
+    //this.store.dispatch(new MainActions.ChangeView("DataManager"));
   }
 }

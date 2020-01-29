@@ -27,7 +27,6 @@ export class ProjectManagerService {
   }
 
   public openProject(projectId: number) {
-    console.log("open project");
   }
 
   public getLayers() {

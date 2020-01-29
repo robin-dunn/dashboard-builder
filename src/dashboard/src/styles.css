@@ -277,3 +277,24 @@ app-side-menu .mat-expansion-panel > .mat-expansion-panel-header:not([aria-disab
     .slim .proceed-inner .icon {
         font-size: 19px;
     }
+
+.section-header .proceed-inner {
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 0;
+}
+
+.section-header .proceed-inner:hover, .section-header .proceed-inner a:hover {
+    color: #000;
+    background-color: unset;
+}
+
+    .section-header .proceed-inner a {
+        color:inherit;
+        line-height: 40px;
+    }
+
+.mat-expansion-panel-body .proceed-inner:hover {
+    background-color: #ccc;
+}

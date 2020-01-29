@@ -18,4 +18,7 @@ export class SideMenuSectionComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick(event) {
+  }
+
 }

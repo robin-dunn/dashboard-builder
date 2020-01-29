@@ -10,6 +10,7 @@ export class ProceedInnerButtonComponent implements OnInit {
   @Input() title: string;
   @Input() outerClass: string;
   @Input() iconClass: string;
+  @Input() showView: string;
 
   constructor() { }
 

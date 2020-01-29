@@ -1,4 +1,4 @@
-<div class="side-menu-section">
+<div class="side-menu-section" (click)="onClick($event)">
   <ng-container
     *ngIf="expandable; then expandableView; else simpleView">
   </ng-container>
@@ -19,8 +19,7 @@
 </ng-template>
 <ng-template #simpleView>
   <div class="section-header">
-    <h3 [style.line-height]="headerHeight" class="section-header-title">{{title}}
-      <i class="fa fa-chevron-right proceed-right-arrow"></i></h3>
+    <app-proceed-inner-button [title]="title"></app-proceed-inner-button>
     <p *ngIf="description" class="menu-section-description">{{description}}</p>
   </div>
 </ng-template>

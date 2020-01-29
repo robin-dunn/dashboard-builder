@@ -17,13 +17,11 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<AppState>){
 
     this.store.subscribe((state:AppState) => {
-      //this.currentView = state.main.currentView;
-
       if (!state.main.currentSideMenu
         || (state.main.currentSideMenu === "projectManagerHome"
-            && state.main.currentView !== "Map")) {
+            && this.currentView !== "Map")) {
         this.currentView = "Map";
-      } else if (state.main.currentView !== "DataManager"){
+      } else if (state.main.currentSideMenu === "dataManager"){
         this.currentView = "DataManager";
       }
 
@@ -32,6 +30,5 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    console.log("DATA", this.currentView);
   }
 }

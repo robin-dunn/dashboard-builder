@@ -42,7 +42,7 @@ export class SideMenuComponent implements OnInit {
         advanced:{ updateOnContentResize: true },
         callbacks:{
           onCreate: () => {
-            console.log("created", this.sideMenuBody.nativeElement.style.overflow = "hidden");
+            this.sideMenuBody.nativeElement.style.overflow = "hidden";
           }
         }
       };

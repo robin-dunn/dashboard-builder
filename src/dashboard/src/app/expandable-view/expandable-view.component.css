@@ -1,7 +1,0 @@
-.mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
-    color: unset;
-}
-
-:host .mat-expansion-panel {
-    box-shadow: none;
-}

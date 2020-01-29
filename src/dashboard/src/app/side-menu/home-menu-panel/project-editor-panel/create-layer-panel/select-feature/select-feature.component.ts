@@ -14,9 +14,7 @@ export class SelectFeatureComponent implements OnInit {
 
   constructor(private store:Store<AppState>) {
     this.store.select(state => state.main.editMode).subscribe(editMode => {
-      console.log(">> Edit Change ["+editMode+"]");
       this.radioEditType = editMode;
-      console.log("RET", this.radioEditType);
     });
     //this.selectEditMode(this.radioEditType);
   }
@@ -25,7 +23,6 @@ export class SelectFeatureComponent implements OnInit {
   }
 
   onItemChange(event) {
-    console.log("TEST", event.target);
     this.selectEditMode(event.target.value);
   }
 

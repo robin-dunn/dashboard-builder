@@ -12,17 +12,18 @@
             You can change the shape, size and colour of the pins based on values in your data.
         </p>
 
-        <app-slide-nav-button [targetSlideId]="'manualPinLayer'" [direction]="'forward'">
-            <app-proceed-inner-button [outerClass]="'first-item'" [title]="'Manually Place Pins'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualPinsTool($event)">
+        <app-slide-nav-button [targetSlideId]="'manualPinLayer'">
+            <app-proceed-inner-button [outerClass]="'first-item'" [title]="'Manually Place Pins'"
+                [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualPinsTool($event)">
             </app-proceed-inner-button>
         </app-slide-nav-button>
 
-        <app-slide-nav-button [targetSlideId]="'importData'" [direction]="'forward'">
+        <app-slide-nav-button [targetSlideId]="'importData'">
             <app-proceed-inner-button [title]="'Import Data'" [iconClass]="'fas fa-table'">
             </app-proceed-inner-button>
         </app-slide-nav-button>
 
-        <app-slide-nav-button [targetSlideId]="'copyExistingLayer'" [direction]="'forward'">
+        <app-slide-nav-button [targetSlideId]="'copyExistingLayer'">
             <app-proceed-inner-button [title]="'Copy Existing Layer'" [iconClass]="'fas fa-layer-group'">
             </app-proceed-inner-button>
         </app-slide-nav-button>
@@ -40,12 +41,12 @@
             Identify gaps and overlaps. Assess coverage and identify what falls within these areas of influence.
         </p>
 
-        <app-slide-nav-button [targetSlideId]="'manualCatchmentLayer'" [direction]="'forward'">
+        <app-slide-nav-button [targetSlideId]="'manualCatchmentLayer'" >
             <app-proceed-inner-button [outerClass]="'first-item'" [title]="'Create Catchments Manually'" [iconClass]="'fas fa-map-marker-alt'" (click)="clickManualCatchmentsTool($event)">
             </app-proceed-inner-button>
         </app-slide-nav-button>
 
-        <app-slide-nav-button [targetSlideId]="'importCatchments'" [direction]="'forward'">
+        <app-slide-nav-button [targetSlideId]="'importCatchments'" >
             <app-proceed-inner-button [title]="'Import Data'" [iconClass]="'fas fa-table'">
             </app-proceed-inner-button>
         </app-slide-nav-button>

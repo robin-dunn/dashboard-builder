@@ -9,7 +9,7 @@ import { SliderViewService } from '../../slider-view.service';
 export class SlideNavButtonComponent implements OnInit {
 
   @Input() targetSlideId: string;
-  @Input() direction: string;
+  @Input() direction: string = "forward";
   @Input() clickHandler: Function;
 
   constructor(private sliderViewService: SliderViewService) { }

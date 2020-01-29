@@ -1,20 +1,20 @@
 <div class="projectManagerHomeContent">
 
-  <app-slide-nav-button [targetSlideId]="'projectEditor'" [direction]="'forward'" (click)="clickCreateProject($event)">
+  <app-slide-nav-button [targetSlideId]="'projectEditor'"  (click)="clickCreateProject($event)">
     <a href="#" class="homeButton">
       <i class="icon far fa-file"></i>
        Create a new project
     </a>
   </app-slide-nav-button>
 
-  <app-slide-nav-button [targetSlideId]="'projectList'" [direction]="'forward'">
+  <app-slide-nav-button [targetSlideId]="'projectList'" >
     <a href="#" class="homeButton">
       <i class="icon far fa-folder"></i>
        Open an existing project
     </a>
   </app-slide-nav-button>
 
-  <app-slide-nav-button [targetSlideId]="'dataManager'" [direction]="'forward'" (click)="clickManageData($event)">
+  <app-slide-nav-button [targetSlideId]="'dataManager'"  (click)="clickManageData($event)">
     <a href="#" class="homeButton">
       <i class="icon fas fa-table"></i>
       Manage your data
